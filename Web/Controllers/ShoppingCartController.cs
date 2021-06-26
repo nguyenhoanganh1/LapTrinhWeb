@@ -61,7 +61,7 @@ namespace Web.Controllers
                 item.name = name;
                 item.Disc = item.Disc;
                 var list = new List<CartItem>();
-
+                list.Add(item);
                 // lưu vào session
                 Session[CartSession] = list;
             }
