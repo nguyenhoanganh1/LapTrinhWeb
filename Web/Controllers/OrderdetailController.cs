@@ -34,7 +34,7 @@ namespace Web.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.OrderId = new SelectList(db.OrderDetails, "Id");
+            ViewBag.OrderId = new SelectList(db.OrderDetails, "");
             return View();
         }
     }
