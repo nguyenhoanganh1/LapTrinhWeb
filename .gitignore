@@ -343,5 +343,4 @@ healthchecksdb
 Model/App.config
 Web/Views/Home/About.cshtml
 Web/Web.config
-Model/App.config
-*.config
+
