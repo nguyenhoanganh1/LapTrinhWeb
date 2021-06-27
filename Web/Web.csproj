@@ -51,16 +51,104 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.DotNet.PlatformAbstractions.2.1.0\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Memory.5.0.0\lib\net461\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyModel.2.1.0\lib\net451\Microsoft.Extensions.DependencyModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileProviders.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Hosting.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.ObjectPool, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.ObjectPool.2.2.0\lib\netstandard2.0\Microsoft.Extensions.ObjectPool.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.5.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Xml, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Xml.4.5.0\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -129,6 +217,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Controllers\CatagoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -136,18 +225,178 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderdetailController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\TextController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\LoginCus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\items\-1376498924.png" />
+    <Content Include="Content\images\items\1.jpg" />
+    <Content Include="Content\images\items\1001.jpg" />
+    <Content Include="Content\images\items\1002.jpg" />
+    <Content Include="Content\images\items\1003.jpg" />
+    <Content Include="Content\images\items\1004.jpg" />
+    <Content Include="Content\images\items\1005.jpg" />
+    <Content Include="Content\images\items\1006.jpg" />
+    <Content Include="Content\images\items\1006.png" />
+    <Content Include="Content\images\items\1007.jpg" />
+    <Content Include="Content\images\items\1008.jpg" />
+    <Content Include="Content\images\items\1009.jpg" />
+    <Content Include="Content\images\items\1010.jpg" />
+    <Content Include="Content\images\items\1011.jpg" />
+    <Content Include="Content\images\items\1012.jpg" />
+    <Content Include="Content\images\items\1013.jpg" />
+    <Content Include="Content\images\items\1014.jpg" />
+    <Content Include="Content\images\items\1015.jpg" />
+    <Content Include="Content\images\items\1016.jpg" />
+    <Content Include="Content\images\items\1017.jpg" />
+    <Content Include="Content\images\items\1018.jpg" />
+    <Content Include="Content\images\items\1019.jpg" />
+    <Content Include="Content\images\items\1020.jpg" />
+    <Content Include="Content\images\items\1021.jpg" />
+    <Content Include="Content\images\items\1022.jpg" />
+    <Content Include="Content\images\items\1023.jpg" />
+    <Content Include="Content\images\items\1024.jpg" />
+    <Content Include="Content\images\items\1025.jpg" />
+    <Content Include="Content\images\items\1026.jpg" />
+    <Content Include="Content\images\items\1027.jpg" />
+    <Content Include="Content\images\items\1028.jpg" />
+    <Content Include="Content\images\items\1029.jpg" />
+    <Content Include="Content\images\items\1030.jpg" />
+    <Content Include="Content\images\items\1031.jpg" />
+    <Content Include="Content\images\items\1032.jpg" />
+    <Content Include="Content\images\items\1033.jpg" />
+    <Content Include="Content\images\items\1033.png" />
+    <Content Include="Content\images\items\1034.jpg" />
+    <Content Include="Content\images\items\1035.jpg" />
+    <Content Include="Content\images\items\1036.jpg" />
+    <Content Include="Content\images\items\1037.jpg" />
+    <Content Include="Content\images\items\1038.jpg" />
+    <Content Include="Content\images\items\1039.jpg" />
+    <Content Include="Content\images\items\1040.jpg" />
+    <Content Include="Content\images\items\1041.jpg" />
+    <Content Include="Content\images\items\1042.jpg" />
+    <Content Include="Content\images\items\1043.jpg" />
+    <Content Include="Content\images\items\1044.jpg" />
+    <Content Include="Content\images\items\1045.jpg" />
+    <Content Include="Content\images\items\1046.jpg" />
+    <Content Include="Content\images\items\1047.jpg" />
+    <Content Include="Content\images\items\1048.jpg" />
+    <Content Include="Content\images\items\1049.jpg" />
+    <Content Include="Content\images\items\1050.jpg" />
+    <Content Include="Content\images\items\1051.jpg" />
+    <Content Include="Content\images\items\1052.jpg" />
+    <Content Include="Content\images\items\1053.jpg" />
+    <Content Include="Content\images\items\1054.jpg" />
+    <Content Include="Content\images\items\1055.jpg" />
+    <Content Include="Content\images\items\1056.jpg" />
+    <Content Include="Content\images\items\1057.jpg" />
+    <Content Include="Content\images\items\1058.jpg" />
+    <Content Include="Content\images\items\1059.jpg" />
+    <Content Include="Content\images\items\1060.jpg" />
+    <Content Include="Content\images\items\1061.jpg" />
+    <Content Include="Content\images\items\1061.png" />
+    <Content Include="Content\images\items\1062.jpg" />
+    <Content Include="Content\images\items\1063.jpg" />
+    <Content Include="Content\images\items\1064.jpg" />
+    <Content Include="Content\images\items\1065.jpg" />
+    <Content Include="Content\images\items\1066.jpg" />
+    <Content Include="Content\images\items\1067.jpg" />
+    <Content Include="Content\images\items\1068.jpg" />
+    <Content Include="Content\images\items\1069.jpg" />
+    <Content Include="Content\images\items\1070.jpg" />
+    <Content Include="Content\images\items\1071.jpg" />
+    <Content Include="Content\images\items\1072.jpg" />
+    <Content Include="Content\images\items\1073.jpg" />
+    <Content Include="Content\images\items\1074.jpg" />
+    <Content Include="Content\images\items\1075.jpg" />
+    <Content Include="Content\images\items\1076.jpg" />
+    <Content Include="Content\images\items\1077.gif" />
+    <Content Include="Content\images\items\1081.jpg" />
+    <Content Include="Content\images\items\1083.jpg" />
+    <Content Include="Content\images\items\1084.jpg" />
+    <Content Include="Content\images\items\1085.jpg" />
+    <Content Include="Content\images\items\1087.jpg" />
+    <Content Include="Content\images\items\1096.gif" />
+    <Content Include="Content\images\items\1097.jpg" />
+    <Content Include="Content\images\items\1098.jpg" />
+    <Content Include="Content\images\items\1099.gif" />
+    <Content Include="Content\images\items\1100.jpg" />
+    <Content Include="Content\images\items\1101.jpg" />
+    <Content Include="Content\images\items\1102.jpg" />
+    <Content Include="Content\images\items\1103.jpg" />
+    <Content Include="Content\images\items\1104.jpg" />
+    <Content Include="Content\images\items\1105.jpg" />
+    <Content Include="Content\images\items\1106.jpg" />
+    <Content Include="Content\images\items\1107.jpg" />
+    <Content Include="Content\images\items\1108.jpg" />
+    <Content Include="Content\images\items\1109.jpg" />
+    <Content Include="Content\images\items\1110.jpg" />
+    <Content Include="Content\images\items\1111.jpg" />
+    <Content Include="Content\images\items\1112.jpg" />
+    <Content Include="Content\images\items\1113.jpg" />
+    <Content Include="Content\images\items\1114.jpg" />
+    <Content Include="Content\images\items\1115.jpg" />
+    <Content Include="Content\images\items\1116.jpg" />
+    <Content Include="Content\images\items\1117.jpg" />
+    <Content Include="Content\images\items\1118.jpg" />
+    <Content Include="Content\images\items\1119.jpg" />
+    <Content Include="Content\images\items\1120.gif" />
+    <Content Include="Content\images\items\1121.gif" />
+    <Content Include="Content\images\items\1122.jpg" />
+    <Content Include="Content\images\items\1123.jpg" />
+    <Content Include="Content\images\items\1124.png" />
+    <Content Include="Content\images\items\381937190.png" />
+    <Content Include="Content\images\items\product.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\new_icon.gif" />
+    <Content Include="Content\images\promo_icon.gif" />
+    <Content Include="Content\images\special_icon.gif" />
+    <Content Include="Content\images\users\-1038532071.jpg" />
+    <Content Include="Content\images\users\-1061713637.jpg" />
+    <Content Include="Content\images\users\-1099846722.jpg" />
+    <Content Include="Content\images\users\-1378609642.png" />
+    <Content Include="Content\images\users\-1517768800.jpg" />
+    <Content Include="Content\images\users\-169188889.jpg" />
+    <Content Include="Content\images\users\-1806596146.jpg" />
+    <Content Include="Content\images\users\-1833702987.jpg" />
+    <Content Include="Content\images\users\-2004461064.jpg" />
+    <Content Include="Content\images\users\-2037029902.jpg" />
+    <Content Include="Content\images\users\-312198375.jpg" />
+    <Content Include="Content\images\users\-356492870.png" />
+    <Content Include="Content\images\users\-439224050.jpg" />
+    <Content Include="Content\images\users\-470589609.jpg" />
+    <Content Include="Content\images\users\-701653521.jpg" />
+    <Content Include="Content\images\users\-706312367.jpg" />
+    <Content Include="Content\images\users\-813681073.jpg" />
+    <Content Include="Content\images\users\-978516543.jpg" />
+    <Content Include="Content\images\users\1184479694.jpg" />
+    <Content Include="Content\images\users\1401827645.jpg" />
+    <Content Include="Content\images\users\1531538868.jpg" />
+    <Content Include="Content\images\users\1548400202.jpg" />
+    <Content Include="Content\images\users\1570963044.jpg" />
+    <Content Include="Content\images\users\1608738158.jpg" />
+    <Content Include="Content\images\users\1723043771.jpg" />
+    <Content Include="Content\images\users\1741340391.jpg" />
+    <Content Include="Content\images\users\1748096246.jpg" />
+    <Content Include="Content\images\users\1887726614.jpg" />
+    <Content Include="Content\images\users\191259947.jpg" />
+    <Content Include="Content\images\users\198827254.jpg" />
+    <Content Include="Content\images\users\463468205.jpg" />
+    <Content Include="Content\images\users\757526090.jpg" />
+    <Content Include="Content\images\users\816678158.jpg" />
+    <Content Include="Content\images\users\906543448.jpg" />
+    <Content Include="Content\images\users\981196555.jpg" />
+    <Content Include="Content\images\users\user.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -179,17 +428,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Orderdetail\Index.cshtml" />
     <Content Include="Views\Orderdetail\Details.cshtml" />
     <Content Include="Views\Orderdetail\Create.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
-    <Content Include="Views\Customer\Register.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Customer\Login.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\Controllers\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
