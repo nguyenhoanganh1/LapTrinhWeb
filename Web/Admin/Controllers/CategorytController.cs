@@ -7,8 +7,9 @@ using System.Web.Mvc;
 
 namespace Web.Admin.Controllers
 {
-    public class CatagoryController : Controller
+    public class CategorytController : Controller
     {
+        // GET: Categoryt
         DataContext db = new DataContext();
         public ActionResult Index()
         {
