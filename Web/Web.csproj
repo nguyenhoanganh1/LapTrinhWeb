@@ -130,7 +130,6 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderdetailController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +179,7 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin\Controllers\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
