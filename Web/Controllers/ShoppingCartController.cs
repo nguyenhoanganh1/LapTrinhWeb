@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model.Dao;
+using Model.EL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,68 +11,64 @@ namespace Web.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        DataContext db = new DataContext();
 
-        private const string CartSession = "CartSession";
 
-        // GET: ShoppingCart
-        public ActionResult Index()
+
+        public ActionResult ShowCart()
         {
-            var session = Session[CartSession];
+            var cart = Session["cart"];
             var list = new List<CartItem>();
-            if (session != null)
+            if (cart != null)
             {
-                list = (List<CartItem>)session;
+                list = (List<CartItem>)cart;
             }
             return View(list);
         }
 
-        public ActionResult AddItem(long productId, int quantity, double price, double disc, string name)
+        // Thêm sản phẩm
+        public ActionResult AddItem(int id, int quantity)
         {
-            var session = Session[CartSession];
-            if (session != null)
+            var product = new ProductDAO().GetProductById(id);
+
+            var cart = Session["cart"];
+            if (cart != null)
             {
-                var list = (List<CartItem>)session;
-                if (list.Exists(x => x.ProductId.Equals(productId)))
+                var list = (List<CartItem>)cart;
+                if (list.Exists(x => x.product.Id == id))
                 {
                     foreach (var item in list)
                     {
-                        if (item.ProductId == productId)
+                        if (item.product.Id == id)
                         {
-                            item.Qty += quantity;
+                            item.quantity += 1;
                         }
+
                     }
                 }
                 else
                 {
-                    var item = new CartItem();
-                    item.ProductId = productId;
-                    item.Qty = 1;
-                    item.name = name;
-                    item.Price = price;
-                    item.Disc = item.Disc;
+                    CartItem item = new CartItem();
+                    item.product = product;
+                    item.quantity = quantity;
                     list.Add(item);
+                    Session["cart"] = list;
                 }
             }
             else
             {
-                // tạo item
-                var item = new CartItem();
-                item.ProductId = productId;
-                item.Qty = 1;
-                item.Price = price;
-                item.name = name;
-                item.Disc = item.Disc;
+                CartItem item = new CartItem();
+                item.product = product;
+                item.quantity = quantity;
                 var list = new List<CartItem>();
+                Session["cart"] = list;
                 list.Add(item);
-                // lưu vào session
-                Session[CartSession] = list;
             }
-            return RedirectToAction("Index");
+
+            return RedirectToAction("ShowCart", "ShoppingCart");
         }
 
-        public ActionResult UpdateItem(long productId, int quantity)
-        {
-            return View();
-        }
+
+
     }
 }
