@@ -13,17 +13,17 @@ namespace Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "CTHD",
-                url: "chi-tiet-hoa-don",
-                defaults: new { controller = "Orderdetail", action = "Index", id = UrlParameter.Optional }
-            );
 
             routes.MapRoute(
-                name: "Default",
+                name: "CTHD",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Catagory", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "OrderDetail", action = "Index", id = UrlParameter.Optional }
+            );*/
+
+            routes.MapRoute(
+              name: "Login",
+                url: "{controller}/{action}/{id}",
+
         }
     }
 }
