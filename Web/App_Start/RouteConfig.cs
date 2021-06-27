@@ -20,9 +20,15 @@ namespace Web
              );
 
             routes.MapRoute(
+                name: "CTHD",
+                url: "chi-tiet-hoa-don",
+                defaults: new { controller = "Orderdetail", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Orderdetail", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

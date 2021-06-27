@@ -176,6 +176,7 @@
     <Content Include="Views\Orderdetail\Index.cshtml" />
     <Content Include="Views\Orderdetail\Details.cshtml" />
     <Content Include="Views\Orderdetail\Create.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
