@@ -1,0 +1,96 @@
+﻿@model List<Web.Models.CartItem>
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowCart</h2>
+@if (Model.Count > 0)
+{
+    double total = 0;
+    int stt = 1;
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title"><b>YOUR SHOPPING CART</b></h3>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Unit Price</th>
+                    <th>Discount</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    var thanhtien = item.product.UnitPrice * item.quantity * (1 - item.product.Discount);
+
+                    total += thanhtien;
+
+                    var giamgia = item.product.Discount * 100;
+
+                    <tr data-item='{"id":"1000","price":123.5,"disc":0.2}'>
+                        <td>@(stt++)</td>
+                        <td>@item.product.Name</td>
+                        <td>$ @item.product.UnitPrice</td>
+                        <td>@giamgia %</td>
+                        <td><input type="number" min="1" style="width:50px" value="@item.quantity"></td>
+                        <td>$ @(thanhtien.ToString("n0"))</td>
+                        <td class="text-center">
+                            <button class="btn btn-xs btn-danger glyphicon glyphicon-trash"></button>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <div class="panel-footer text-right">
+            <a href="/product/x" class="btn btn-sm btn-info">
+                <i class="glyphicon glyphicon-hand-left"></i> Add More
+            </a>
+            <button class="btn btn-sm btn-warning">
+                <i class="glyphicon glyphicon-trash"></i> Clear All
+            </button>
+            <a href="/order/checkout" class="btn btn-sm btn-success">
+                <i class="glyphicon glyphicon-ok"></i> Checkout
+            </a>
+            <b class="pull-left">Total Amount: <i class="cart-amt">@total</i></b>
+        </div>
+    </div>
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title"><b>ORDER INFORMATION</b></h3>
+        </div>
+        <form action="/order/checkout" method="post" class="panel-body">
+            <div class="form-group">
+                <label>Shipping Address:</label>
+                <input name="orderDate" placeholder="Shipping Address?" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Notes:</label>
+                <textarea name="description" placeholder="Write something here?" rows="3" class="form-control"></textarea>
+            </div>
+        </form>
+        <div class="panel-footer text-right">
+            <button class="btn btn-danger">
+                <i class="glyphicon glyphicon-gbp"></i>
+                Purchase
+            </button>
+        </div>
+    </div>
+
+
+}
+else
+{
+    <p class="alert alert-danger">Giỏ hàng trống</p>
+}
