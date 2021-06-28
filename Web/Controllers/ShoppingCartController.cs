@@ -27,7 +27,7 @@ namespace Web.Controllers
         }
 
         // Thêm sản phẩm
-        public ActionResult AddItem(int id, int quantity)
+        public ActionResult AddItem(int id)
         {
             var product = new ProductDAO().GetProductById(id);
 
@@ -50,7 +50,7 @@ namespace Web.Controllers
                 {
                     CartItem item = new CartItem();
                     item.product = product;
-                    item.quantity = quantity;
+                    item.quantity = 1;
                     list.Add(item);
                     Session["cart"] = list;
                 }
@@ -59,7 +59,7 @@ namespace Web.Controllers
             {
                 CartItem item = new CartItem();
                 item.product = product;
-                item.quantity = quantity;
+                item.quantity = 1;
                 var list = new List<CartItem>();
                 Session["cart"] = list;
                 list.Add(item);
