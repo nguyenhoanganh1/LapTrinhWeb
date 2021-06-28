@@ -18,11 +18,13 @@ namespace Web
                 name: "CTHD",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "OrderDetail", action = "Index", id = UrlParameter.Optional }
-            );*/
+            );
 
             routes.MapRoute(
-              name: "Login",
+              name: "Default",
                 url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                );
 
         }
     }
