@@ -18,7 +18,11 @@ namespace Web
                 url: "chi-tiet-hoa-don",
                 defaults: new { controller = "Orderdetail", action = "Index", id = UrlParameter.Optional }
             );
-
+           /* routes.MapRoute(
+                name: "DangKy",
+                url: "chi-tiet-DangKY",
+                defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
+            );*/
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

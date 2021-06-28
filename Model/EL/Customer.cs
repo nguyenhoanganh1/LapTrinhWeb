@@ -1,10 +1,11 @@
-namespace Model.EL
+﻿namespace Model.EL
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.ComponentModel;
 
     public partial class Customer
     {
@@ -13,19 +14,21 @@ namespace Model.EL
         {
             Orders = new HashSet<Order>();
         }
-
+        [Display(Name = "Tài Khoản: ")]
         [StringLength(20)]
         public string Id { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Xin Vui Lòng Nhập Mật Khẩu")]
+        [StringLength(maximumLength: 16, MinimumLength = 4, ErrorMessage = "Độ dài mật khẩu từ 4-16 kí tự")]
+        [Display(Name = "Mật khẩu: ")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Xin Vui Lòng Nhập Tên Đầy Đủ Của Bạn")]
         [StringLength(50)]
+        [Display(Name ="Họ và Tên:")]
         public string Fullname { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Xin Vui Lòng Nhập Địa Chỉ Email ")]
         [StringLength(50)]
         public string Email { get; set; }
 

@@ -34,6 +34,8 @@ namespace Model.Dao
             this.Save();
         }
 
+       
+
         public void Save()
         {
             db.SaveChanges();
@@ -52,6 +54,14 @@ namespace Model.Dao
                 cus.Admin = customer.Admin;
                 this.Save();
             }
+        }
+        public bool CheckUserName(String UserName)
+        {
+            return db.Customers.Count(x => x.Id == UserName) > 0;
+        }
+        public bool Checkemail (string Email)
+        {
+            return db.Customers.Count(x => x.Email == Email) > 0;
         }
     }
 }
