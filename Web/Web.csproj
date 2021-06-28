@@ -221,7 +221,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrderdetailController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -425,9 +425,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Orderdetail\Index.cshtml" />
-    <Content Include="Views\Orderdetail\Details.cshtml" />
-    <Content Include="Views\Orderdetail\Create.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
   </ItemGroup>
