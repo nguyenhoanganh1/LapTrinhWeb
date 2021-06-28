@@ -3,13 +3,10 @@
     ViewBag.Title = "ShowCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>ShowCart</h2>
 @if (Model.Count > 0)
 {
     double total = 0;
-    int stt = 1;
-
+    int stt = 0;
     <div class="panel panel-warning">
         <div class="panel-heading">
             <h3 class="panel-title"><b>YOUR SHOPPING CART</b></h3>
@@ -27,26 +24,23 @@
                 </tr>
             </thead>
             <tbody>
-
                 @foreach (var item in Model)
                 {
-                    var thanhtien = item.product.UnitPrice * item.quantity * (1 - item.product.Discount);
-
+                    double thanhtien = item.product.UnitPrice * item.quantity * (1 - item.product.Discount);
                     total += thanhtien;
-
-                    var giamgia = item.product.Discount * 100;
-
-                    <tr data-item='{"id":"1000","price":123.5,"disc":0.2}'>
+                    <tr data-item='{"id":"@item.product.Id","price":@item.product.UnitPrice,"disc":@item.product.Discount}'>
                         <td>@(stt++)</td>
-                        <td>@item.product.Name</td>
-                        <td>$ @item.product.UnitPrice</td>
-                        <td>@giamgia %</td>
-                        <td><input type="number" min="1" style="width:50px" value="@item.quantity"></td>
-                        <td>$ @(thanhtien.ToString("n0"))</td>
-                        <td class="text-center">
-                            <button class="btn btn-xs btn-danger glyphicon glyphicon-trash"></button>
+                        <td><a href="/product/detail/@item.product.Id">@item.product.Name</a></td>
+                        <td>$ @item.product.UnitPrice.ToString("n0")</td>
+                        <td>@(item.product.Discount * 100)%</td>
+                        <td>
+                            <input class="quantity_item" type="number" min="1" style="width:50px" value="@item.quantity"
+                                   onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                         </td>
-
+                        <td class="amount">$ @thanhtien.ToString("n0")</td>
+                        <td class="text-center">
+                            <button class="btn btn-xs btn-danger glyphicon glyphicon-trash delete_item"></button>
+                        </td>
                     </tr>
                 }
 
@@ -56,13 +50,13 @@
             <a href="/product/x" class="btn btn-sm btn-info">
                 <i class="glyphicon glyphicon-hand-left"></i> Add More
             </a>
-            <button class="btn btn-sm btn-warning">
+            <button class="btn btn-sm btn-warning clearAll">
                 <i class="glyphicon glyphicon-trash"></i> Clear All
             </button>
-            <a href="/order/checkout" class="btn btn-sm btn-success">
+            <a href="/order/checkout" class="btn btn-sm btn-success checkOut">
                 <i class="glyphicon glyphicon-ok"></i> Checkout
             </a>
-            <b class="pull-left">Total Amount: <i class="cart-amt">@total</i></b>
+            <b class="pull-left">Total Amount: <i class="cart_amt">@total.ToString("n0")</i></b>
         </div>
     </div>
 
@@ -88,9 +82,49 @@
         </div>
     </div>
 
+    @section Cart {
+        <script>
+            $(function () {
+
+                $(".quantity_item").on("change", function (event) {
+
+                    var quantity = $(this).val();
+                    var item = JSON.parse($(this).parents("[data-item]").attr("data-item"));
+                    $.ajax({
+                        url: `UpdateCart?id=${item.id}&quantity=${quantity}`,
+                        method: 'POST',
+                        success: function (resp) {
+                            window.location.href = 'ShowCart';
+                        }
+                    });
+                })
+
+                $(".clearAll").on("click", function (event) {
+                    $.ajax({
+                        url: `ClearCart`,
+                        success: function (resp) {
+                            window.location.href = 'ShowCart';
+                        }
+                    });
+                })
+
+                $(".delete_item").on("click", function (event) {
+                    var item = JSON.parse($(this).parents("[data-item]").attr("data-item"));
+                    $.ajax({
+                        url: `RemoveCart?id=${item.id}`,
+                        method: 'POST',
+                        success: function (resp) {
+                            window.location.href = 'ShowCart';
+                        }
+                    });
+                })
+            })
+        </script>
+    }
+
 
 }
 else
 {
-    <p class="alert alert-danger">Giỏ hàng trống</p>
+    <p class="text-danger">Chưa có sản phẩm nào trong giỏ hàng</p>
 }
