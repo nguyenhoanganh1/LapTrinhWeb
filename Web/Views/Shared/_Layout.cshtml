@@ -9,8 +9,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-
+    <script type="text/javascript" src="~/Scripts/shoppingcart/cart.js"></script>
+    @RenderSection("Cart", false)
 </head>
 <body>
     <div class="container">
