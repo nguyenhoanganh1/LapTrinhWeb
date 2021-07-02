@@ -25,15 +25,6 @@
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Xin Vui Lòng Nhập Tên Đầy Đủ Của Bạn")]
-
-        [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "ID error.")]
-        [StringLength(50)]
-        public string Password { get; set; }
-
-        [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Password Eror.")]
-
         [StringLength(50)]
         [Display(Name ="Họ và Tên:")]
         public string Fullname { get; set; }
