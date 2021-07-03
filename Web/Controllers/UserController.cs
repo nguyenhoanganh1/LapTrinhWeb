@@ -15,6 +15,7 @@ namespace Web.Controllers
     public class UserController : Controller
     {
         DataContext db = new DataContext();
+
         private object crypto;
 
         public ActionResult FogotPassWord()
@@ -117,21 +118,61 @@ namespace Web.Controllers
                     user.ResetPasswordCode = "";
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.SaveChanges();
+
                     message = "New Pass Word updata successfully";
+
+                    
+
+        public ActionResult Login()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult Login(FormCollection userlog)
+        {
+            string Email = userlog["Email"].ToString();
+            string password = userlog["Password"].ToString();
+            var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
+
+            if (islogin != null)
+            {
+                if (Email == "Admin@gmail.com")
+                {
+                    Session["Customer"] = islogin;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    Session["Customer"] = islogin;
+                    return RedirectToAction("Index", "Home");
+
+
                 }
             }
             else
             {
                 message = "Something invalid";
 
+
+                
+
+
             }
             ViewBag.Message = message;
             return View(model);
+
+                ViewBag.Fail = "Đăng nhập thất bại";
+                return View("Login");
+            }
+
         }
         public ActionResult Dangky()
         {
             return View();
         }
+
 
         [HttpPost]
         public ActionResult Dangky(CustomerModel model)
@@ -159,6 +200,7 @@ namespace Web.Controllers
                     user.Activated = true;
                     user.Admin = false;
                     dao.InsertCustomer(user);
+                dao.Save();
                     return RedirectToAction("Index", "Home");
                 } 
                   

@@ -31,7 +31,7 @@ namespace Model.Dao
         public void InsertCustomer(Customer customer)
         {
             db.Customers.Add(customer);
-            this.Save();
+           
         }
 
        
