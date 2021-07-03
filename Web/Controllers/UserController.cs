@@ -24,12 +24,12 @@ namespace Web.Controllers
         [NonAction]
         public void SendVerificationLinkEmail(string emailID, string activationCode,string emailfor = "VerifyAccount")
         {
-            var verifyUrl = "/User/"+emailfor+" + activationCode;
+            var verifyUrl = "/User/"+emailfor+ "/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
-            var fromEmail = new MailAddress("dotnetawesome@gmail.com", "Dotnet Awesome");
+            var fromEmail = new MailAddress("drangon165@gmail.com", "Dotnet Awesome");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "********"; // Replace with actual password
+            var fromEmailPassword = "Thanh0123"; // Replace with actual password
             string body = "";
             string subject = "";
             if (emailfor == "VerifyAccount")
@@ -42,18 +42,12 @@ namespace Web.Controllers
             else
             {
                 if (emailfor == "ResetPassword")
-                { 
-                    subject =" Reset Password"
-                    body = "Hi,<br/>br/>We got requet for reset your account password. please click on the below  link to reset your password"
-                        "<br/>br/><a href="+link+">Reset Password link</a>"
+                {
+                    subject = " Reset Password";
+                    body = "Hi,<br/>br/>We got requet for reset your account password. please click on the below  link to reset your password" +
+                        "<br/>br/><a href=" + link + ">Reset Password link</a>";
                 }
             }
-
-
-
-
-            
-
             var smtp = new SmtpClient
             {
                 Host = "smtp.gmail.com",
@@ -84,21 +78,20 @@ namespace Web.Controllers
             {
                 string ressetcode = Guid.NewGuid().ToString();
                 SendVerificationLinkEmail(account.Email, ressetcode, "ResetPassword");
-                account.ResetPassWordCode = ressetcode;
-/*                account.ResetPassWord = ressetcode;*/
+                account.ResetPasswordCode = ressetcode;
                 db.Configuration.ValidateOnSaveEnabled = false;
                 db.SaveChanges();
-                message = "ResetPassword link has been sent to your email ID"
+                message = "ResetPassword link has been sent to your email ID";
             }
-            else { 
-                message = "Account not found"
+            else {
+                message = "Account not found";
                 ViewBag.Message = message;
             }
             return View();
         }
         public ActionResult ResetPassword(String Id)
         {
-            var user = db.Customers.Where(a => a.Id == Id).FirstOrDefault();
+            var user = db.Customers.Where(a => a.ResetPasswordCode == Id).FirstOrDefault();
             if (user != null)
             {
                 ResetPasswordModel model = new ResetPasswordModel();
@@ -117,19 +110,19 @@ namespace Web.Controllers
             var message = "";
             if (ModelState.IsValid)
             {
-                var user = db.Customers.Where(a = > a.ResetPassCode == model.ResetCode).FirstOrDefault();
+                var user = db.Customers.Where(a =>a.ResetPasswordCode == model.ResetCode).FirstOrDefault();
                 if (user != null)
                 {
-                    user.Password = Crypto.Hash(model.NewPassWord);
+                    user.Password = model.NewPassWord;
                     user.ResetPasswordCode = "";
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.SaveChanges();
-                    message = "New Pass Word updata successfully"
+                    message = "New Pass Word updata successfully";
                 }
             }
             else
             {
-                message ="Something invalid"
+                message = "Something invalid";
 
             }
             ViewBag.Message = message;

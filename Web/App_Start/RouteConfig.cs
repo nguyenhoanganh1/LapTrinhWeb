@@ -19,11 +19,16 @@ namespace Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "OrderDetail", action = "Index", id = UrlParameter.Optional }
             );
-           /* routes.MapRoute(
-                name: "DangKy",
-                url: "chi-tiet-DangKY",
-                defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
-            );*/
+            routes.MapRoute(
+                name: "Forgot PassWord",
+                url: "ForgotPassWord",
+                defaults: new { controller = "User", action = "ForgotPassWord", id = UrlParameter.Optional }
+            );
+            /* routes.MapRoute(
+                 name: "DangKy",
+                 url: "chi-tiet-DangKY",
+                 defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
+             );*/
             routes.MapRoute(
               name: "Default",
                 url: "{controller}/{action}/{id}",
