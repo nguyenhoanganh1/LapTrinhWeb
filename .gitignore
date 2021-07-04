@@ -347,4 +347,8 @@ Web/Web.config
 Model/App.config
 Web/Web.csproj
 Web/Web.config
+
 Model/EL/sysdiagram.cs
+
+Model/App.config
+
