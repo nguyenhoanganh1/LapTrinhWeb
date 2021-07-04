@@ -15,22 +15,56 @@ namespace Web.Controllers
     public class UserController : Controller
     {
         DataContext db = new DataContext();
+        private string message = "";
+        public ActionResult Dangky()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Dangky(CustomerModel model)
+        {
+            var dao = new CustomerDAO();
 
-        private object crypto;
+            if (dao.CheckUserName(model.Id))
+            {
+                ModelState.AddModelError("Id", "Tên Đăng Nhập đã Tồn Tại");
 
+            }
+            else if (dao.Checkemail(model.Email))
+            {
+                ModelState.AddModelError("Email", "Email đã Tồn Tại");
+            }
+            else
+            {
+
+                var user = new Customer();
+                user.Id = model.Id;
+                user.Password = model.Password;
+                user.Fullname = model.Fullname;
+                user.Photo = "user.png";
+                user.Email = model.Email;
+                user.Activated = true;
+                user.Admin = false;
+                dao.InsertCustomer(user);
+                dao.Save();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
         public ActionResult FogotPassWord()
         {
             return View();
         }
         [NonAction]
-        public void SendVerificationLinkEmail(string emailID, string activationCode,string emailfor = "VerifyAccount")
+        public void SendVerificationLinkEmail(string emailID, string activationCode, string emailfor = "VerifyAccount")
         {
-            var verifyUrl = "/User/"+emailfor+ "/" + activationCode;
+            var verifyUrl = "/User/" + emailfor + "/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
-            var fromEmail = new MailAddress("drangon165@gmail.com", "Dotnet Awesome");
+            var fromEmail = new MailAddress("drangon165@gmail.com", "Dotnet Awesome");// Thay doi tai khoan giu
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "Thanh0123"; // Replace with actual password
+            var fromEmailPassword = "Thanh0123"; // Mat Khau cua tai khoan gmail
             string body = "";
             string subject = "";
             if (emailfor == "VerifyAccount")
@@ -84,7 +118,8 @@ namespace Web.Controllers
                 db.SaveChanges();
                 message = "ResetPassword link has been sent to your email ID";
             }
-            else {
+            else
+            {
                 message = "Account not found";
                 ViewBag.Message = message;
             }
@@ -104,110 +139,8 @@ namespace Web.Controllers
                 return HttpNotFound();
             }
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-         public ActionResult ResetPassword(ResetPasswordModel model)
-        {
-            var message = "";
-            if (ModelState.IsValid)
-            {
-                var user = db.Customers.Where(a =>a.ResetPasswordCode == model.ResetCode).FirstOrDefault();
-                if (user != null)
-                {
-                    user.Password = model.NewPassWord;
-                    user.ResetPasswordCode = "";
-                    db.Configuration.ValidateOnSaveEnabled = false;
-                    db.SaveChanges();
-
-                    message = "New Pass Word updata successfully";
-
-                    
-
-        public ActionResult Login()
-        {
-            return View();
-
-        }
-
-        [HttpPost]
-        public ActionResult Login(FormCollection userlog)
-        {
-            string Email = userlog["Email"].ToString();
-            string password = userlog["Password"].ToString();
-            var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
-
-            if (islogin != null)
-            {
-                if (Email == "Admin@gmail.com")
-                {
-                    Session["Customer"] = islogin;
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    Session["Customer"] = islogin;
-                    return RedirectToAction("Index", "Home");
-
-
-                }
-            }
-            else
-            {
-                message = "Something invalid";
-
-
-                
-
-
-            }
-            ViewBag.Message = message;
-            return View(model);
-
-                ViewBag.Fail = "Đăng nhập thất bại";
-                return View("Login");
-            }
-
-        }
-        public ActionResult Dangky()
-        {
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Dangky(CustomerModel model)
-        {
-            var dao = new CustomerDAO();
-
-                if (dao.CheckUserName(model.Id))
-                {
-                    ModelState.AddModelError("Id", "Tên Đăng Nhập đã Tồn Tại");
-
-                }
-                else if (dao.Checkemail(model.Email))
-                {
-                    ModelState.AddModelError("Email", "Email đã Tồn Tại");
-                }
-                else
-                {
-
-                    var user = new Customer();
-                    user.Id = model.Id;
-                    user.Password = model.Password;
-                    user.Fullname = model.Fullname;
-                    user.Photo = "user.png";
-                    user.Email = model.Email;
-                    user.Activated = true;
-                    user.Admin = false;
-                    dao.InsertCustomer(user);
-                dao.Save();
-                    return RedirectToAction("Index", "Home");
-                } 
-                  
-            
-            return View();
-        }
-
     }
-
 }
+ 
+        
+          
