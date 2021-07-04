@@ -139,6 +139,39 @@ namespace Web.Controllers
                 return HttpNotFound();
             }
         }
+        public ActionResult Login()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult Login(FormCollection userlog)
+        {
+            string Email = userlog["Email"].ToString();
+            string password = userlog["Password"].ToString();
+            var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
+
+            if (islogin != null)
+            {
+                if (Email == "Admin@gmail.com")
+                {
+                    Session["User"] = islogin;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    Session["User"] = islogin;
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                ViewBag.Fail = "Đăng nhập thất bại";
+                return View("Login");
+            }
+
+        }
     }
 }
  
