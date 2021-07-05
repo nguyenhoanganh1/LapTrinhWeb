@@ -17,12 +17,11 @@ namespace Model.EL
         [StringLength(20)]
         public string Id { get; set; }
 
-        [Required(ErrorMessage = "Xin Vui Lòng Nhập Mật Khẩu")]
-        [StringLength(maximumLength: 16, MinimumLength = 4, ErrorMessage = "Độ dài mật khẩu từ 4-16 kí tự")]
-        [Display(Name = "Mật khẩu: ")]
+        [Required]
+        [StringLength(50)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Xin Vui Lòng Nhập Tên Đầy Đủ Của Bạn")]
+        [Required]
         [StringLength(50)]
         public string Fullname { get; set; }
 
