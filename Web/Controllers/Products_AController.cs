@@ -59,6 +59,7 @@ namespace Web.Controllers
         }
 
         // GET: Products_A/Create
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
@@ -72,33 +73,20 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
-            {
+           
                 try
                 {
                     if (file.ContentLength > 0)
                     {
-
                         string _FileName = Path.GetFileName(file.FileName);
                         string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
-
-
 
                         //string _FileName = Path.GetFileName(file.FileName);
                         //string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
 
-
-
-                        product.Image = _FileName.ToString();
+                        product.Image = _FileName;
                         file.SaveAs(_path);
 
-
-
-                        //product.Image = _FileName; // phải lưu tên // nếu không lưu sẽ hiển thị tên image chưa có
-                        //file.SaveAs(_path);
-                        /*db.Products.Add(product);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");*/
                     }
                     db.Products.Add(product);
                     db.SaveChanges();
@@ -111,7 +99,7 @@ namespace Web.Controllers
                 }
 
 
-            }
+            
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
@@ -137,14 +125,24 @@ namespace Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
-            {
+            
+                if (file != null)
+                {
+                    string _Filename = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _Filename);
+                    product.Image = _Filename;
+                    file.SaveAs(_path); // lưu file
+
+                }
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            
+
+
+
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
@@ -175,19 +173,17 @@ namespace Web.Controllers
             return RedirectToAction("Index");
         }
 
+        
         public ActionResult Create2()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
-        // POST: Products_A/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create2([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase file)
+        public ActionResult Create2(Product product , HttpPostedFileBase file)
         {
+
             if (ModelState.IsValid)
             {
                 try
@@ -196,7 +192,7 @@ namespace Web.Controllers
                     {
 
                         string _FileName = Path.GetFileName(file.FileName);
-                        string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
+                        string _path = Path.Combine(Server.MapPath("~/images"), _FileName);
 
 
 
@@ -205,16 +201,11 @@ namespace Web.Controllers
 
 
 
-                        product.Image = _FileName.ToString();
+                        product.Image = _FileName;
                         file.SaveAs(_path);
 
 
 
-                        //product.Image = _FileName; // phải lưu tên // nếu không lưu sẽ hiển thị tên image chưa có
-                        //file.SaveAs(_path);
-                        /*db.Products.Add(product);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");*/
                     }
                     db.Products.Add(product);
                     db.SaveChanges();
@@ -230,8 +221,8 @@ namespace Web.Controllers
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             return View(product);
-        }
 
+        }
 
         protected override void Dispose(bool disposing)
         {
