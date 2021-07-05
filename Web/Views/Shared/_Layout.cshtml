@@ -10,9 +10,50 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script type="text/javascript" src="~/Scripts/shoppingcart/cart.js"></script>
+    @*cấu hình css cho giao diện đẹp hơn*@
+    <link rel="stylesheet" href="~/Content/nhatnghe.css" />
+
     @RenderSection("Cart", false)
 </head>
-<body>
+
+
+ @*TAO THÊM LẠI CÁI ASIDE BÊN CẠNH  - CÁI _Aside.cshtml t  sài add-> MVC LAYOUT PAGE (RAZOR)  THÌ MỚI ĐỔ CÁI LIST CATEGORY HIỆN 
+CÁI DANH SÁCH MẶT HÀNG ĐƯỢC - CÁI CỦA HOÀNG ANH T VẪN GIỮ Ở BÊN DƯỚI*@
+<body class="container">
+    <header class="row">
+        <h1 class="alert alert-success">
+            <b class="glyphicon glyphicon-education"></b>
+            Online Shopping Cart
+        </h1>
+    </header>
+    <nav class="row">
+        <!-- MENU -->
+        @RenderPage("_Menu.cshtml")
+
+
+    </nav>
+    <main class="row">
+        <article class="col-sm-9">
+            <div class="row">
+                @RenderBody()
+
+            </div>
+        </article>
+        <aside class="col-sm-3">
+            @*ASIDE*@
+            @RenderPage("~/Views/Shared/_Aside.cshtml")
+            
+        </aside>
+    </main>
+    <footer class="row text-center">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                &copy;  @DateTime.Now.Year - My ASP.NET Application
+            </div>
+        </div>
+    </footer>
+</body>
+@*<body>
     <div class="container">
         <header class="row">
             <h1 class="alert alert-success">
@@ -33,5 +74,5 @@
     </div>
 
 
-</body>
+</body>*@
 </html>

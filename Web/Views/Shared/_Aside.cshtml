@@ -1,0 +1,82 @@
+﻿@using Model.EL;
+@{
+    DataContext db = new DataContext();
+    var cate = db.Categories.ToList();
+
+}
+
+<div class="row" style="margin-left: 2px;">
+    <!--ASIDE-->
+    <!--Shopping Cart-->
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="col-xs-5" style="font-size: 50px;">
+                <b class="glyphicon glyphicon-shopping-cart"></b>
+            </div>
+            <ul class="col-xs-7">
+                <li>10 items</li>
+                <li>254 USD</li>
+                <li><a href="/cart/view">View Cart</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Search-->
+    <div class="panel panel-danger">
+        @*action trỏ tới controller/hàm còn tham số thì vào hàm thêm đúng như name = keywords *@
+        <form action="/Products/FindByKeywords" class="panel-body">
+            <input id="keywords" name="keywords" placeholder="Keywords?" class="form-control" />
+        </form>
+    </div>
+
+    <!--Categories-->
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+        </div>
+        <div class="list-group">
+            @foreach (var item in cate)
+            {
+                <a href="/Products/FindByCategory/@item.Id" class="list-group-item">
+                    @item.Name
+                    @*/Product2_User/FindByCategory/@item.Id*@
+                </a>
+            }
+
+            @* <a href="/product/find-by-category/1000" class="list-group-item">
+                    First item
+                </a>
+                <a href="/product/find-by-category/1001" class="list-group-item">
+                    Second item
+                </a>
+                <a href="/product/find-by-category/1002" class="list-group-item">
+                    Third item
+                </a>*@
+        </div>
+    </div>
+
+    <!--Specials-->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Special Items</h3>
+        </div>
+        <div class="list-group">
+            <a href="/Products/FindBySpecials/0" class="list-group-item">
+                Special Items
+            </a>
+            <a href="/Products/FindBySpecials/1" class="list-group-item">
+                Most View Items
+            </a>
+            <a href="/Products/FindBySpecials/2" class="list-group-item">
+                Sales Off Items
+            </a>
+            <a href="/Products/FindBySpecials/3" class="list-group-item">
+                Latest Items
+            </a>
+            <a href="/Products/FindBySpecials/4" class="list-group-item">
+                Best Sellers
+            </a>
+        </div>
+    </div>
+
+</div>

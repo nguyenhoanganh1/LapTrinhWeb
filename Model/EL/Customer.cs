@@ -17,6 +17,7 @@ namespace Model.EL
         [StringLength(20)]
         public string Id { get; set; }
 
+
         [Required]
         [StringLength(50)]
         public string Password { get; set; }
@@ -44,3 +45,4 @@ namespace Model.EL
         public virtual ICollection<Order> Orders { get; set; }
     }
 }
+
