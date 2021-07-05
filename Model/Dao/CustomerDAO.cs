@@ -31,7 +31,7 @@ namespace Model.Dao
         public void InsertCustomer(Customer customer)
         {
             db.Customers.Add(customer);
-            this.Save();
+           
         }
 
        
@@ -52,6 +52,7 @@ namespace Model.Dao
                 cus.Photo = customer.Photo;
                 cus.Activated = customer.Activated;
                 cus.Admin = customer.Admin;
+                cus.ResetPasswordCode = customer.ResetPasswordCode;                // tự thêm thuộc tính ở đây nha
                 this.Save();
             }
         }

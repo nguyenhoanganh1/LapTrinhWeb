@@ -19,7 +19,19 @@ namespace Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "OrderDetail", action = "Index", id = UrlParameter.Optional }
             );
-           /* routes.MapRoute(
+
+            routes.MapRoute(
+                name: "Forgot PassWord",
+                url: "ForgotPassWord",
+                defaults: new { controller = "User", action = "ForgotPassWord", id = UrlParameter.Optional }
+            );
+            /* routes.MapRoute(
+                 name: "DangKy",
+                 url: "chi-tiet-DangKY",
+                 defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
+             );*/
+
+           /*routes.MapRoute(
                 name: "DangKy",
                 url: "chi-tiet-DangKY",
                 defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
@@ -29,6 +41,12 @@ namespace Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
+            routes.MapRoute(
+              name: "Loginn",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }
+                );
+
 
         }
     }
