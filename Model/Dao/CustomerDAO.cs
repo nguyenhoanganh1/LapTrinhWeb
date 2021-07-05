@@ -31,8 +31,10 @@ namespace Model.Dao
         public void InsertCustomer(Customer customer)
         {
             db.Customers.Add(customer);
-            this.Save();
+           
         }
+
+       
 
         public void Save()
         {
@@ -50,8 +52,17 @@ namespace Model.Dao
                 cus.Photo = customer.Photo;
                 cus.Activated = customer.Activated;
                 cus.Admin = customer.Admin;
+                cus.ResetPasswordCode = customer.ResetPasswordCode;                // tự thêm thuộc tính ở đây nha
                 this.Save();
             }
+        }
+        public bool CheckUserName(String UserName)
+        {
+            return db.Customers.Count(x => x.Id == UserName) > 0;
+        }
+        public bool Checkemail (string Email)
+        {
+            return db.Customers.Count(x => x.Email == Email) > 0;
         }
     }
 }
