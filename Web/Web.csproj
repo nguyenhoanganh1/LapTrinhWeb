@@ -236,10 +236,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\Products_AController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -373,6 +375,13 @@
     <Content Include="Content\images\items\1123.jpg" />
     <Content Include="Content\images\items\1124.png" />
     <Content Include="Content\images\items\381937190.png" />
+    <Content Include="Content\images\items\blue.jpg" />
+    <Content Include="Content\images\items\combokame.jpg" />
+    <Content Include="Content\images\items\godblue.jpg" />
+    <Content Include="Content\images\items\gokublack.jpg" />
+    <Content Include="Content\images\items\gokugod.jpg" />
+    <Content Include="Content\images\items\gokuultra.jpg" />
+    <Content Include="Content\images\items\monkey.jpg" />
     <Content Include="Content\images\items\product.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\new_icon.gif" />
@@ -457,6 +466,17 @@
     <Content Include="Views\Products\FindByCategory.cshtml" />
     <Content Include="Views\Products\FindBySpecials.cshtml" />
     <Content Include="Views\Products\FindByKeywords.cshtml" />
+    <Content Include="Views\Products_A\Create.cshtml" />
+    <Content Include="Views\Products_A\Delete.cshtml" />
+    <Content Include="Views\Products_A\Details.cshtml" />
+    <Content Include="Views\Products_A\Edit.cshtml" />
+    <Content Include="Views\Products_A\Index.cshtml" />
+    <Content Include="Views\Products_A\Create2.cshtml" />
+    <Content Include="Views\Categories_A\Create.cshtml" />
+    <Content Include="Views\Categories_A\Delete.cshtml" />
+    <Content Include="Views\Categories_A\Details.cshtml" />
+    <Content Include="Views\Categories_A\Edit.cshtml" />
+    <Content Include="Views\Categories_A\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

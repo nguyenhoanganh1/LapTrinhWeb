@@ -1,0 +1,60 @@
+﻿@model PagedList.IPagedList<Model.EL.Product>
+@using PagedList.Mvc; @*// dùng để phân trang*@
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var item in Model)
+{
+    <div class="col-sm-4">
+        <div class="panel panel-primary nn-prod">
+            <div class="panel-heading text-center">
+                @item.Name
+            </div>
+            <div class="panel-body text-center">
+                <a href="#">
+                    <a href="/Products/Details/@item.Id">
+                        <img src="~/Content/images/items/@item.Image">
+                    </a>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-xs-4 text-left text-primary">$@item.UnitPrice</div>
+                    <div class="col-xs-8 text-right">
+                        <div class="btn-group btn-group-sm">
+                            <a href="@Url.Action("Edit","Products_A", new {id = item.Id}) " class="btn btn-success">
+                                <i class="glyphicon glyphicon-saved"></i>Edit
+                            </a>
+                            @*<a href="@Url.Action("Details","Product2", new {id = item.Id}) " class="btn btn-info">
+                                    <i class="glyphicon glyphicon-retweet"></i>Details
+                                </a>*@
+                            <a href="@Url.Action("Delete","Products_A", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
+                                <i class="glyphicon glyphicon-trash"></i>Delete
+                            </a>
+                            @*<button class="btn btn-primary glyphicon glyphicon-shopping-cart"></button>
+                                <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
+                                    <button class="btn btn-success glyphicon glyphicon-envelope"></button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Thêm mã phân trang -->
+
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+<!-- Kết thúc -->
