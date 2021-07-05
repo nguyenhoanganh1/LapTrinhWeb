@@ -97,6 +97,14 @@
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -230,6 +238,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -239,8 +248,6 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginCus.cs" />
-
-    <Compile Include="Models\ResetPasswordModel.cs" />
 
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -407,6 +414,8 @@
     <Content Include="Content\images\users\906543448.jpg" />
     <Content Include="Content\images\users\981196555.jpg" />
     <Content Include="Content\images\users\user.png" />
+    <Content Include="Content\nhatnghe.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -442,10 +451,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
-    <Content Include="Views\User\ResetPassword.cshtml" />
-    <Content Include="Views\User\FogotPassWord.cshtml" />
-
-    <Content Include="Views\User\Login.cshtml" />
 
   </ItemGroup>
   <ItemGroup>
