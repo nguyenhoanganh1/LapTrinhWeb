@@ -17,3 +17,32 @@ namespace Model.EL
         [StringLength(20)]
         public string Id { get; set; }
 
+
+        [Required]
+        [StringLength(50)]
+        public string Password { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Fullname { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string Photo { get; set; }
+
+        public bool Activated { get; set; }
+
+        public bool Admin { get; set; }
+
+        [StringLength(100)]
+        public string ResetPasswordCode { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+    }
+}
+

@@ -1,14 +1,14 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-
 namespace Model.EL
 {
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
     public partial class DataContext : DbContext
     {
         public DataContext()
-            : base("name=DataContext1")
+            : base("name=DataContext")
         {
         }
 

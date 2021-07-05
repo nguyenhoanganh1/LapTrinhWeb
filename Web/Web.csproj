@@ -255,6 +255,9 @@
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginCus.cs" />
 
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -465,6 +468,7 @@
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
 
+
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
@@ -483,6 +487,11 @@
     <Content Include="Views\Categories_A\Edit.cshtml" />
     <Content Include="Views\Categories_A\Index.cshtml" />
 
+
+
+    <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\User\FogotPassWord.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
 
 
   </ItemGroup>
