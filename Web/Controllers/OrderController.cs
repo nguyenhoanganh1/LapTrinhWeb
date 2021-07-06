@@ -15,34 +15,41 @@ namespace Web.Controllers
     {
         DataContext db = new DataContext();
         // GET: Orderdetail
-        [Route("OrderPurchase")]
-        public ActionResult Purchase()
+
+
+
+        [HttpPost]
+        public ActionResult Checkout(OrderModel model)
         {
             double amount = 0;
             var cart = (List<CartItem>)Session["cart"];
 
+            Customer cus = (Customer)Session["User"];
+
             Order order = new Order();
 
-            // order.Customer =  cho user vào session
+            order.CustomerId = cus.Id;
+            order.Address = model.Address;
+            order.Notes = model.Notes;
+            OrderDetail orderDetail = new OrderDetail();
 
             foreach (var ca in cart.ToList())
             {
                 amount += (ca.product.UnitPrice * ca.quantity * (1 - ca.product.Discount));
-
-                OrderDetail orderDetail = new OrderDetail();
-                orderDetail.Product = ca.product;
-                orderDetail.Order = order;
+                orderDetail.ProductId = ca.product.Id;
+                orderDetail.OrderId = order.Id;
                 orderDetail.Discount = ca.product.Discount;
                 orderDetail.Quantity = ca.quantity;
                 orderDetail.UnitPrice = ca.product.UnitPrice;
-                db.OrderDetails.Add(orderDetail);
             }
+
+            db.OrderDetails.Add(orderDetail);
             order.Amount = amount;
             order.OrderDate = new DateTime();
             db.Orders.Add(order);
 
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
     }
