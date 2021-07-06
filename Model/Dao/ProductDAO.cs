@@ -47,7 +47,7 @@ namespace Model.Dao
             var latest = db.Products.Where(x => x.Latest == true).ToList();
             return latest;
         }
-       public  List<Product> FindByBestSeller()
+        public List<Product> FindByBestSeller()
         {
             var best = db.Products.ToList();
             return best;
@@ -61,6 +61,11 @@ namespace Model.Dao
         {
             db.Products.Remove(product);
             this.Save();
+        }
+
+        public List<Product> GetAllProductByCustomerId(string id)
+        {
+            return db.OrderDetails.Where(x => x.Order.CustomerId == id).Select(x => x.Product).ToList();
         }
 
         public Product GetProductById(int Id)
