@@ -236,11 +236,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-
     <Compile Include="Controllers\Categories_AController.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
-
-
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -430,6 +426,7 @@
     <Content Include="Content\images\users\user.png" />
     <Content Include="Content\nhatnghe.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -465,15 +462,11 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
-
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Order\ProductBought.cshtml" />
     <Content Include="Views\Order\Detail.cshtml" />
-
-
-
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
@@ -491,15 +484,9 @@
     <Content Include="Views\Categories_A\Details.cshtml" />
     <Content Include="Views\Categories_A\Edit.cshtml" />
     <Content Include="Views\Categories_A\Index.cshtml" />
-
-
-
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-
-
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

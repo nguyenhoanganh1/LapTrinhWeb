@@ -18,6 +18,10 @@ namespace Web.Controllers
         DataContext db = new DataContext();
         // GET: Orderdetail
 
+        public ActionResult checkout()
+        {
+            return RedirectToAction("login", "user");
+        }
 
 
         [HttpPost]
