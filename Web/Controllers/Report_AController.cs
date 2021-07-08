@@ -16,13 +16,13 @@ namespace Web.Controllers
     {
         DataContext db = new DataContext();
         // GET: Report_A
-        DataContext db = new DataContext();
+
         public ActionResult Index()
         {
 
             return View();
         }
-<<<<<<< Updated upstream
+
         public ActionResult Export()
         {
             var stream = new MemoryStream();
@@ -30,7 +30,8 @@ namespace Web.Controllers
             var fileName = $"Loai_{DateTime.Now.ToString()}.xlsx";  // .xlsx mới đúng nha coi chừng sai xlxs
             // sử dụng giấy phép phi thương mại để đăng kí nếu không có sẽ sai
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            using (var package = new ExcelPackage(stream)) {
+            using (var package = new ExcelPackage(stream))
+            {
                 var sheet = package.Workbook.Worksheets.Add("Loai");
                 // đổ dữ liệu vào sheet;
                 // đây đổ hết bằng list vừa tạo
@@ -43,12 +44,12 @@ namespace Web.Controllers
                 sheet.Cells[1, 3].Value = "Tên loại VN";
 
                 int rowIndex = 2;
-                foreach(var l in data)
+                foreach (var l in data)
                 {
                     // đổ dữ liệu vô từng dòng
-                    sheet.Cells[rowIndex,1].Value = l.Id;
-                    sheet.Cells[rowIndex,2].Value = l.Name;
-                    sheet.Cells[rowIndex,3].Value = l.NameVN;
+                    sheet.Cells[rowIndex, 1].Value = l.Id;
+                    sheet.Cells[rowIndex, 2].Value = l.Name;
+                    sheet.Cells[rowIndex, 3].Value = l.NameVN;
                     rowIndex++;
 
                 }
@@ -57,35 +58,8 @@ namespace Web.Controllers
 
             }
             stream.Position = 0;
-
-=======
-        
-        public ActionResult Export()
-        {
-            List<Category> data = db.Categories.ToList();
-            var stream = new MemoryStream();
-
-
-            using (var package = new ExcelPackage())
-            {
-                var sheet = package.Workbook.Worksheets.Add("Loại");
-
-                // đổ dữ liệu vào sheet
-
-                sheet.Cells.LoadFromCollection(data, true);
-
-                // save
-                package.Save();
-            }
-
-            stream.Position = 0;
-
-            var fileName = $"Loai_{DateTime.Now.ToString()}.xlsx";
-            
-
-
->>>>>>> Stashed changes
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
+
     }
 }
