@@ -52,6 +52,14 @@ namespace Web.Controllers
 
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("User");
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public ActionResult FogotPassWord()
         {
             return View();
@@ -174,6 +182,5 @@ namespace Web.Controllers
         }
     }
 }
- 
-        
-          
+
+

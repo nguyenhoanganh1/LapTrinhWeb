@@ -9,7 +9,7 @@
 <h2>Tìm kiếm sản phẩm theo từ khóa</h2>
 @foreach (var item in Model)
 {
-    <div class="col-sm-4">
+    <div class="col-sm-4" data-item="@item.Id">
         <div class="panel panel-primary nn-prod">
             <div class="panel-heading text-center">
                 @item.Name
@@ -34,7 +34,7 @@
                             @*<a href="@Url.Action("Delete","Product2", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
                                     <i class="glyphicon glyphicon-trash"></i>Delete
                                 </a>*@
-                            <button class="btn btn-primary glyphicon glyphicon-shopping-cart"></button>
+                            <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
                             <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
                             <button class="btn btn-success glyphicon glyphicon-envelope"></button>
                         </div>
@@ -43,4 +43,22 @@
             </div>
         </div>
     </div>
+}
+@section scripts{
+    <script>
+        $(function () {
+            $('.add-to-cart').click(function () {
+                var id = $(this).parents("[data-item]").attr("data-item");
+                console.log(id);
+                $.ajax({
+                    url: `shoppingcart/additem?id=${id}`,
+                    method: 'POST',
+                    success: function () {
+                        alert('Thêm vào giỏ hàng thành công');
+                    }
+
+                });
+            });
+        })
+    </script>
 }
