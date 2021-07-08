@@ -6,11 +6,15 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using Model.EL;
+using OfficeOpenXml;
 
 namespace Web.Controllers
 {
     public class Report_AController : Controller
     {
+        DataContext db = new DataContext();
         // GET: Report_A
         DataContext db = new DataContext();
         public ActionResult Index()
@@ -18,6 +22,7 @@ namespace Web.Controllers
 
             return View();
         }
+<<<<<<< Updated upstream
         public ActionResult Export()
         {
             var stream = new MemoryStream();
@@ -53,6 +58,33 @@ namespace Web.Controllers
             }
             stream.Position = 0;
 
+=======
+        
+        public ActionResult Export()
+        {
+            List<Category> data = db.Categories.ToList();
+            var stream = new MemoryStream();
+
+
+            using (var package = new ExcelPackage())
+            {
+                var sheet = package.Workbook.Worksheets.Add("Loại");
+
+                // đổ dữ liệu vào sheet
+
+                sheet.Cells.LoadFromCollection(data, true);
+
+                // save
+                package.Save();
+            }
+
+            stream.Position = 0;
+
+            var fileName = $"Loai_{DateTime.Now.ToString()}.xlsx";
+            
+
+
+>>>>>>> Stashed changes
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
     }
