@@ -84,6 +84,7 @@
     <Compile Include="EL\Order.cs" />
     <Compile Include="EL\OrderDetail.cs" />
     <Compile Include="EL\Product.cs" />
+    <Compile Include="EL\Report.cs" />
     <Compile Include="EL\sysdiagram.cs" />
     <Compile Include="InterfaceRepository\ICategory.cs" />
     <Compile Include="InterfaceRepository\ICustomer.cs" />
