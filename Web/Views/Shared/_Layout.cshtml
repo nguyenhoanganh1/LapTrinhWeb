@@ -9,70 +9,405 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script type="text/javascript" src="~/Scripts/shoppingcart/cart.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     @*cấu hình css cho giao diện đẹp hơn*@
-    <link rel="stylesheet" href="~/Content/nhatnghe.css" />
+    @RenderSection("CartInfo", false)
 
     @RenderSection("Cart", false)
+    <style>
+        /*Footer Bottom */
+        .main-footer a {
+            color: #272727;
+            text-decoration: none;
+        }
+
+        footer .footer-content ol,
+        ul {
+            /* padding-left: 20px !important; */
+        }
+
+        .main-footer h4 {
+            font-size: 15px;
+            letter-spacing: 0.02em;
+            margin: 0 0 20px;
+            position: relative;
+            line-height: 22px;
+            text-transform: uppercase;
+            margin-left: -18px;
+        }
+
+        .main-footer .footer-col a:hover {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .main-footer .footer-col {
+            margin-bottom: 24px;
+            padding-left: 25px;
+        }
+
+        .main-footer .footer-content ul {
+            margin-bottom: 15px;
+        }
+
+            .main-footer .footer-content ul li {
+                display: block;
+                line-height: 28px;
+                position: relative;
+            }
+
+                .main-footer .footer-content ul li a,
+                .main-footer .footer-content ul li span {
+                    position: relative;
+                    overflow: hidden;
+                }
+
+        .main-footer .footer-content.toggle-footer ul li a:before,
+        .main-footer .footer-content.toggle-footer ul li span:before {
+            content: "";
+            width: 7px;
+            height: 1px;
+            background: #000000;
+            left: -18px;
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .footer-content.toggle-footer span {
+            font-weight: 500;
+        }
+
+        .main-footer .list-social {
+            margin-bottom: 10px;
+        }
+
+            .main-footer .list-social li {
+                display: inline-block;
+                text-align: center;
+                padding: 0;
+                margin-right: 12px;
+            }
+
+                .main-footer .list-social li a {
+                    font-size: 12px;
+                    display: block;
+                    line-height: 22px;
+                    overflow: hidden;
+                    text-align: center;
+                    position: relative;
+                }
+
+        .logo-footer {
+            margin-bottom: 20px;
+        }
+
+            .logo-footer img {
+                width: 150px;
+            }
+
+        .main-footer--copyright .main-footer--border {
+            border-bottom: none;
+        }
+
+        .main-footer--copyright p {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .main-footer--copyright a {
+            color: #272727;
+            text-decoration: none;
+        }
+
+        .main-footer {
+            padding: 24px 0 0;
+            border-top: 1px dashed #e0d9d6;
+        }
+        /*  */
+        /**/
+        .social-list a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #000000;
+            color: #fff;
+            text-align: center;
+            line-height: 35px;
+            font-size: 15px;
+            margin: 0 10px 0 0;
+            position: relative;
+            text-decoration: none !important;
+        }
+
+            .social-list a:hover {
+                background: #fff;
+                color: #000000;
+            }
+
+            .social-list a:after {
+                width: 100%;
+                height: 100%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                border: 4px solid #000000;
+                opacity: 0;
+            }
+
+            .social-list a:hover:after {
+                opacity: 0.31;
+                filter: alpha(opacity=100);
+            }
+
+        header > h1 > span {
+            font-family: Impact;
+            color: white;
+            text-shadow: 0 0 2px green;
+            font-variant: small-caps;
+        }
+
+        nav.navbar {
+            font-variant: small-caps;
+        }
+
+        aside .panel {
+            font-variant: small-caps;
+        }
+
+        aside .panel-title {
+            font-weight: bolder;
+        }
+
+        .nn-prod .panel-heading {
+            font-variant: small-caps;
+        }
+
+        .nn-prod .panel-body img {
+            height: 150px;
+            max-width: 95%;
+        }
+
+        .nn-prod .panel-footer .text-left {
+            font-family: Impact;
+            font-size: 22px;
+        }
+
+        .nn-prod-detail img {
+            height: 250px;
+            max-width: 95%;
+        }
+
+        .nn-prod-detail ul {
+            padding: 0;
+            margin: 0;
+            font-variant: small-caps;
+            list-style: none;
+        }
+
+        .nn-prod-detail li {
+            margin-top: 10px;
+        }
+
+        .nn-prod-detail b {
+            width: 110px;
+            display: inline-block;
+        }
+
+        .nn-prod-detail i {
+            color: green;
+            font-weight: bolder;
+        }
+
+        .nn-prod-detail .tab-pane img {
+            width: 50px;
+            height: 50px;
+            padding: 5px;
+            margin: 5px;
+            border: 5px double silver;
+            border-radius: 50%;
+        }
+
+        .nn-prod-detail .tab-pane a:hover > img {
+            border: 5px double orangered;
+        }
+
+        .nn-prod-detail .tab-pane {
+            font-size: larger;
+            font-variant: small-caps;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .flex {
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mt {
+            margin-top: 5px;
+        }
+    </style>
 </head>
 
 
- @*TAO THÊM LẠI CÁI ASIDE BÊN CẠNH  - CÁI _Aside.cshtml t  sài add-> MVC LAYOUT PAGE (RAZOR)  THÌ MỚI ĐỔ CÁI LIST CATEGORY HIỆN 
-CÁI DANH SÁCH MẶT HÀNG ĐƯỢC - CÁI CỦA HOÀNG ANH T VẪN GIỮ Ở BÊN DƯỚI*@
+@*TAO THÊM LẠI CÁI ASIDE BÊN CẠNH  - CÁI _Aside.cshtml t  sài add-> MVC LAYOUT PAGE (RAZOR)  THÌ MỚI ĐỔ CÁI LIST CATEGORY HIỆN
+    CÁI DANH SÁCH MẶT HÀNG ĐƯỢC - CÁI CỦA HOÀNG ANH T VẪN GIỮ Ở BÊN DƯỚI*@
 <body class="container">
-    <header class="row">
-        <h1 class="alert alert-success">
-            <b class="glyphicon glyphicon-education"></b>
-            Online Shopping Cart
-        </h1>
-    </header>
-    <nav class="row">
-        <!-- MENU -->
-        @RenderPage("_Menu.cshtml")
+    <!-- MENU -->
+    @RenderPage("_Menu.cshtml")
 
+    <div class="container mt">
+        <main class="row">
+            <article class="col-sm-9">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </article>
+            <aside class="col-sm-3">
+                @*Aside*@
+                @RenderPage("~/Views/Shared/_Aside.cshtml")
 
-    </nav>
-    <main class="row">
-        <article class="col-sm-9">
-            <div class="row">
-                @RenderBody()
-
+            </aside>
+        </main>
+    </div>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="footer-col footer-block">
+                            <h4 class="footer-title">
+                                Giới thiệu
+                            </h4>
+                            <div class="footer-content">
+                                <p>
+                                    Runner Inn trang mua sắm trực tuyến của thương hiệu giày, thời trang nam, nữ, phụ kiện, giúp bạn
+                                    tiếp
+                                    cận xu hướng thời trang mới nhất.
+                                </p>
+                                <div class="logo-footer">
+                                    <img src="~/Content/images/logo-bct.png" alt="Bộ Công Thương">
+                                </div>
+                                <div class="social-list">
+                                    <a href="#" class="fab fa-facebook"></a>
+                                    <a href="#" class="fab fa-google"></a>
+                                    <a href="#" class="fab fa-twitter"></a>
+                                    <a href="#" class="fab fa-youtube"></a>
+                                    <a href="#" class="fab fa-skype"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="footer-col footer-link">
+                            <h4 class="footer-title">
+                                PHÁP LÝ &amp; CÂU HỎI
+                            </h4>
+                            <div class="footer-content toggle-footer">
+                                <ul>
+                                    <li class="item">
+                                        <a href="#" title="Tìm kiếm">Tìm kiếm</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" title="Giới thiệu">Giới thiệu</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" title="Chính sách đổi trả">Chính sách đổi trả</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" title="Chính sách bảo mật">Chính sách bảo mật</a>
+                                    </li>
+                                    <li class="item">
+                                        <a href="#" title="Điều khoản dịch vụ">Điều khoản dịch vụ</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="footer-col footer-block">
+                            <h4 class="footer-title">
+                                Thông tin liên hệ
+                            </h4>
+                            <div class="footer-content toggle-footer">
+                                <ul>
+                                    <li><span>Địa chỉ:</span> 117-119 Lý Chính Thắng, Phường 7, Quận 3, TP. Hồ Chí Minh, Vietnam</li>
+                                    <li><span>Điện thoại:</span> +84 (028) 38800659</li>
+                                    <li><span>Fax:</span> +84 (028) 38800659</li>
+                                    <li><span>Mail:</span> contact@aziworld.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="footer-col footer-block">
+                            <h4 class="footer-title">
+                                FANPAGE
+                            </h4>
+                            <div class="footer-content">
+                                <div id="fb-root">
+                                    <div class="footer-static-content">
+                                        <div class="fb-page" data-href="https://www.facebook.com/AziWorld-Viet-Nam-908555669481794/"
+                                             data-tabs="timeline" data-width="" data-height="215" data-small-header="false"
+                                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                            <blockquote cite="https://www.facebook.com/AziWorld-Viet-Nam-908555669481794/"
+                                                        class="fb-xfbml-parse-ignore">
+                                                <a href="https://www.facebook.com/AziWorld-Viet-Nam-908555669481794/">AziWorld Viet Nam</a>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </article>
-        <aside class="col-sm-3">
-            @*ASIDE*@
-            @RenderPage("~/Views/Shared/_Aside.cshtml")
-            
-        </aside>
-    </main>
-    <footer class="row text-center">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                &copy;  @DateTime.Now.Year - My ASP.NET Application
+        </div>
+        <div class="main-footer--copyright">
+            <div class="container">
+                <hr>
+                <div class="main-footer--border" style="text-align:center;padding-bottom: 15px;">
+                    <p>
+                        Copyright © 2019 <a href="https://runner-inn.myharavan.com"> Runner Inn</a>. <a target="_blank"
+                                                                                                        href="https://www.facebook.com/henrynguyen202">Powered by HuniBlue</a>
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
 </body>
 @*<body>
-    <div class="container">
-        <header class="row">
-            <h1 class="alert alert-success">
-                <b class="glyphicon glyphicon-shopping-cart"></b>
-                <span>Online Shopping Cart</span>
-            </h1>
-        </header>
-        <nav class="row">
-            @RenderPage("_Menu.cshtml")
-        </nav>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <div class="container">
+            <header class="row">
+                <h1 class="alert alert-success">
+                    <b class="glyphicon glyphicon-shopping-cart"></b>
+                    <span>Online Shopping Cart</span>
+                </h1>
+            </header>
+            <nav class="row">
+                @RenderPage("_Menu.cshtml")
+            </nav>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
 
 
-</body>*@
+    </body>*@
 </html>

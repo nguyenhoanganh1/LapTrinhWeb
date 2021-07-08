@@ -2,8 +2,13 @@
 @{
     DataContext db = new DataContext();
     var cate = db.Categories.ToList();
-
+    var cart = Session["cart"];
+    List<Web.Models.CartItem> list = (List<Web.Models.CartItem>)cart;
+    double total = 0;
+    int quanity = 0;
 }
+
+
 
 <div class="row" style="margin-left: 2px;">
     <!--ASIDE-->
@@ -14,9 +19,25 @@
                 <b class="glyphicon glyphicon-shopping-cart"></b>
             </div>
             <ul class="col-xs-7">
-                <li>10 items</li>
-                <li>254 USD</li>
-                <li><a href="/cart/view">View Cart</a></li>
+                @if (list == null)
+                {
+                    <li>0</li>
+                    <li>0 USD</li>
+                }
+                else
+                { 
+                    foreach (var it in list)
+                    {
+                        quanity += it.quantity;
+                        total += it.quantity * it.product.UnitPrice * (1 - it.product.Discount);
+                    }
+                <li>@quanity</li>
+                <li>
+                    @total USD
+                </li>
+            }
+
+                <li><a href="/shoppingcart/showcart">View Cart</a></li>
             </ul>
         </div>
     </div>

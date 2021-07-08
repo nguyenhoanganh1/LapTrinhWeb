@@ -435,6 +435,7 @@
     <Content Include="Content\images\users\user.png" />
     <Content Include="Content\nhatnghe.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -471,16 +472,11 @@
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
 
-
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Order\ProductBought.cshtml" />
     <Content Include="Views\Order\Detail.cshtml" />
-
-
-
-
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
