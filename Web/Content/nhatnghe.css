@@ -1,0 +1,76 @@
+﻿header > h1 > span {
+    font-family: Impact;
+    color: white;
+    text-shadow: 0 0 2px green;
+    font-variant: small-caps;
+}
+
+nav.navbar {
+    font-variant: small-caps;
+}
+
+aside .panel {
+    font-variant: small-caps;
+}
+
+aside .panel-title {
+    font-weight: bolder;
+}
+
+.nn-prod .panel-heading {
+    font-variant: small-caps;
+}
+
+.nn-prod .panel-body img {
+    height: 150px;
+    max-width: 95%;
+}
+
+.nn-prod .panel-footer .text-left {
+    font-family: Impact;
+    font-size: 22px;
+}
+
+.nn-prod-detail img {
+    height: 250px;
+    max-width: 95%;
+}
+
+.nn-prod-detail ul {
+    padding: 0;
+    margin: 0;
+    font-variant: small-caps;
+    list-style: none;
+}
+
+.nn-prod-detail li {
+    margin-top: 10px;
+}
+
+.nn-prod-detail b {
+    width: 110px;
+    display: inline-block;
+}
+
+.nn-prod-detail i {
+    color: green;
+    font-weight: bolder;
+}
+
+.nn-prod-detail .tab-pane img {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+    border: 5px double silver;
+    border-radius: 50%;
+}
+
+.nn-prod-detail .tab-pane a:hover > img {
+    border: 5px double orangered;
+}
+
+.nn-prod-detail .tab-pane {
+    font-size: larger;
+    font-variant: small-caps;
+}

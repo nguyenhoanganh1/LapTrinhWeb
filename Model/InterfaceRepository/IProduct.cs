@@ -9,6 +9,14 @@ namespace Model.IRepository
 {
     public interface IProduct
     {
+        List<Product> FindByKeywords(string Keywords); // ok
+        List<Product> FindByCategory(int id);//
+        List<Product> FindBySpecials();//
+        List<Product> FindByMostView();//
+        List<Product> FindBySaleOff();//
+        List<Product> FindByLatest();//
+        List<Product> FindByBestSeller();//
+        List<Product> FindAll();//
         List<Product> Products();
         Product GetProductById(int Id);
         void InsertProduct(Product product);
