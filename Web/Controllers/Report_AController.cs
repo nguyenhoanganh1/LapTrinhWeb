@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.IO;
 using Model.EL;
 using OfficeOpenXml;
+using Model.Dao;
 
 namespace Web.Controllers
 {
@@ -16,12 +17,23 @@ namespace Web.Controllers
     {
 
         DataContext db = new DataContext();
+        ReportDAO report_dao = new ReportDAO();
         // GET: Report_A
 
         public ActionResult Index()
         {
 
             return View();
+        }
+
+        public ActionResult TK_Tonko()
+
+        {
+           
+           
+
+
+            return View(db.Categories.ToList());
         }
 
         public ActionResult Export()

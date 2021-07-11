@@ -78,6 +78,7 @@
     <Compile Include="Dao\OrderDAO.cs" />
     <Compile Include="Dao\OrderDetailDAO.cs" />
     <Compile Include="Dao\ProductDAO.cs" />
+    <Compile Include="Dao\ReportDAO.cs" />
     <Compile Include="EL\Category.cs" />
     <Compile Include="EL\Customer.cs" />
     <Compile Include="EL\DataContext.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="InterfaceRepository\ICategory.cs" />
     <Compile Include="InterfaceRepository\ICustomer.cs" />
     <Compile Include="InterfaceRepository\IProduct.cs" />
+    <Compile Include="InterfaceRepository\IReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
