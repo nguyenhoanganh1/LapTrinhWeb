@@ -14,6 +14,13 @@ namespace Web.Controllers
     {
         private DataContext db = new DataContext();
 
+        public ActionResult Index2()
+        {
+            ViewBag.Cate_Null = new Category();
+            ViewBag.List_Cate = db.Categories.ToList();
+
+            return View(db.Categories.ToList());
+        }
         // GET: Categories_A
         public ActionResult Index()
         {

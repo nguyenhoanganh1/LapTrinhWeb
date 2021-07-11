@@ -8,8 +8,22 @@ namespace Model.EL
 {
    public class Report
     {
-        string name;
-        double value;
+		public string group;
+		public double sum;
+		public long count;
+		public double min;
+		public double max;
+		public double avg;
 
+        public Report(string group, double sum, long count, double min, double max, double avg)
+        {
+            this.group = group;
+            this.sum = sum;
+            this.count = count;
+            this.min = min;
+            this.max = max;
+            this.avg = avg;
+        }
     }
+	
 }
