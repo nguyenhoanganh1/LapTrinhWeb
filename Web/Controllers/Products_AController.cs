@@ -43,6 +43,14 @@ namespace Web.Controllers
             return View(pro_page.ToPagedList(pageNumber, pageSize));
         }
 
+
+        public ActionResult Index2()
+        {
+            return View(db.Products.ToList());
+        }
+
+
+
         // GET: Products_A/Details/5
         public ActionResult Details(int? id)
         {

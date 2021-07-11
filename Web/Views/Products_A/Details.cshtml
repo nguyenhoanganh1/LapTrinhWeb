@@ -1,5 +1,5 @@
 ﻿@model Model.EL.Product
-
+@using Model.EL;
 @{
     ViewBag.Title = "Details";
 }
@@ -32,12 +32,13 @@
     </div>
     <div class="panel-footer text-right">
         <div class="btn-group btn-group-sm">
-            <a href="#" class="btn btn-primary">
-                <i class="glyphicon glyphicon-shopping-cart"></i>
+            <a href="@Url.Action("Edit","Products_A", new {id = @Model.Id}) " class="btn btn-success">
+                <i class="glyphicon glyphicon-saved"></i>Edit
             </a>
 
-            <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
-            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
+            <a href="@Url.Action("Delete","Products_A", new {id = @Model.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
+                <i class="glyphicon glyphicon-trash"></i>Delete
+            </a>
         </div>
     </div>
 </div>
@@ -59,18 +60,47 @@
         <div id="tab1" class="tab-pane fade in active">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="col-sm-6">
-                        <a href="#">
-                            <img src="~/image/1001">
-                            Sản phẩm 1
-                        </a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="#">
-                            <img src="~/image/1002.jpg">
-                            Sản phẩm 2
-                        </a>
-                    </div>
+                    @{
+                        DataContext db = new DataContext();
+                        var same = db.Products.ToList();
+                        foreach (var item in same)
+                        {
+                            if (item.CategoryId == Model.CategoryId)
+                            {
+                                <div class="col-sm-6">
+                                    <a href="/Products/Details/@item.Id">
+                                        <img src="~/Content/images/items/@item.Image">
+                                        @item.Name
+                                    </a>
+                                </div>
+
+                            }
+
+                        }
+                    }
+                    @*@foreach(var item in Model)
+        {
+            if()
+            <div class="col-sm-6">
+            <a href="#">
+                <img src="~/Content/images/items/">
+                Sản phẩm 1
+            </a>
+            </div>
+
+         }*@
+                    @*<div class="col-sm-6">
+            <a href="#">
+                <img src="~/image/1001">
+                Sản phẩm 1
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <a href="#">
+                <img src="~/image/1002.jpg">
+                Sản phẩm 2
+            </a>
+        </div>*@
                 </div>
             </div>
         </div>
