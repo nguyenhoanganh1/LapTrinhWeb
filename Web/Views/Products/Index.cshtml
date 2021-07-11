@@ -49,26 +49,8 @@
 <!-- Thêm mã phân trang -->
 
 <br />
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page }))
+</div>
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page }))
-<!-- Kết thúc -->
-@section scripts{
-    <script>
-        $(function () {
-            $('.add-to-cart').click(function () {
-                var id = $(this).parents("[data-item]").attr("data-item");
-                console.log(id);
-                $.ajax({
-                    url: `shoppingcart/additem?id=${id}`,
-                    method: 'POST',
-                    success: function () {
-                        alert('Thêm vào giỏ hàng thành công');
-                    }
-
-                });
-            });
-        })
-    </script>
-}

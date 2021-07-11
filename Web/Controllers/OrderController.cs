@@ -85,7 +85,7 @@ namespace Web.Controllers
 
         }
 
-        public ActionResult Detail(string id, int? page)
+        public ActionResult Detail(int? page)
         {
             if (page == null) page = 1;
 
@@ -94,12 +94,21 @@ namespace Web.Controllers
             int pageNumber = (page ?? 1);
             ProductDAO pdao = new ProductDAO();
             Customer customer = (Customer)Session["User"];
-            var list = pdao.GetAllProductByCustomerId(id);
+
+            var list = pdao.GetAllProductByCustomerId(customer.Id);
             if (list != null)
             {
                 return View(list.ToPagedList(pageNumber, pageSize));
             }
             return View();
+        }
+
+        public ActionResult Delete(long id)
+        {
+            var order = db.Orders.FirstOrDefault(x => x.Id == id);
+            db.Orders.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("productbought", "order");
         }
 
     }
