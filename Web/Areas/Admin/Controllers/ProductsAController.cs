@@ -7,24 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EL;
-
 using PagedList; // chỉ sài PagedList  not PagedList.Mvc;
 using System.IO;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsAController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Admin/Products
-        public ActionResult Index(int ?page)
+        // GET: Admin/ProductsA
+        public ActionResult Index( int ?page)
         {
             // 1. Tham số int? dùng để thể hiện null và kiểu int
             // page có thể có giá trị là null và kiểu int.
 
             // 2. Nếu page = null thì đặt lại là 1.
-            if ( page== null) page = 1;
+            if (page == null) page = 1;
 
             // 3. Tạo truy vấn, lưu ý phải sắp xếp theo trường nào đó, ví dụ OrderBy
             // theo Product ID mới có thể phân trang.
@@ -43,7 +42,7 @@ namespace Web.Areas.Admin.Controllers
             return View(pro_page.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Admin/Products/Details/5
+        // GET: Admin/ProductsA/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -58,14 +57,14 @@ namespace Web.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/Products/Create
+        // GET: Admin/ProductsA/Create
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
-        // POST: Admin/Products/Create
+        // POST: Admin/ProductsA/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -83,7 +82,7 @@ namespace Web.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/Products/Edit/5
+        // GET: Admin/ProductsA/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,7 +98,7 @@ namespace Web.Areas.Admin.Controllers
             return View(product);
         }
 
-        // POST: Admin/Products/Edit/5
+        // POST: Admin/ProductsA/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +115,7 @@ namespace Web.Areas.Admin.Controllers
             return View(product);
         }
 
-        // GET: Admin/Products/Delete/5
+        // GET: Admin/ProductsA/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -131,7 +130,7 @@ namespace Web.Areas.Admin.Controllers
             return View(product);
         }
 
-        // POST: Admin/Products/Delete/5
+        // POST: Admin/ProductsA/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -10,21 +10,17 @@ using Model.EL;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoriesAController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: Admin/Categories
+        // GET: Admin/CategoriesA
         public ActionResult Index()
         {
             return View(db.Categories.ToList());
         }
-        public ActionResult Index2()
-        {
-            return View(db.Categories.ToList());
-        }
 
-        // GET: Admin/Categories/Details/5
+        // GET: Admin/CategoriesA/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,13 +35,13 @@ namespace Web.Areas.Admin.Controllers
             return View(category);
         }
 
-        // GET: Admin/Categories/Create
+        // GET: Admin/CategoriesA/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Categories/Create
+        // POST: Admin/CategoriesA/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -62,7 +58,7 @@ namespace Web.Areas.Admin.Controllers
             return View(category);
         }
 
-        // GET: Admin/Categories/Edit/5
+        // GET: Admin/CategoriesA/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +73,7 @@ namespace Web.Areas.Admin.Controllers
             return View(category);
         }
 
-        // POST: Admin/Categories/Edit/5
+        // POST: Admin/CategoriesA/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,7 +89,7 @@ namespace Web.Areas.Admin.Controllers
             return View(category);
         }
 
-        // GET: Admin/Categories/Delete/5
+        // GET: Admin/CategoriesA/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,7 +104,7 @@ namespace Web.Areas.Admin.Controllers
             return View(category);
         }
 
-        // POST: Admin/Categories/Delete/5
+        // POST: Admin/CategoriesA/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

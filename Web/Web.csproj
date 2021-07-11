@@ -244,9 +244,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -462,6 +464,18 @@
     <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeB\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -525,6 +539,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Product\" />
+    <Folder Include="Areas\Admin\Views\ReportA\" />
     <Folder Include="Areas\Admin\Views\Report\" />
     <Folder Include="Views\Report\" />
   </ItemGroup>

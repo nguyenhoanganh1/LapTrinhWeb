@@ -12,11 +12,11 @@ using Model.Dao;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class ReportController : Controller
+    public class ReportAController : Controller
     {
+        // GET: Admin/ReportA
         DataContext db = new DataContext();
         ReportDAO report_dao = new ReportDAO();
-        // GET: Admin/Report
         public ActionResult Index()
         {
             return View();
