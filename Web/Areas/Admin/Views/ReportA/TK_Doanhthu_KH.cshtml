@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Model.EL.Report>
+@using Model.EL;
+@{
+    ViewBag.Title = "TK_Tonkho";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+<h2>Thống kê Doanh thu theo khách hàng</h2>
+@{
+    DataContext db = new DataContext();
+    var dt = db.OrderDetails.GroupBy(o => o.Order.Customer).Select(o => new
+    {
+        group = o.Key.Fullname,
+        sum = o.Sum(p => p.UnitPrice * p.Quantity),
+        count = o.Sum(p => p.Quantity),
+        min = o.Min(p => p.UnitPrice),
+        max = o.Max(p => p.UnitPrice),
+        avg = o.Average(p => p.UnitPrice)
+    });
+    <table class="table">
+        <tr>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Tổng giá trị mua hàng
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Giá trị mặt hàng nhỏ nhất
+            </th>
+            <th>
+                Giá trị mặt hàng lớn nhất
+            </th>
+            <th>
+                Giá trị trung bình mặt hàng
+            </th>
+        </tr>
+        @foreach (var item in dt)
+        {
+            <tr>
+                <td>
+                    @item.group
+                </td>
+                <td>
+                    @item.sum
+                </td>
+                <td>
+                    @item.count
+                </td>
+                <td>
+                    @item.min
+                </td>
+                <td>
+                    @item.max
+                </td>
+                <td>
+                    @item.avg
+                </td>
+            </tr>
+        }
+    </table>
+}
+
