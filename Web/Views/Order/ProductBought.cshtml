@@ -1,0 +1,88 @@
+﻿@using PagedList.Mvc;
+@model  PagedList.IPagedList<Model.EL.Order>
+@{
+    ViewBag.Title = "ProductBought";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ 
+}
+
+@if (Model != null)
+{
+       int stt = 1;
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <b>YOUR PURCHASED ORDERS</b>
+            </h3>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Id</th>
+                    <th>Order Date</th>
+                    <th>Amount</th>
+                    <th>Shipping Address</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                   
+                    <tr>
+                        <td>@(stt++)</td>
+                        <td>@item.Id</td>
+                        <td>@item.OrderDate</td>
+                        <td>@item.Amount</td>
+                        <td>@item.Address</td>
+                        <td>
+                            @if (item.Status == (-1))
+                            {
+                                <p>Đã Hủy</p>
+                            }
+                            else if (item.Status == 0)
+                            {
+                                <p>Mới</p>
+                            }
+                            else if (item.Status == 1)
+                            {
+                                <p>Đang xác nhận</p>
+                            }
+                            else if (item.Status == 2)
+                            {
+                                <p>Đang gửi hàng</p>
+                            }
+                            else if (item.Status == 3)
+                            {
+                                <p>Đã thanh toán</p>
+                            }
+                           
+                        </td>
+                        <td class="text-center">
+
+                            <a href="/order/detail" class="btn btn-xs btn-warning glyphicon glyphicon-search"></a>
+                            @if (item.Status == 0)
+                            {
+                                <a href="/order/delete/@item.Id" class="btn btn-xs btn-danger glyphicon glyphicon-trash"></a>
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+    </div>
+
+}
+else
+{
+    <p class="text-danger">Không tìm thấy đơn hàng đã đặt</p>
+}
+

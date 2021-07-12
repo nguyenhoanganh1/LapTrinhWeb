@@ -53,6 +53,9 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EPPlus, Version=5.7.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.5.7.1\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.DotNet.PlatformAbstractions.2.1.0\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
@@ -93,6 +96,9 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
@@ -107,12 +113,13 @@
       <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+      <HintPath>packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
@@ -156,6 +163,7 @@
     <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -234,16 +242,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Controllers\CategorytController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+
+
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
+
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Products_AController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\Report_AController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -428,12 +443,33 @@
     <Content Include="Content\images\users\user.png" />
     <Content Include="Content\nhatnghe.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Admin_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Tonkho.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_KH.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -463,6 +499,13 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
+
+
+    <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\User\FogotPassWord.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Order\ProductBought.cshtml" />
+    <Content Include="Views\Order\Detail.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
@@ -483,9 +526,17 @@
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+
+    <Content Include="Views\Categories_A\Index2.cshtml" />
+    <Content Include="Views\Report_A\Index.cshtml" />
+    <Content Include="Views\Products_A\Index2.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
