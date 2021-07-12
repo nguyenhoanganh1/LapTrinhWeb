@@ -75,12 +75,6 @@ namespace Web.Areas.Admin.Controllers
             stream.Position = 0;
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
-<<<<<<< HEAD
-
-
-
-
-
 
         public ActionResult Export_Doanhthu_KH()
         {
@@ -101,8 +95,8 @@ namespace Web.Areas.Admin.Controllers
 
             var stream = new MemoryStream();
             var fileName = $"Doanhthu_KH_{DateTime.Now.ToString()}.xlsx";  // .xlsx mới đúng nha coi chừng sai xlxs
-           
-            
+
+
             // sử dụng giấy phép phi thương mại để đăng kí nếu không có sẽ sai
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -354,7 +348,7 @@ namespace Web.Areas.Admin.Controllers
         }
         public ActionResult TK_Doanhthu_KH()
         {
-            
+
 
             return View();
 
@@ -393,7 +387,5 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
-=======
->>>>>>> parent of 704869e (Thống kê doanh thu-- export file excel)
     }
 }
