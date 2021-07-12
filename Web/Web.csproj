@@ -250,10 +250,13 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Admin\Controllers\OrderAController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Products_AController.cs" />
@@ -469,6 +472,10 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\GOOGLECHART.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeB\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
