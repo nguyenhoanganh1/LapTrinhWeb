@@ -75,6 +75,7 @@ namespace Web.Areas.Admin.Controllers
             stream.Position = 0;
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
+<<<<<<< HEAD
 
 
 
@@ -387,5 +388,12 @@ namespace Web.Areas.Admin.Controllers
         }
 
 
+        public ActionResult GOOGLECHART()
+        {
+            return View();
+        }
+
+=======
+>>>>>>> parent of 704869e (Thống kê doanh thu-- export file excel)
     }
 }
