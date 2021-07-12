@@ -360,3 +360,6 @@ Web/Web.csproj
 
 
 Model/App.config
+Web/Web.config
+Model/packages.config
+Model/App.config
