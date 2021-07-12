@@ -46,10 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EPPlus, Version=5.7.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.5.7.1\lib\net45\EPPlus.dll</HintPath>
@@ -240,16 +242,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Controllers\CategorytController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+
+
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
+
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Products_AController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\Report_AController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -442,6 +450,26 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Admin_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoriesA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeA\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Tonkho.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_KH.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -471,6 +499,8 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
+
+
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
@@ -496,12 +526,17 @@
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+
     <Content Include="Views\Categories_A\Index2.cshtml" />
     <Content Include="Views\Report_A\Index.cshtml" />
     <Content Include="Views\Products_A\Index2.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>

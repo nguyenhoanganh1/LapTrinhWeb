@@ -1,0 +1,86 @@
+﻿
+
+@model IEnumerable<Model.EL.Report>
+@using Model.EL;
+
+@{
+    ViewBag.Title = "TK_Tonkho";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2>Thống kê Doanh thu theo Năm</h2>
+@{
+    //List<Report> r = new List<Report>();
+    DataContext db = new DataContext();
+    var year = db.OrderDetails.GroupBy(o => o.Order.OrderDate.Month)
+                .Select(o => new
+                {
+
+                    group = o.Key,
+                    Sum = o.Sum(c => c.UnitPrice * c.Quantity),
+
+                    Count = o.Sum(c => c.Quantity),
+                    Min = o.Min(c => c.UnitPrice),
+                    Max = o.Max(c => c.UnitPrice),
+                    Avg = o.Average(c => c.UnitPrice)
+                });
+
+
+    <table class="table">
+        <tr>
+            <th>
+                
+                THÁNG
+            </th>
+            <th>
+                Tổng giá trị
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Giá trị mặt hàng nhỏ nhất
+            </th>
+            <th>
+                Giá trị mặt hàng lớn nhất
+            </th>
+            <th>
+                Giá trị trung bình mặt hàng
+            </th>
+        </tr>
+
+        @foreach (var item in year)
+        {
+            <tr>
+                <td>
+                    @item.group
+                </td>
+                <td>
+                    @item.Sum
+                </td>
+                <td>
+                    @item.Count
+                </td>
+                <td>
+                    @item.Min
+                </td>
+                <td>
+                    @item.Max
+                </td>
+                <td>
+                    @item.Avg
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+}
+
+
+
+
+
+
+

@@ -26,13 +26,17 @@
                     <ul class="dropdown-menu">
                         @if (Session["User"] == null)
                         {
+                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
                             <li><a href="/user/login">Đăng nhập</a></li>
                             <li><a href="/user/FogotPassWord">Quên mật khẩu</a></li>
                             <li><a href="/user/dangky">Đăng ký</a></li>
-                            
+                            <li><a href="/Admin/Home/Index">Trang quản trị</a></li>
+
                         }
                         else
                         {
+                            
+                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
                             <li><a href="/user/Logout">Đăng xuất</a></li>
                             <li class="divider"></li>
                             <li><a href="/order/productbought">Đơn đặt hàng</a></li>

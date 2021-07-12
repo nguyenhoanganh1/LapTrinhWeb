@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shopping Center</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <link rel="stylesheet" href="~/Content/nhatnghe.css" />
+</head>
+<body class="container">
+    <h1 class="text success">Trang quản lý</h1>
+    @RenderPage("_Menu.cshtml")
+    @*<tiles:insertAttribute name="menu" />*@
+   @* <tiles:insertAttribute name="main" />*@
+
+    @RenderBody()
+</body>
+</html>
