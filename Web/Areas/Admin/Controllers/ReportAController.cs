@@ -330,18 +330,7 @@ namespace Web.Areas.Admin.Controllers
 
         public ActionResult TK_Tonkho()
         {
-            /*var tonkho = db.Products.GroupBy(p => p.Category).OrderByDescending(p => p.Sum(c => c.UnitPrice * c.Quantity))
-                .Select(p => new
-                {
-
-                    group = p.Key.NameVN.ToString(),
-                    Sum = p.Sum(c => c.UnitPrice * c.Quantity),
-                    Count = p.Sum(c => c.Quantity),
-                    Min = p.Min(c => c.UnitPrice),
-                    Max = p.Max(c => c.UnitPrice),
-                    Avg = p.Average(c => c.UnitPrice)
-                });*/
-
+            
             return View();
 
 
