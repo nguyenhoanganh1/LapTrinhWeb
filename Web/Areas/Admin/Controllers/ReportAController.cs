@@ -76,12 +76,6 @@ namespace Web.Areas.Admin.Controllers
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-
-
-
-
-
-
         public ActionResult Export_Doanhthu_KH()
         {
             DataContext db = new DataContext();
@@ -101,8 +95,8 @@ namespace Web.Areas.Admin.Controllers
 
             var stream = new MemoryStream();
             var fileName = $"Doanhthu_KH_{DateTime.Now.ToString()}.xlsx";  // .xlsx mới đúng nha coi chừng sai xlxs
-           
-            
+
+
             // sử dụng giấy phép phi thương mại để đăng kí nếu không có sẽ sai
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -343,7 +337,7 @@ namespace Web.Areas.Admin.Controllers
         }
         public ActionResult TK_Doanhthu_KH()
         {
-            
+
 
             return View();
 
@@ -381,7 +375,6 @@ namespace Web.Areas.Admin.Controllers
         {
             return View();
         }
-
 
     }
 }

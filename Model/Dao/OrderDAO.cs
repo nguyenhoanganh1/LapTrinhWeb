@@ -32,7 +32,6 @@ namespace Model.Dao
             db.SaveChanges();
         }
 
-<<<<<<< Updated upstream
         public void UpdateStatus(Order o)
         {
             var oder = db.Orders.FirstOrDefault(x => x.Id == o.Id);
@@ -47,8 +46,7 @@ namespace Model.Dao
                 this.Save();
             }
         }
-      
-=======
+
         public void UpdateStatusOrder(Order o)
         {
             var order = db.Orders.Where(x => x.Id == o.Id).FirstOrDefault();
@@ -63,6 +61,5 @@ namespace Model.Dao
                 this.Save();
             }
         }
->>>>>>> Stashed changes
     }
 }
