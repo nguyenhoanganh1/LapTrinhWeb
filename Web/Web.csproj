@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="EPPlus, Version=5.7.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.5.7.1\lib\net45\EPPlus.dll</HintPath>
- main
+ 
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
@@ -257,13 +257,22 @@
     <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
+
+    <Compile Include="Areas\Admin\Controllers\ReportController.cs" />
+
 
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Products_AController.cs" />
+
+
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\Report_AController.cs" />
+
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -272,10 +281,10 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginCus.cs" />
-Nhut
+
 
     <Compile Include="Models\OrderModel.cs" />
- main
+
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -460,8 +469,20 @@ Nhut
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Admin_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index2.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\Details.cshtml" />
@@ -473,12 +494,16 @@ Nhut
     <Content Include="Areas\Admin\Views\CategoriesA\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CategoriesA\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HomeA\Index.cshtml" />
+
     <Content Include="Areas\Admin\Views\ReportA\TK_Tonkho.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_KH.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\GOOGLECHART.cshtml" />
+
+    <Content Include="Areas\Admin\Views\HomeB\Index.cshtml" />
+
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -513,7 +538,7 @@ Nhut
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
- Nhut
+
 
     <Content Include="Views\Order\ProductBought.cshtml" />
     <Content Include="Views\Order\Detail.cshtml" />
@@ -543,12 +568,14 @@ Nhut
     <Content Include="Views\Products_A\Index2.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
 
- main
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Product\" />
+    <Folder Include="Areas\Admin\Views\ReportA\" />
+    <Folder Include="Areas\Admin\Views\Report\" />
     <Folder Include="Views\Report\" />
   </ItemGroup>
   <ItemGroup>
