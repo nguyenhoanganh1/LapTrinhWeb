@@ -345,4 +345,17 @@ Web/Views/Home/About.cshtml
 Web/Web.config
 
 Model/App.config
+
+Web/Web.csproj
+Web/Web.config
+Model/App.config
+Web/Web.csproj
+
 Model/Model.csproj
+
+Web/Areas/Admin/Views/ReportA/GOOGLECHART.cshtml
+Web/Controllers/Report_AController.cs
+Web/Areas/Admin/Controllers/ReportAController.cs
+Web/Web.csproj
+
+
