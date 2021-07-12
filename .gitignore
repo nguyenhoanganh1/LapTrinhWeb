@@ -346,3 +346,5 @@ Web/Web.config
 
 Model/App.config
 Model/Model.csproj
+Model/App.config
+Web/Web.config

@@ -245,14 +245,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-
-
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
-
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -470,6 +468,8 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -499,8 +499,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\User\Dangky.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
-
-
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
@@ -526,12 +524,10 @@
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-
     <Content Include="Views\Categories_A\Index2.cshtml" />
     <Content Include="Views\Report_A\Index.cshtml" />
     <Content Include="Views\Products_A\Index2.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
