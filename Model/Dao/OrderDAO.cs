@@ -32,6 +32,7 @@ namespace Model.Dao
             db.SaveChanges();
         }
 
+<<<<<<< Updated upstream
         public void UpdateStatus(Order o)
         {
             var oder = db.Orders.FirstOrDefault(x => x.Id == o.Id);
@@ -47,5 +48,21 @@ namespace Model.Dao
             }
         }
       
+=======
+        public void UpdateStatusOrder(Order o)
+        {
+            var order = db.Orders.Where(x => x.Id == o.Id).FirstOrDefault();
+            if (order != null)
+            {
+                order.Notes = o.Notes;
+                order.OrderDate = o.OrderDate;
+                order.Status = o.Status;
+                order.Address = o.Address;
+                order.Amount = o.Amount;
+                order.CustomerId = o.CustomerId;
+                this.Save();
+            }
+        }
+>>>>>>> Stashed changes
     }
 }

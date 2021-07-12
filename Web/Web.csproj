@@ -253,6 +253,7 @@
     <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
     <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Admin\Controllers\OrderAController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Products_AController.cs" />
