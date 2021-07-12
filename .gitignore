@@ -359,7 +359,12 @@ Web/Areas/Admin/Controllers/ReportAController.cs
 Web/Web.csproj
 
 
+Web/Web.config
+Web/Web.config
+
 Model/App.config
 Web/Web.config
 Model/packages.config
 Model/App.config
+
+Web/Web.config
