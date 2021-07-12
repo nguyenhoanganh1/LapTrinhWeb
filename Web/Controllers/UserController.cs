@@ -21,7 +21,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Dangky(CustomerModel model)
+        public ActionResult Dangky(CustomerModel model, HttpPostedFile file)
         {
             var dao = new CustomerDAO();
 
@@ -36,12 +36,14 @@ namespace Web.Controllers
             }
             else
             {
-
+                
                 var user = new Customer();
                 user.Id = model.Id;
                 user.Password = model.Password;
                 user.Fullname = model.Fullname;
                 user.Photo = "user.png";
+
+
                 user.Email = model.Email;
                 user.Activated = true;
                 user.Admin = false;
@@ -49,9 +51,22 @@ namespace Web.Controllers
                 dao.Save();
                 return RedirectToAction("Index", "Home");
             }
+        
 
             return View();
         }
+
+    
+
+
+        public ActionResult Logout()
+        {
+            Session.Remove("User");
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+
         public ActionResult FogotPassWord()
         {
             return View();
@@ -174,6 +189,5 @@ namespace Web.Controllers
         }
     }
 }
- 
-        
-          
+
+

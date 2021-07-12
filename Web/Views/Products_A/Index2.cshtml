@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Model.EL.Product>
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+
+
+<ul class="nav nav-tabs">
+    <li class="active"> <a data-toggle="tab" href="#tab1"><i class="glyphicon glyphicon-th-list"></i> Edit</a></li>
+    <li> <a data-toggle="tab" href="#tab2"><i class="glyphicon glyphicon-edit"></i> List</a></li>
+</ul>
+
+
+<div class="tab-content">
+    <div id="tab1" class="tab-pane fade in active">
+        <jsp:include page="_form.jsp" />
+    </div>
+    <div id="tab2" class="tab-pane fade">
+       List bên đây nè
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <b>PRODUCT LIST</b>
+                </h3>
+            </div>
+            <table class="table table-hover">
+                <thead class="bg-success">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Quantity</th>
+                        <th>Product Date</th>
+                        <th>Latest</th>
+                        <th>Special</th>
+                        <th>Views</th>
+                        <th>Category</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.UnitPrice</td>
+                            <td>@item.Discount</td>
+                            <td>@item.Quantity</td>
+                            <td>
+                               @item.ProductDate
+                            </td>
+                            <td>@item.Latest</td>
+                            <td>@item.Special</td>
+                            <td>@item.ClickCount</td>
+                            <td>@item.Category.Name</td>
+                            <td class="text-center">
+                                <a href="/Produdcts_A/Edit/@item.Id"
+                                   class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </a>
+                                <sec:authorize access="hasAuthority('admin')">
+                                    <a href="/Produdcts_A/Delete/@item.Id" class="btn btn-danger">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </sec:authorize>
+                            </td>
+                        </tr>
+                    }
+
+                  
+                </tbody>
+            </table>
+            <div class="panel-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+

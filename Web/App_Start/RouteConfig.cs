@@ -13,6 +13,11 @@ namespace Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+             name: "Default",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+               );
 
             routes.MapRoute(
                 name: "CTHD",
@@ -31,16 +36,12 @@ namespace Web
                  defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
              );*/
 
-           /*routes.MapRoute(
-                name: "DangKy",
-                url: "chi-tiet-DangKY",
-                defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
-            );*/
-            routes.MapRoute(
-              name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                );
+            /*routes.MapRoute(
+                 name: "DangKy",
+                 url: "chi-tiet-DangKY",
+                 defaults: new { controller = "User", action = "DangKy", id = UrlParameter.Optional }
+             );*/
+
             routes.MapRoute(
               name: "Loginn",
                 url: "{controller}/{action}/{id}",

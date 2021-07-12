@@ -1,0 +1,108 @@
+﻿@model Model.EL.Product
+@using Model.EL;
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div class="panel panel-default nn-prod-detail">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src="~/Content/images/items/@Model.Image">
+            </div>
+            <div class="col-sm-6">
+                <ul>
+                    <li><b>Id</b>: <i>@Model.Id</i></li>
+                    <li><b>Name</b>: <i>@Model.Name</i></li>
+                    <li><b>Unit Price</b>: <i>@Model.UnitPrice</i></li>
+                    <li><b>Discount</b>: <i>@Model.Discount</i></li>
+                    <li><b>Quantity</b>: <i>@Model.Quantity</i></li>
+                    <li><b>Product Date</b>: <i>@Model.ProductDate</i></li>
+                    <li><b>Category</b>: <i>@Model.Category.Name</i></li>
+                    <li><b>Special?</b>: <i>@Model.Special</i></li>
+                    <li><b>Latest?</b>: <i>@Model.Latest</i></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body text-justified">
+        @Model.Description
+    </div>
+    <div class="panel-footer text-right">
+        <div class="btn-group btn-group-sm">
+
+            <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart">
+            </button>
+            <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
+            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
+
+        </div>
+    </div>
+</div>
+<div class="nn-prod-detail">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#tab1">
+                <i class="glyphicon glyphicon-th-list"></i> Same Category Items
+            </a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#tab2">
+                <i class="glyphicon glyphicon-edit"></i> Visited Items
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @{
+                        DataContext db = new DataContext();
+                        var same = db.Products.ToList();
+                        foreach (var item in same)
+                        {
+                            if (item.CategoryId == Model.CategoryId)
+                            {
+                                <div class="col-sm-6">
+                                    <a href="/Products/Details/@item.Id">
+                                        <img src="~/Content/images/items/@item.Image">
+                                        @item.Name
+                                    </a>
+                                </div>
+
+                            }
+
+                        }
+                    }
+                    
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="tab-pane fade">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-sm-6">
+                        <a href="#">
+                            <img src="~/image/1003.jpg">
+                            Sản phẩm 1
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#">
+                            <img src="~/image/1004.jpg">
+                            Sản phẩm 2
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    
+    @Html.ActionLink("Back to List", "Index","Products_A")
+</p>

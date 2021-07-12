@@ -26,6 +26,7 @@ namespace Web.Controllers
         }
 
         // Thêm sản phẩm
+        [HttpPost]
         public ActionResult AddItem(int id)
         {
             var product = new ProductDAO().GetProductById(id);

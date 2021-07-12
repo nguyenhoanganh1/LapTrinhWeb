@@ -1,0 +1,88 @@
+﻿<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#hmenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Admin/Home/Index">Trang Quản Trị</a>
+        </div>
+        <div class="collapse navbar-collapse" id="hmenu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Quản lý
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/ProductsA/Index">Hàng hóa</a></li>
+                        <li><a href="/Admin/CategoriesA/Index">Loại hàng hóa</a></li>
+                        <li><a href="#">Khách hàng</a></li>
+                        <li><a href="#">Đơn hàng</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Thống kê
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/ReportA/TK_Tonkho">Hàng tồn kho</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Doanh thu từng loại</a></li>
+                        <li><a href="/Admin/ReportA/TK_Doanhthu_KH">Doanh thu từng khách hàng</a></li>
+                        <li><a href="/Admin/ReportA/TK_Doanhthu_Nam">Doanh thu từng năm</a></li>
+                        <li><a href="/Admin/ReportA/TK_Doanhthu_Nam">Doanh thu từng quý</a></li>
+                        <li><a href="/Admin/ReportA/TK_Doanhthu_Thang">Doanh thu từng tháng</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Export File
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Admin/ReportA/Export_Tonkho">Hàng tồn kho</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/Admin/ReportA/Export_Doanhthu_Loai">Doanh thu theo từng loại</a></li>
+                        <li><a href="/Admin/ReportA/Export_Doanhthu_KH">Doanh thu theo từng khách hàng</a></li>
+                        <li><a href="/Admin/ReportA/Export_Doanhthu_Nam">Doanh thu theo từng năm</a></li>
+                        <li><a href="/Admin/ReportA/Export_Doanhthu_Nam">Doanh thu theo từng quý</a></li>
+                        <li><a href="/Admin/ReportA/Export_Doanhthu_Thang">Doanh thu theo từng tháng</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="/account/twilioPage">Sent Message</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Phân quyền
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (Session["User"] == null)
+                        {
+                            <li><a href="/user/login">Đăng nhập</a></li>
+                            <li><a href="/user/FogotPassWord">Quên mật khẩu</a></li>
+                            <li><a href="/user/dangky">Đăng ký</a></li>
+
+                        }
+                        else
+                        {
+                            <li><a href="/user/Logout">Đăng xuất</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/order/productbought">Đơn đặt hàng</a></li>
+                            <li><a href="/order/Detail">Hàng đã mua</a></li>
+                        }
+                        @*<li><a href="/account/logoff">Đăng xuất</a></li>
+                        <li><a href="/account/change">Đổi mật khẩu</a></li>
+                        <li><a href="/admin/role/index">Quyền</a></li>*@
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

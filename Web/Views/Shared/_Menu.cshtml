@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-inverse">
+﻿
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button class="navbar-toggle" data-toggle="collapse" data-target="#hmenu">
@@ -6,7 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Nhất Nghệ</a>
+            <a class="navbar-brand" href="~/">Website Name</a>
+
         </div>
         <div class="collapse navbar-collapse" id="hmenu">
             <ul class="nav navbar-nav">
@@ -15,22 +17,32 @@
                 <li><a href="/home/contact"><i class="glyphicon glyphicon-envelope"></i> Liên hệ</a></li>
                 <li><a href="/home/feedback"><i class="glyphicon glyphicon-send"></i> Góp ý</a></li>
                 <li><a href="/home/faq"><i class="glyphicon glyphicon-question-sign"></i> Hỏi đáp</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <li class="dropdown ">
+                    <a class="dropdown-toggle " data-toggle="dropdown" href="#">
+                        <i class="glyphicon glyphicon-user"></i>
                         Tài khoản
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/account/login">Đăng nhập</a></li>
-                        <li><a href="/account/login">Quên mật khẩu</a></li>
-                        <li><a href="/account/login">Đăng ký</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/account/login">Đăng xuất</a></li>
-                        <li><a href="/account/login">Đổi mật khẩu</a></li>
-                        <li><a href="/account/login">Cập nhật tài khoản</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/order/mine">Đơn đặt hàng</a></li>
-                        <li><a href="/product/mine">Hàng đã mua</a></li>
+                        @if (Session["User"] == null)
+                        {
+                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
+                            <li><a href="/user/login">Đăng nhập</a></li>
+                            <li><a href="/user/FogotPassWord">Quên mật khẩu</a></li>
+                            <li><a href="/user/dangky">Đăng ký</a></li>
+                            <li><a href="/Admin/Home/Index">Trang quản trị</a></li>
+
+                        }
+                        else
+                        {
+                            
+                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
+                            <li><a href="/user/Logout">Đăng xuất</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/order/productbought">Đơn đặt hàng</a></li>
+                            <li><a href="/order/Detail">Hàng đã mua</a></li>
+                        }
+
                     </ul>
                 </li>
             </ul>
