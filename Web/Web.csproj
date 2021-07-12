@@ -253,7 +253,6 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\Products_AController.cs" />
-    <Compile Include="Controllers\Report_AController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -465,6 +464,7 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai.cshtml" />
+    <Content Include="Areas\Admin\Views\ReportA\GOOGLECHART.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

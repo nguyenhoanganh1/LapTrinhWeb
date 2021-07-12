@@ -387,5 +387,10 @@ namespace Web.Areas.Admin.Controllers
         }
 
 
+        public ActionResult GOOGLECHART()
+        {
+            return View();
+        }
+
     }
 }
