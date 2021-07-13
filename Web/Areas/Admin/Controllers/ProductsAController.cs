@@ -69,14 +69,31 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase  file)
         {
-            if (ModelState.IsValid)
+            try
             {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
+
+
+                    product.Image = _FileName;
+                    file.SaveAs(_path);
+
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View();
+            }
+
+
 
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             return View(product);
@@ -103,14 +120,23 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase file )
         {
-            if (ModelState.IsValid)
+            if (file != null)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string _Filename = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _Filename);
+                product.Image = _Filename;
+                file.SaveAs(_path); // lưu file
+
             }
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+
+
+
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }

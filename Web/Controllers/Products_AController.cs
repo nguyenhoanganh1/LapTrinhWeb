@@ -89,8 +89,6 @@ namespace Web.Controllers
                         string _FileName = Path.GetFileName(file.FileName);
                         string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
 
-                        //string _FileName = Path.GetFileName(file.FileName);
-                        //string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
 
                         product.Image = _FileName;
                         file.SaveAs(_path);
