@@ -4,18 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="~/Scripts/shoppingcart/cart.js"></script>
+
     @*cấu hình css cho giao diện đẹp hơn*@
     @RenderSection("CartInfo", false)
 
     @RenderSection("Cart", false)
     <style>
+
+        /* Chat*/
+        .form_message {
+            border: 1px solid black;
+            height: 300px;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+
+            .form_message #discussion p {
+                word-wrap: break-word;
+                width: 350px;
+            }
+
+            .form_message #discussion {
+                list-style: none;
+                display: flex;
+                margin: 0 0 0 10px;
+                flex-wrap: wrap;
+            }
+
+        #message {
+            width: 100%;
+        }
+
         /*Footer Bottom */
         .main-footer a {
             color: #272727;

@@ -37,7 +37,7 @@
                             <input class="quantity_item" type="number" min="1" style="width:50px" value="@item.quantity"
                                    onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
                         </td>
-                        <td class="amount">$ @thanhtien.ToString("n0")</td>
+                        <td class="amount"> @thanhtien.ToString("n0") đ</td>
                         <td class="text-center">
                             <button class="btn btn-xs btn-danger glyphicon glyphicon-trash delete_item"></button>
                         </td>
