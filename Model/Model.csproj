@@ -85,12 +85,12 @@
     <Compile Include="Dao\ProductDAO.cs" />
     <Compile Include="Dao\ReportDAO.cs" />
     <Compile Include="EL\Category.cs" />
+    <Compile Include="EL\Chat.cs" />
     <Compile Include="EL\Customer.cs" />
     <Compile Include="EL\DataContext.cs" />
     <Compile Include="EL\Order.cs" />
     <Compile Include="EL\OrderDetail.cs" />
     <Compile Include="EL\Product.cs" />
-    <Compile Include="EL\Report.cs" />
     <Compile Include="EL\sysdiagram.cs" />
     <Compile Include="InterfaceRepository\ICategory.cs" />
     <Compile Include="InterfaceRepository\ICustomer.cs" />
@@ -111,5 +111,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
