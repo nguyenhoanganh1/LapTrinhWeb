@@ -18,7 +18,7 @@ namespace Web.Controllers
         private DataContext db = new DataContext();
         ProductDAO pdao = new ProductDAO();
         // GET: Products
-        public ActionResult Index(int ? page)
+        public ActionResult Index(int? page)
         {
             // 1. Tham số int? dùng để thể hiện null và kiểu int
             // page có thể có giá trị là null và kiểu int.
@@ -42,7 +42,7 @@ namespace Web.Controllers
             // 5. Trả về các Link được phân trang theo kích thước và số trang.
 
             return View(pro_page.ToPagedList(pageNumber, pageSize));
-            
+
         }
 
         // GET: Products/Details/5
@@ -56,6 +56,9 @@ namespace Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            ViewBag.chat = db.Chats.Where(x => x.GroupName == id.ToString()).ToList();
+
             Product product = db.Products.Find(id);
            
             if (product == null)

@@ -352,6 +352,9 @@ Model/App.config
 Web/Web.csproj
 
 Model/Model.csproj
+Model/App.config
+Web/Web.config
+
 
 Web/Areas/Admin/Views/ReportA/GOOGLECHART.cshtml
 Web/Controllers/Report_AController.cs

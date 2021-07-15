@@ -39,31 +39,32 @@
 
 @foreach (var item in Model)
 {
-    <div class="col-sm-4 mt" data-item="@item.Id">
-        <div class="panel panel-primary nn-prod">
-            <div class="panel-heading text-center">
-                @item.Name
-            </div>
-            <div class="panel-body text-center">
+<div class="col-sm-4 mt" data-item="@item.Id">
+    <div class="panel panel-primary nn-prod">
+        <div class="panel-heading text-center">
+            @item.Name
+        </div>
+        <div class="panel-body text-center">
 
-                <a href="/Products/Details/@item.Id">
-                    <img src="~/Content/images/items/@item.Image">
-                </a>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-xs-4 text-left text-primary">$@item.UnitPrice</div>
-                    <div class="col-xs-8 text-right">
-                        <div class="btn-group btn-group-sm">
-                            <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
-                            <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
-                            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
-                        </div>
+            <a href="/Products/Details/@item.Id">
+                <img src="~/Content/images/items/@item.Image">
+            </a>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-xs-4 text-left text-primary">$@item.UnitPrice</div>
+                <div class="col-xs-8 text-right">
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
+                        <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
+                        <button class="btn btn-success glyphicon glyphicon-envelope"></button>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+</div>
 }
 
 <!-- Thêm mã phân trang -->
