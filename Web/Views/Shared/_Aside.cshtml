@@ -37,7 +37,7 @@
                 </li>
             }
 
-                <li><a href="/shoppingcart/showcart">View Cart</a></li>
+                <li><a href="/shoppingcart/showcart">Giỏi hàng</a></li>
             </ul>
         </div>
     </div>
@@ -53,49 +53,41 @@
     <!--Categories-->
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">Categories</h3>
+            <h3 class="panel-title">Loại hàng</h3>
         </div>
         <div class="list-group">
             @foreach (var item in cate)
             {
                 <a href="/Products/FindByCategory/@item.Id" class="list-group-item">
-                    @item.Name
+                    @item.NameVN
                     @*/Product2_User/FindByCategory/@item.Id*@
                 </a>
             }
 
-            @* <a href="/product/find-by-category/1000" class="list-group-item">
-                    First item
-                </a>
-                <a href="/product/find-by-category/1001" class="list-group-item">
-                    Second item
-                </a>
-                <a href="/product/find-by-category/1002" class="list-group-item">
-                    Third item
-                </a>*@
+           
         </div>
     </div>
 
     <!--Specials-->
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Special Items</h3>
+            <h3 class="panel-title">Mặt hàng đặc biệt</h3>
         </div>
         <div class="list-group">
             <a href="/Products/FindBySpecials/0" class="list-group-item">
-                Special Items
+               Sản phẩm đặc biệt
             </a>
             <a href="/Products/FindBySpecials/1" class="list-group-item">
-                Most View Items
+               Sản Phẩm Nhiều Lượt Xem
             </a>
             <a href="/Products/FindBySpecials/2" class="list-group-item">
-                Sales Off Items
+                Sản Phẩm Giảm Giá
             </a>
             <a href="/Products/FindBySpecials/3" class="list-group-item">
-                Latest Items
+                Sản Phẩm Mới Nhất
             </a>
             <a href="/Products/FindBySpecials/4" class="list-group-item">
-                Best Sellers
+                Sản Bán Chạy
             </a>
         </div>
     </div>

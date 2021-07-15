@@ -335,6 +335,15 @@ namespace Web.Areas.Admin.Controllers
 
 
         }
+        public ActionResult TK_Tonkho2()
+        {
+            var sp = db.Products.ToList();
+
+            return View(sp);
+
+
+        }
+
         public ActionResult TK_Doanhthu_KH()
         {
 
