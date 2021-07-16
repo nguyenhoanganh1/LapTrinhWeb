@@ -331,18 +331,21 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult TK_Tonkho()
         {
+
             Report rdao = new Report();
 
             var tonkho = rdao.Tonkho();
-            
-            return Json( new { 
+
+            return Json(new
+            {
                 data = tonkho
             }, JsonRequestBehavior.AllowGet);
 
 
         }
-       
-        
+
+
+
 
         public ActionResult TK_Doanhthu_KH()
         {
@@ -356,10 +359,9 @@ namespace Web.Areas.Admin.Controllers
             }, JsonRequestBehavior.AllowGet);
 
 
-            
-
 
         }
+
 
         public ActionResult TK_Doanhthu_Nam()
         {
@@ -374,7 +376,7 @@ namespace Web.Areas.Admin.Controllers
 
 
 
-         
+
 
 
         }
@@ -411,10 +413,52 @@ namespace Web.Areas.Admin.Controllers
         }
 
 
-        public ActionResult GOOGLECHART()
+
+
+
+        // bảng thống kê riêng kèm biểu đồ
+
+
+
+        public ActionResult TK_Tonkho2()
+        {
+
+            return View();
+
+
+        }
+
+
+
+        public ActionResult TK_Doanhthu_KH2()
+        {
+
+            return View();
+
+
+        }
+        public ActionResult TK_Doanhthu_Nam2()
+        {
+            return View();
+
+
+        }
+        public ActionResult TK_Doanhthu_Thang2()
         {
             return View();
         }
 
+
+        public ActionResult TK_Doanhthu_Loai2()
+        {
+            return View();
+        }
+
+
+
+
+
     }
+
+    
 }

@@ -1,76 +1,122 @@
-﻿
-
-
-<html>
+﻿<script src="~/Scripts/chart.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 @{
     ViewBag.Title = "TK_Tonkho2";
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
 
-<h2>TK_Tonkho2</h2>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
 
-    <script type="text/javascript"
-            src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load("current", { packages: ["corechart"] });
-        google.charts.setOnLoadCallback(drawChart);
-        var myData = [['Loại', 'Giá trị']];
-        function drawChart() {
-            $.ajax({
-                url: "/Admin/ReportA/TK_Tonkho2",
-                success: function (resp) {
-                    resp.forEach(item => {
-                        myData.push([item.Name, item.Quantity]);
-                    });
 
-                    runDrawChart();
-                }
+@using Model.EL;
 
-            });
+<h2>Thống kê hàng tồn kho</h2>
+@{
+    //List<Report> r = new List<Report>();
+    DataContext db = new DataContext();
+    var tonkho = db.Products.GroupBy(p => p.Category).OrderByDescending(p => p.Sum(c => c.UnitPrice * c.Quantity))
+                .Select(p => new
+                {
+                    group = p.Key.NameVN.ToString(),
+                    Sum = p.Sum(c => c.UnitPrice * c.Quantity),
 
-            function runDrawChart() {
-                var data = google.visualization.arrayToDataTable(myData);
-                var options = {
-                    title: 'Sản phẩm',
-                    is3D: true,
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                chart.draw(data, options);
-            }
-
-            $(function () {
-                $(window).resize(function () {
-                    runDrawChart();
-                })
-            });
-
+                    Count = p.Sum(c => c.Quantity),
+                    Min = p.Min(c => c.UnitPrice),
+                    Max = p.Max(c => c.UnitPrice),
+                    Avg = p.Average(c => c.UnitPrice)
+                });
+    <table class="table">
+        <tr>
+            <th>
+                Tên loại hàng
+            </th>
+            <th>
+                Tổng giá trị
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Giá trị mặt hàng nhỏ nhất
+            </th>
+            <th>
+                Giá trị mặt hàng lớn nhất
+            </th>
+            <th>
+                Giá trị trung bình mặt hàng
+            </th>
+        </tr>
+        @foreach (var item in tonkho)
+        {
+            <tr>
+                <td>
+                    @item.group
+                </td>
+                <td>
+                    @item.Sum
+                </td>
+                <td>
+                    @item.Count
+                </td>
+                <td>
+                    @item.Min
+                </td>
+                <td>
+                    @item.Max
+                </td>
+                <td>
+                    @item.Avg
+                </td>
+            </tr>
         }
-    </script>
-</head>
-<body>
-    <div class="wrapper">
-        <div class="chart" id="piechart_3d"></div>
+    </table>
+}
+
+ @*biểu đồ đặt dưới đây*@
+
+    <div class="col-sm-4">
+        <div class="chart-wrapper">
+            <div class="chart" id="inventory-by-category"></div>
+        </div>
     </div>
 
-</body>
-</html>
+
+
+
+
+
+
+
 <style>
-    .wrapper {
+    .chart-wrapper {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 */
+        padding-bottom: 100%;
+        /* 16:9 */
         height: 0;
+        margin-bottom: 20px;
+        box-shadow: 0 0 2px gray;
     }
 
-        .wrapper .chart {
+        .chart-wrapper:hover {
+            box-shadow: 0 0 5px red;
+        }
+
+        .chart-wrapper .chart {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
         }
+
+    .order-1, .order0, .order1, .order2, .order3, .order4 {
+        color: red;
+        font-size: 20pt;
+        font-family: impact;
+    }
+
+    .col-lg-2 .panel-heading {
+        font-weight: bold;
+        font-variant: small-caps;
+    }
 </style>
 
