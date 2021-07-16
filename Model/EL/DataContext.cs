@@ -1,10 +1,10 @@
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
+
 namespace Model.EL
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-
     public partial class DataContext : DbContext
     {
         public DataContext()
@@ -13,6 +13,7 @@ namespace Model.EL
         }
 
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -21,6 +22,10 @@ namespace Model.EL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Chat>()
+                .Property(e => e.GroupName)
+                .IsFixedLength();
+
             modelBuilder.Entity<Customer>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Customer)

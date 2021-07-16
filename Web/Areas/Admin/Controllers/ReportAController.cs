@@ -9,6 +9,7 @@ using OfficeOpenXml;
 using System.IO;
 
 using Model.Dao;
+using Web.ReportServices;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -76,11 +77,6 @@ namespace Web.Areas.Admin.Controllers
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-
-
-
-
-
         public ActionResult Export_Doanhthu_KH()
         {
             DataContext db = new DataContext();
@@ -100,8 +96,8 @@ namespace Web.Areas.Admin.Controllers
 
             var stream = new MemoryStream();
             var fileName = $"Doanhthu_KH_{DateTime.Now.ToString()}.xlsx";  // .xlsx mới đúng nha coi chừng sai xlxs
-           
-            
+
+
             // sử dụng giấy phép phi thương mại để đăng kí nếu không có sẽ sai
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
@@ -332,39 +328,55 @@ namespace Web.Areas.Admin.Controllers
             stream.Position = 0;
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
-
+        [HttpGet]
         public ActionResult TK_Tonkho()
         {
-            /*var tonkho = db.Products.GroupBy(p => p.Category).OrderByDescending(p => p.Sum(c => c.UnitPrice * c.Quantity))
-                .Select(p => new
-                {
 
-                    group = p.Key.NameVN.ToString(),
-                    Sum = p.Sum(c => c.UnitPrice * c.Quantity),
-                    Count = p.Sum(c => c.Quantity),
-                    Min = p.Min(c => c.UnitPrice),
-                    Max = p.Max(c => c.UnitPrice),
-                    Avg = p.Average(c => c.UnitPrice)
-                });*/
+            Report rdao = new Report();
 
-            return View();
+            var tonkho = rdao.Tonkho();
+
+            return Json(new
+            {
+                data = tonkho
+            }, JsonRequestBehavior.AllowGet);
 
 
         }
+
+
+
+
         public ActionResult TK_Doanhthu_KH()
         {
-            
+            Report rdao = new Report();
 
-            return View();
+            var kh = rdao.TK_Doanhthu_KH();
+
+            return Json(new
+            {
+                data = kh
+            }, JsonRequestBehavior.AllowGet);
+
 
 
         }
+
 
         public ActionResult TK_Doanhthu_Nam()
         {
+            Report rdao = new Report();
+
+            var year = rdao.TK_Doanhthu_Nam();
+
+            return Json(new
+            {
+                data = year
+            }, JsonRequestBehavior.AllowGet);
 
 
-            return View();
+
+
 
 
         }
@@ -373,7 +385,14 @@ namespace Web.Areas.Admin.Controllers
         {
 
 
-            return View();
+            Report rdao = new Report();
+
+            var month = rdao.TK_Doanhthu_Nam();
+
+            return Json(new
+            {
+                data = month
+            }, JsonRequestBehavior.AllowGet);
 
 
         }
@@ -381,11 +400,65 @@ namespace Web.Areas.Admin.Controllers
         {
 
 
+            Report rdao = new Report();
+
+            var loai = rdao.TK_Doanhthu_Loai();
+
+            return Json(new
+            {
+                data = loai
+            }, JsonRequestBehavior.AllowGet);
+
+
+        }
+
+
+
+
+
+        // bảng thống kê riêng kèm biểu đồ
+
+
+
+        public ActionResult TK_Tonkho2()
+        {
+
             return View();
 
 
         }
 
 
+
+        public ActionResult TK_Doanhthu_KH2()
+        {
+
+            return View();
+
+
+        }
+        public ActionResult TK_Doanhthu_Nam2()
+        {
+            return View();
+
+
+        }
+        public ActionResult TK_Doanhthu_Thang2()
+        {
+            return View();
+        }
+
+
+        public ActionResult TK_Doanhthu_Loai2()
+        {
+            return View();
+        }
+
+
+
+
+
     }
+
+    
 }
