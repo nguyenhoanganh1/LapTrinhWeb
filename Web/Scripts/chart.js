@@ -24,7 +24,7 @@ var charts = {
     		var info = {
     	            title: "TỒN KHO THEO LOẠI",
     	            data: [['Category', 'Inventory']],
-    	            type: "column"
+    	            type: "pie"
             }
             info.data.push(...resp.data.map(g => [g.group, g.sum]));
   	        this.draw(info, "#inventory-by-category");
@@ -116,11 +116,11 @@ var charts = {
     show_details(data){
     	var trs = [];
     	data.forEach(item => {
-    		if(item.group.nameVN){
-    			item.group = item.group.nameVN;
+    		if(item.group){
+    			item.group = item.group;
     		}
-    		if(item.group.id){
-    			item.group = item.group.id;
+    		if(item.group){
+    			item.group = item.group;
     		}
     		var tr = `<tr>
                 <td>${item.group}</td>
