@@ -1,4 +1,6 @@
-﻿
+﻿@{ 
+    Model.EL.Customer cus=( Model.EL.Customer) Session["User"];
+}
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -20,7 +22,15 @@
                 <li class="dropdown ">
                     <a class="dropdown-toggle " data-toggle="dropdown" href="#">
                         <i class="glyphicon glyphicon-user"></i>
-                        Tài khoản
+                        @if(cus != null)
+                        {
+                            @cus.Fullname
+                        }
+                        else
+                        {
+                            <span>Tài khoản </span>
+                        }
+                       
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -35,7 +45,7 @@
                         }
                         else
                         {
-                            
+
                             <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
                             <li><a href="/user/Logout">Đăng xuất</a></li>
                             <li class="divider"></li>
