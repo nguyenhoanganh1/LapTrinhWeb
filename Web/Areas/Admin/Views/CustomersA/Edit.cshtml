@@ -1,0 +1,85 @@
+﻿@model Model.EL.Customer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>CUSTOMER EDITION</b>
+                <i class="text-danger pull-right">${message}</i>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <form:input path="id" placeholder="Username?" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password:</label>
+                            <input name="confirm" value="${param.confirm}" placeholder="Confirm Password?" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <form:input path="password" placeholder="Password?" class="form-control" />
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            <label for="photo_file">
+                                <img src="/static/images/users/adduser.png" style="height: 220px; max-width: 200px;">
+                            </label>
+                            <input id="photo_file" name="photo_file" type="file" class="form-control">
+                            <form:hidden path="photo" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label>Full Name:</label>
+                        <form:input path="fullname" placeholder="Full Name?" class="form-control" />
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Email Address:</label>
+                        <form:input path="email" placeholder="Email Address?" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label>Status:</label>
+                        <div class="form-control">
+                            <form:radio path="activated" value="true" label="Active" class="radio-inline" />
+                            <form:radio path="activated" value="false" label="Inactive" class="radio-inline" />
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Role:</label>
+                        <div class="form-control">
+                            <form:radio path="admin" value="true" label="Administrator" class="radio-inline" />
+                            <form:radio path="admin" value="false" label="User" class="radio-inline" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-right">
+                <jsp:include page="../shared/_form-buttons.jsp" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
