@@ -21,7 +21,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Dangky(CustomerModel model, HttpPostedFile file)
+        public ActionResult Dangky(CustomerModel model)
         {
             var dao = new CustomerDAO();
 
@@ -36,7 +36,7 @@ namespace Web.Controllers
             }
             else
             {
-                
+
                 var user = new Customer();
                 user.Id = model.Id;
                 user.Password = model.Password;
@@ -51,12 +51,12 @@ namespace Web.Controllers
                 dao.Save();
                 return RedirectToAction("Index", "Home");
             }
-        
+
 
             return View();
         }
 
-    
+
 
 
         public ActionResult Logout()
