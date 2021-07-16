@@ -9,6 +9,7 @@ using OfficeOpenXml;
 using System.IO;
 
 using Model.Dao;
+using Web.ReportServices;
 
 namespace Web.Areas.Admin.Controllers
 {
@@ -327,37 +328,53 @@ namespace Web.Areas.Admin.Controllers
             stream.Position = 0;
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
-
+        [HttpGet]
         public ActionResult TK_Tonkho()
         {
+            Report rdao = new Report();
+
+            var tonkho = rdao.Tonkho();
             
-            return View();
+            return Json( new { 
+                data = tonkho
+            }, JsonRequestBehavior.AllowGet);
 
 
         }
-        public ActionResult TK_Tonkho2()
-        {
-            var sp = db.Products.ToList();
-
-            return View(sp);
-
-
-        }
+       
+        
 
         public ActionResult TK_Doanhthu_KH()
         {
+            Report rdao = new Report();
+
+            var kh = rdao.TK_Doanhthu_KH();
+
+            return Json(new
+            {
+                data = kh
+            }, JsonRequestBehavior.AllowGet);
 
 
-            return View();
+            
 
 
         }
 
         public ActionResult TK_Doanhthu_Nam()
         {
+            Report rdao = new Report();
+
+            var year = rdao.TK_Doanhthu_Nam();
+
+            return Json(new
+            {
+                data = year
+            }, JsonRequestBehavior.AllowGet);
 
 
-            return View();
+
+         
 
 
         }
@@ -366,7 +383,14 @@ namespace Web.Areas.Admin.Controllers
         {
 
 
-            return View();
+            Report rdao = new Report();
+
+            var month = rdao.TK_Doanhthu_Nam();
+
+            return Json(new
+            {
+                data = month
+            }, JsonRequestBehavior.AllowGet);
 
 
         }
@@ -374,7 +398,14 @@ namespace Web.Areas.Admin.Controllers
         {
 
 
-            return View();
+            Report rdao = new Report();
+
+            var loai = rdao.TK_Doanhthu_Loai();
+
+            return Json(new
+            {
+                data = loai
+            }, JsonRequestBehavior.AllowGet);
 
 
         }
