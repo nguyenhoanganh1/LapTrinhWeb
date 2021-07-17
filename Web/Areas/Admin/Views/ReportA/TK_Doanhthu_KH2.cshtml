@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Model.EL.Report>
+﻿
+
+<script src="~/Scripts/chart.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 @using Model.EL;
 @{
     ViewBag.Title = "TK_Tonkho";
@@ -63,4 +66,54 @@
         }
     </table>
 }
+
+
+
+@*biểu đồ đặt dưới đây*@
+
+<div class="col-sm-4">
+    <div class="chart-wrapper">
+        <div class="chart" id="revenue-by-customer"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<style>
+    .chart-wrapper {
+        position: relative;
+        padding-bottom: 100%;
+        /* 16:9 */
+        height: 0;
+        margin-bottom: 20px;
+        box-shadow: 0 0 2px gray;
+    }
+
+        .chart-wrapper:hover {
+            box-shadow: 0 0 5px red;
+        }
+
+        .chart-wrapper .chart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    .order-1, .order0, .order1, .order2, .order3, .order4 {
+        color: red;
+        font-size: 20pt;
+        font-family: impact;
+    }
+
+    .col-lg-2 .panel-heading {
+        font-weight: bold;
+        font-variant: small-caps;
+    }
+</style>
 

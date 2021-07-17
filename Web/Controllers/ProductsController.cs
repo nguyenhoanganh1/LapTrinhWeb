@@ -48,6 +48,10 @@ namespace Web.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
+            // lấy id sản phẩm để hiện chi tiết sp và tằng số lượng người đã xem sp
+            // ghi nhận số lần click
+           
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -56,6 +60,7 @@ namespace Web.Controllers
             ViewBag.chat = db.Chats.Where(x => x.GroupName == id.ToString()).ToList();
 
             Product product = db.Products.Find(id);
+           
             if (product == null)
             {
                 return HttpNotFound();
@@ -85,20 +90,25 @@ namespace Web.Controllers
             {
                 case 0:
                     list_special = pdao.FindBySpecials();
+                
 
                     break;
 
                 case 1:
                     list_special = pdao.FindByMostView();
+                    
                     break;
                 case 2:
                     list_special = pdao.FindBySaleOff();
+                   
                     break;
                 case 3:
                     list_special = pdao.FindByLatest();
+                  
                     break;
                 case 4:
                     list_special = pdao.FindByBestSeller();
+                  
                     break;
                 default:
                     list_special = pdao.FindAll();
