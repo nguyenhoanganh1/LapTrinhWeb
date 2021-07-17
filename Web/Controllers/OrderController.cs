@@ -23,7 +23,6 @@ namespace Web.Controllers
             return RedirectToAction("login", "user");
         }
 
-
         [HttpPost]
         public ActionResult Checkout(OrderModel model)
         {
