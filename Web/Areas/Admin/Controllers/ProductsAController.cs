@@ -60,7 +60,7 @@ namespace Web.Areas.Admin.Controllers
         // GET: Admin/ProductsA/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN");
             return View();
         }
 
@@ -95,7 +95,7 @@ namespace Web.Areas.Admin.Controllers
 
 
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
             return View(product);
         }
 
@@ -111,7 +111,7 @@ namespace Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
             return View(product);
         }
 
@@ -137,7 +137,7 @@ namespace Web.Areas.Admin.Controllers
 
 
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
             return View(product);
         }
 
