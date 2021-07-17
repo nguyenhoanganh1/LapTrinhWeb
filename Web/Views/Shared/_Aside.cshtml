@@ -20,14 +20,14 @@
             </div>
             <ul class="col-xs-7">
 
-                <li id="soluong"></li>
+               @* <li id="soluong"></li>
                 <li id="tongtien"></li>
-                <li><a href="/shoppingcart/showcart">Xem giỏ hàng</a></li>
+                <li><a href="/shoppingcart/showcart">Xem giỏ hàng</a></li>*@
 
                 @if (list == null)
                 {
                     <li>0</li>
-                    <li>0 USD</li>
+                    <li>0 VNĐ</li>
                 }
                 else
                 { 
@@ -38,11 +38,11 @@
                     }
                 <li>@quanity</li>
                 <li>
-                    @total USD
+                    @total VNĐ
                 </li>
             }
 
-                <li><a href="/shoppingcart/showcart">Giỏi hàng</a></li>
+                <li><a href="/shoppingcart/showcart">Giỏ hàng</a></li>
 
             </ul>
         </div>
@@ -52,7 +52,7 @@
     <div class="panel panel-danger">
         @*action trỏ tới controller/hàm còn tham số thì vào hàm thêm đúng như name = keywords *@
         <form action="/Products/FindByKeywords" class="panel-body">
-            <input id="keywords" name="keywords" placeholder="Keywords?" class="form-control" />
+            <input id="keywords" name="keywords" placeholder="Từ khóa?" class="form-control" />
         </form>
     </div>
 

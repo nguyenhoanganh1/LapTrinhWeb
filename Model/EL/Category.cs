@@ -1,10 +1,11 @@
-namespace Model.EL
+﻿namespace Model.EL
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.ComponentModel;
 
     public partial class Category
     {
@@ -18,10 +19,12 @@ namespace Model.EL
 
         [Required]
         [StringLength(50)]
+        [DisplayName("Tên Tiếng Anh")]
         public string Name { get; set; }
 
         [Required]
         [StringLength(50)]
+        [DisplayName("Tên Tiếng Việt")]
         public string NameVN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

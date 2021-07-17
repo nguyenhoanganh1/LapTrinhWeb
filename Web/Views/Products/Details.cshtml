@@ -7,7 +7,7 @@
     ViewBag.Title = "Details";
 }
 <input type="text" hidden value="@Model.Id" id="ProductId" />
-<h2>Details</h2>
+<h2>Chi tiết sản phẩm</h2>
 <div class="panel panel-default nn-prod-detail">
     <div class="panel-body">
         <div class="row">
@@ -16,15 +16,15 @@
             </div>
             <div class="col-sm-6">
                 <ul>
-                    <li><b>Id</b>: <i>@Model.Id</i></li>
-                    <li><b>Name</b>: <i>@Model.Name</i></li>
-                    <li><b>Unit Price</b>: <i>@Model.UnitPrice</i></li>
-                    <li><b>Discount</b>: <i>@Model.Discount</i></li>
-                    <li><b>Quantity</b>: <i>@Model.Quantity</i></li>
-                    <li><b>Product Date</b>: <i>@Model.ProductDate</i></li>
-                    <li><b>Category</b>: <i>@Model.Category.Name</i></li>
-                    <li><b>Special?</b>: <i>@Model.Special</i></li>
-                    <li><b>Latest?</b>: <i>@Model.Latest</i></li>
+                    @*<li><b>Id</b>: <i>@Model.Id</i></li>*@
+                    <li><b>Tên</b>: <i>@Model.Name</i></li>
+                    <li><b>Giá</b>: <i>@Model.UnitPrice</i></li>
+                    <li><b>Giảm giá</b>: <i>@Model.Discount</i></li>
+                    <li><b>Có sẵn:</b>: <i>@Model.Quantity</i></li>
+                   @* <li><b>Product Date</b>: <i>@Model.ProductDate</i></li>*@
+                    <li><b>Loại hàng</b>: <i>@Model.Category.NameVN</i></li>
+                    <li><b>Hàng đặc biệt:</b>: <i>@Model.Special</i></li>
+                    <li><b>Hàng mới</b>: <i>@Model.Latest</i></li>
 
                 </ul>
             </div>
@@ -138,9 +138,9 @@
     </div>
 </div>
 
-<p>
+@*<p>
     @Html.ActionLink("Back to List", "Index", "Products_A")
-</p>
+</p>*@
 
 <input hidden id="username" value="" />
 <input hidden id="mess" value="" />
