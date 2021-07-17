@@ -375,3 +375,5 @@ Model/App.config
 Web/Web.config
 Model/App.config
 Web/Web.config
+Web/Views/User/Dangky.cshtml
+Web/Controllers/UserController.cs
