@@ -65,9 +65,10 @@
                                         <div class="modal-header">
                                             <h4 class="modal-title pull-left">CHIA SẼ CHO NGƯỜI THÂN, BẠN BÈ</h4>
                                         </div>
-                                        <div class="modal-body">
-                                            @using (Html.BeginForm("FogotPassWord", "User", FormMethod.Post))
-                                            {
+                                        @using (Html.BeginForm("FogotPassWord", "User", FormMethod.Post))
+                                        {
+                                            <div class="modal-body">
+
                                                 <div class="form-group col-sm-6">
                                                     <label class="top-right">Người gửi </label>
                                                     <input id="sender" placeholder="Sender email?" class="form-control">
@@ -85,13 +86,14 @@
                                                     <textarea id="content" placeholder="Content?" class="form-control"></textarea>
                                                 </div>
 
-                                            }
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
 
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success">Gửi</button>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
