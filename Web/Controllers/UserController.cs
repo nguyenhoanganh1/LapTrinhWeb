@@ -21,7 +21,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Dangky(CustomerModel model, HttpPostedFile file)
+        public ActionResult Dangky(CustomerModel model)
         {
             var dao = new CustomerDAO();
 
