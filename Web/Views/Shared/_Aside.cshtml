@@ -19,25 +19,9 @@
                 <b class="glyphicon glyphicon-shopping-cart"></b>
             </div>
             <ul class="col-xs-7">
-                @if (list == null)
-                {
-                    <li>0</li>
-                    <li>0 USD</li>
-                }
-                else
-                { 
-                    foreach (var it in list)
-                    {
-                        quanity += it.quantity;
-                        total += it.quantity * it.product.UnitPrice * (1 - it.product.Discount);
-                    }
-                <li>@quanity</li>
-                <li>
-                    @total USD
-                </li>
-            }
-
-                <li><a href="/shoppingcart/showcart">View Cart</a></li>
+                <li id="soluong"></li>
+                <li id="tongtien"></li>
+                <li><a href="/shoppingcart/showcart">Xem giỏ hàng</a></li>
             </ul>
         </div>
     </div>
