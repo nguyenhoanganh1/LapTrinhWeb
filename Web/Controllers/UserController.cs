@@ -118,12 +118,12 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult FogotPassWord(String Email)
+        public ActionResult FogotPassWord(String Email, string username)
         {
             string message = "";
             bool status = false;
 
-            var account = db.Customers.Where(a => a.Email == Email).FirstOrDefault();
+            var account = db.Customers.Where(a => a.Email == Email && a.Id == username).FirstOrDefault();
             if (account != null)
             {
                 string ressetcode = Guid.NewGuid().ToString();
@@ -135,7 +135,7 @@ namespace Web.Controllers
             }
             else
             {
-                message = "Account not found";
+                message = "Không tìm thấy tài khoản";
                 ViewBag.Message = message;
             }
             return View();
