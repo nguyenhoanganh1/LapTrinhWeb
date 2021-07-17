@@ -42,12 +42,28 @@
                         }
                         else
                         {
-                            
-                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>                            
-                            <li><a href="/user/Logout">Đăng xuất</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/order/productbought">Đơn đặt hàng</a></li>
-                            <li><a href="/order/Detail">Hàng đã mua</a></li>
+                            if (cus.Admin == true)
+                            {
+                                <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
+                                <li><a href="/user/Logout">Đăng xuất</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/order/productbought">Đơn đặt hàng</a></li>
+                                <li><a href="/order/Detail">Hàng đã mua</a></li>
+
+                            }
+
+                            else
+                            {
+                                
+                                <li><a href="/user/Logout">Đăng xuất</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/order/productbought">Đơn đặt hàng</a></li>
+                                <li><a href="/order/Detail">Hàng đã mua</a></li>
+
+                            }
+
+
+
 
                         }
 

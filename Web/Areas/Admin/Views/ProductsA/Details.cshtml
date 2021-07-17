@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết sản phẩm</h2>
 
 <div class="panel panel-default nn-prod-detail">
     <div class="panel-body">
@@ -16,14 +16,14 @@
             <div class="col-sm-6">
                 <ul>
                     <li><b>Id</b>: <i>@Model.Id</i></li>
-                    <li><b>Name</b>: <i>@Model.Name</i></li>
-                    <li><b>Unit Price</b>: <i>@Model.UnitPrice</i></li>
-                    <li><b>Discount</b>: <i>@Model.Discount</i></li>
-                    <li><b>Quantity</b>: <i>@Model.Quantity</i></li>
-                    <li><b>Product Date</b>: <i>@Model.ProductDate</i></li>
-                    <li><b>Category</b>: <i>@Model.Category.Name</i></li>
-                    <li><b>Special?</b>: <i>@Model.Special</i></li>
-                    <li><b>Latest?</b>: <i>@Model.Latest</i></li>
+                    <li><b>Tên</b>: <i>@Model.Name</i></li>
+                    <li><b>Giá</b>: <i>@Model.UnitPrice</i></li>
+                    <li><b>Giảm giá</b>: <i>@Model.Discount</i></li>
+                    <li><b>Số lượng</b>: <i>@Model.Quantity</i></li>
+                    <li><b>Ngày nhập</b>: <i>@Model.ProductDate</i></li>
+                    <li><b>Loại hàng</b>: <i>@Model.Category.NameVN</i></li>
+                    <li><b>Đặc biệt</b>: <i>@Model.Special</i></li>
+                    <li><b>Mới</b>: <i>@Model.Latest</i></li>
 
                 </ul>
             </div>
@@ -48,12 +48,12 @@
     <ul class="nav nav-tabs">
         <li class="active">
             <a data-toggle="tab" href="#tab1">
-                <i class="glyphicon glyphicon-th-list"></i> Same Category Items
+                <i class="glyphicon glyphicon-th-list"></i> Sản phẩm cùng loại
             </a>
         </li>
         <li>
             <a data-toggle="tab" href="#tab2">
-                <i class="glyphicon glyphicon-edit"></i> Visited Items
+                <i class="glyphicon glyphicon-edit"></i> Sản phẩm vừa xem
             </a>
         </li>
     </ul>
@@ -80,29 +80,7 @@
 
                         }
                     }
-                    @*@foreach(var item in Model)
-                        {
-                            if()
-                            <div class="col-sm-6">
-                            <a href="#">
-                                <img src="~/Content/images/items/">
-                                Sản phẩm 1
-                            </a>
-                            </div>
-
-                         }*@
-                    @*<div class="col-sm-6">
-                            <a href="#">
-                                <img src="~/image/1001">
-                                Sản phẩm 1
-                            </a>
-                        </div>
-                        <div class="col-sm-6">
-                            <a href="#">
-                                <img src="~/image/1002.jpg">
-                                Sản phẩm 2
-                            </a>
-                        </div>*@
+                    
                 </div>
             </div>
         </div>
@@ -128,6 +106,6 @@
 </div>
 
 <p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id  }   )*@ @*// user thì không cần edit*@
-    @Html.ActionLink("Back to List", "Index")
+   
+    @*@Html.ActionLink("Back to List", "Index")*@
 </p>
