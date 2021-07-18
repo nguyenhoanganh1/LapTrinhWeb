@@ -61,6 +61,10 @@ namespace Web.Controllers
 
         public ActionResult Logout()
         {
+            if (Request.Cookies["link"] != null)
+            {
+                Response.Cookies["link"].Expires = DateTime.Now.AddDays(-1);
+            }
             Session.Remove("User");
             return RedirectToAction("Index", "Home");
         }
@@ -156,8 +160,8 @@ namespace Web.Controllers
         }
         public ActionResult Login()
         {
-            return View();
 
+            return View();
         }
 
         [HttpPost]
@@ -166,6 +170,8 @@ namespace Web.Controllers
             string Email = userlog["Email"].ToString();
             string password = userlog["Password"].ToString();
             var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
+
+
 
             if (islogin != null)
             {
@@ -176,8 +182,18 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    Session["User"] = islogin;
-                    return RedirectToAction("Index", "Home");
+                    string link = Request.Cookies["link"].Value;
+                    if (link != null)
+                    {
+                        Session["User"] = islogin;
+                        return Redirect(link);
+                    }
+                    else
+                    {
+                        Session["User"] = islogin;
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
             }
             else

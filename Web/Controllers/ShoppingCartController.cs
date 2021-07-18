@@ -39,6 +39,12 @@ namespace Web.Controllers
 
         public ActionResult ShowCart()
         {
+            HttpCookie http = new HttpCookie("link");
+            string url = Request.Url.LocalPath;
+            http.Value = url;
+            http.Expires = DateTime.Today.AddDays(1);
+            Response.Cookies.Add(http);
+
             var cart = Session["cart"];
             var list = new List<CartItem>();
             if (cart != null)
