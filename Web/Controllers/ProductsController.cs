@@ -60,11 +60,29 @@ namespace Web.Controllers
             ViewBag.chat = db.Chats.Where(x => x.GroupName == id.ToString()).ToList();
 
             Product product = db.Products.Find(id);
+          
+
            
             if (product == null)
             {
                 return HttpNotFound();
             }
+            HttpCookie visit = new HttpCookie("visit"); // 
+            visit.Value = product.Id.ToString();
+            List<Cookie> cookie_list = new List<Cookie>();
+            //cookie_list.Add(visit);
+            // gửi cookie về cho client
+            
+            
+            visit.Expires = DateTime.Now.AddMinutes(10); // cookie hết hạn kể từ thời điểm tới 10p sau
+            Response.Cookies.Add(visit);
+           
+
+            // mỗi lần click vào detail sẽ tăng lượt xem lên
+            product.ClickCount += 1;
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+           
             return View(product);
         }
 
