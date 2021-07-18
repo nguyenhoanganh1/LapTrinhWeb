@@ -7,7 +7,7 @@
     ViewBag.Title = "TK_Tonkho";
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
-<h2>Thống kê Doanh thu theo khách hàng</h2>
+<h2>Doanh thu theo khách hàng</h2>
 @{
     DataContext db = new DataContext();
     var dt = db.OrderDetails.GroupBy(o => o.Order.Customer).Select(o => new

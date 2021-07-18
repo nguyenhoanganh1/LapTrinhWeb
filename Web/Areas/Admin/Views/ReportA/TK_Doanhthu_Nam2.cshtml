@@ -13,7 +13,7 @@
 @{
 
     DataContext db = new DataContext();
-    var year = db.OrderDetails.GroupBy(o => o.Order.OrderDate.Year)
+    var year = (db.OrderDetails.GroupBy(o => o.Order.OrderDate.Year)
                 .Select(o => new
                 {
                     group = o.Key,
@@ -22,7 +22,7 @@
                     min = o.Min(c => c.UnitPrice),
                     max = o.Max(c => c.UnitPrice),
                     avg = o.Average(c => c.UnitPrice)
-                });
+                })).OrderBy(o=>o.group);
     <table class="table">
         <tr>
             <th>
@@ -69,7 +69,7 @@
         }
     </table>
 }
-}
+
 
 @*biểu đồ đặt dưới đây*@
 
