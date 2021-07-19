@@ -269,13 +269,10 @@
     <Compile Include="Areas\Admin\Controllers\OrderAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportAController.cs" />
-    <Compile Include="Controllers\Categories_AController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Admin\Controllers\OrderAController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\Products_AController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -290,6 +287,7 @@
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportServices\Cookie.cs" />
     <Compile Include="ReportServices\Report.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -492,6 +490,10 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai2.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\FindByCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Admin_Aside.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\FindByKeywords.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsA\FindBySpecials.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -539,10 +541,13 @@
     <Content Include="Views\User\FogotPassWord.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Products\postcookie.cshtml" />
+    <Content Include="Views\Products\Details2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="CookieService\" />
     <Folder Include="Views\Chat\" />
   </ItemGroup>
   <ItemGroup>

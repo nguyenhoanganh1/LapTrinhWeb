@@ -7,25 +7,30 @@
 <h2>Danh sách sản phẩm theo loại hàng</h2>
 @foreach (var item in Model)
 {
-    <div class="col-sm-4" data-item="@item.Id">
+    <div class="col-sm-4">
         <div class="panel panel-primary nn-prod">
             <div class="panel-heading text-center">
                 @item.Name
             </div>
             <div class="panel-body text-center">
-                <a href="#">
-                    <a href="/Products/Details/@item.Id">
-                        <img src="~/Content/images/items/@item.Image">
-                    </a>
+
+                <a href="/Admin/ProductsA/Details/@item.Id">
+                    <img src="~/Content/images/items/@item.Image">
+                </a>
             </div>
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 text-left text-primary">@item.UnitPrice VNĐ</div>
                     <div class="col-xs-8 text-right">
                         <div class="btn-group btn-group-sm">
-                           
-                            <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
-                            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
+                            <a href="@Url.Action("Edit","ProductsA", new {id = item.Id}) " class="btn btn-success">
+                                <i class="glyphicon glyphicon-saved"></i>Edit
+                            </a>
+
+                            <a href="@Url.Action("Delete","ProductsA", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
+                                <i class="glyphicon glyphicon-trash"></i>Delete
+                            </a>
+
                         </div>
                     </div>
                 </div>
