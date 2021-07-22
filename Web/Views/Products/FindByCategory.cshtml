@@ -4,7 +4,7 @@
     ViewBag.Title = "FindByCategory";
 }
 
-<h2>Hiển thị danh sách sản phẩm theo loại hàng</h2>
+<h2>Danh sách sản phẩm theo loại hàng</h2>
 @foreach (var item in Model)
 {
     <div class="col-sm-4" data-item="@item.Id">
@@ -20,20 +20,11 @@
             </div>
             <div class="panel-footer">
                 <div class="row">
-                    <div class="col-xs-4 text-left text-primary">$100</div>
+                    <div class="col-xs-4 text-left text-primary">@item.UnitPrice VNĐ</div>
                     <div class="col-xs-8 text-right">
                         <div class="btn-group btn-group-sm">
-                            @*<a href="@Url.Action("Edit","Product2", new {id = item.Id}) " class="btn btn-success">
-                                    <i class="glyphicon glyphicon-saved"></i>Edit
-                                </a>*@
-                            @*<a href="@Url.Action("Details","Product2", new {id = item.Id}) " class="btn btn-info">
-                                    <i class="glyphicon glyphicon-retweet"></i>Details
-                                </a>*@
-                            @*<a href="@Url.Action("Delete","Product2", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
-                                    <i class="glyphicon glyphicon-trash"></i>Delete
-                                </a>*@
+                           
                             <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
-                            <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
                             <button class="btn btn-success glyphicon glyphicon-envelope"></button>
                         </div>
                     </div>

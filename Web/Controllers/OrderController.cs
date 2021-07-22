@@ -20,9 +20,9 @@ namespace Web.Controllers
 
         public ActionResult checkout()
         {
+
             return RedirectToAction("login", "user");
         }
-
 
         [HttpPost]
         public ActionResult Checkout(OrderModel model)

@@ -20,7 +20,6 @@ namespace Model.EL
         [StringLength(20)]
         public string CustomerId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime OrderDate { get; set; }
 
         [Required]

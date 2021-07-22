@@ -352,6 +352,9 @@ Model/App.config
 Web/Web.csproj
 
 Model/Model.csproj
+Model/App.config
+Web/Web.config
+
 
 Web/Areas/Admin/Views/ReportA/GOOGLECHART.cshtml
 Web/Controllers/Report_AController.cs
@@ -359,9 +362,27 @@ Web/Areas/Admin/Controllers/ReportAController.cs
 Web/Web.csproj
 
 
+Web/Web.config
+Web/Web.config
+
 Model/App.config
 Web/Web.config
 Model/packages.config
 Model/App.config
+
 Web/Controllers/UserController.cs
 Web/Views/User/Dangky.cshtml
+
+
+Web/Web.config
+Model/App.config
+Web/Web.config
+Model/App.config
+Web/Web.config
+Web/Views/User/Dangky.cshtml
+Web/Controllers/UserController.cs
+Web/Controllers/UserController.cs
+Web/Controllers/UserController.cs
+Web/Web.csproj
+Web/Web.config
+

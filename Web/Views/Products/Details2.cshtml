@@ -1,0 +1,223 @@
+﻿<script src="/Scripts/jquery.signalR-2.4.2.js"></script>
+<script src="/signalr/hubs"></script>
+
+
+
+
+
+
+
+@model Model.EL.Product
+@using Model.EL;
+@{
+    ViewBag.Title = "Details";
+}
+@*<h3>@Request.Cookies["YourList"].Value</h3>*@
+<input type="text" hidden value="@Model.Id" id="ProductId" />
+<h2>Chi tiết sản phẩm</h2>
+<div class="panel panel-default nn-prod-detail" data-item="@Model.Id">
+    <div class="panel-body nn-prod">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src="~/Content/images/items/@Model.Image">
+            </div>
+            <div class="col-sm-6">
+                <ul>
+                    @*<li><b>Id</b>: <i>@Model.Id</i></li>*@
+                    <li><b>Tên</b>: <i>@Model.Name</i></li>
+                    <li><b>Giá</b>: <i>@Model.UnitPrice VNĐ</i></li>
+                    <li><b>Giảm giá</b>: <i>@Model.Discount %</i></li>
+                    <li><b>Có sẵn:</b>: <i>@Model.Quantity</i></li>
+                    @* <li><b>Product Date</b>: <i>@Model.ProductDate</i></li>*@
+                    <li><b>Loại hàng</b>: <i>@Model.Category.NameVN</i></li>
+                    <li><b>Hàng đặc biệt:</b>: <i>@Model.Special</i></li>
+                    <li><b>Hàng mới</b>: <i>@Model.Latest</i></li>
+
+
+                    <li><b>Lượt xem</b>: <i>@Model.ClickCount</i></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body text-justified">
+        @Model.Description
+    </div>
+    <div class="panel-footer text-right">
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
+            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Bình luận</h3>
+        <div class="form_message">
+            <ul id="discussion">
+                @if (ViewBag.chat != null)
+                {
+                    foreach (var item in ViewBag.chat)
+                    {
+                        <li>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <strong> @item.CustomerId  </strong>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>  @item.Message </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p> @item.DateTime</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+
+            </ul>
+        </div>
+        <div class="form_send">
+            <div class="form-group form-inline">
+                <input class="form-control" type="text" placeholder="Viết bình luận..." id="message" />
+                <button id="sendmessage" class="btn btn-default glyphicon glyphicon-send"> Gửi</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="nn-prod-detail">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#tab1">
+                <i class="glyphicon glyphicon-th-list"></i> Sản phẩm cùng loại
+            </a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#tab2">
+                <i class="glyphicon glyphicon-edit"></i> Sản phẩm vừa xem
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @{
+                        DataContext db = new DataContext();
+                        var same = db.Products.ToList();
+                        foreach (var item in same)
+                        {
+                            if (item.CategoryId == Model.CategoryId)
+                            {
+                                <div class="col-sm-6">
+                                    <a href="/Products/Details/@item.Id">
+                                        <img src="~/Content/images/items/@item.Image">
+                                        @item.Name
+                                    </a>
+                                </div>
+
+                            }
+
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="tab-pane fade">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @* @{
+                            // chạy
+                            var visit = db.Products.ToList();
+                            foreach (var item in visit)
+                            {
+                                foreach (var v in your_list)
+                                {
+                                    if (v == item.Id)
+                                    {
+                                        <div class="col-sm-6">
+                                            <a href="/Products/Details/@item.Id">
+                                                <img src="~/Content/images/items/@item.Image">
+                                                @item.Name
+                                            </a>
+                                        </div>
+
+                                    }
+
+                                }
+
+
+                            }
+                        }*@
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<p>
+        @Html.ActionLink("Back to List", "Index", "Products_A")
+    </p>*@
+
+<input hidden id="username" value="" />
+<input hidden id="mess" value="" />
+<input hidden id="date" value="" />
+@section scripts {
+    <script>
+        $(function () {
+            var chat = $.connection.requestlog;
+            console.log(chat);
+            var username = '';
+
+            $.connection.hub.start().done(function () {
+                $('#sendmessage').click(function () {
+
+                    var r = $('#ProductId').val();
+                    var message = $('#message').val();
+
+                    $.ajax({
+                        url: '/Chat/SendMessage',
+                        type: 'POST',
+                        data: jQuery.param({ Message: message, GroupName: r.toString() }),
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        success: function (response) {
+                            username = response.data.CustomerId;
+                        },
+                        error: function () {
+                            alert("error");
+                        }
+                    });
+
+
+                    chat.server.joinGroup({ UserName: username, Message: message, GroupName: r.toString() });
+                    $('#message').val('').focus();
+
+
+                });
+            });
+
+            chat.client.messageGroup = function (username, message, time) {
+                $('#discussion').append('<li>' +
+                    '<div class="row">' +
+                    '<div class="col-md-3">' +
+                    '<strong>' + username + ': </strong>' +
+                    '</div>' +
+                    '<div class="col-md-6">' +
+                    '<p>' + message + '</p>' +
+                    '</div>' +
+                    '<div class="col-md-3">' +
+                    ' <p>' + time + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>');
+            };
+        });
+    </script>
+}

@@ -1,0 +1,62 @@
+﻿@using Model.EL;
+@{
+    DataContext db = new DataContext();
+    var cate = db.Categories.ToList();
+
+}
+
+
+
+<div class="row" style="margin-left: 2px;">
+    <!--ASIDE-->
+    <!--Search-->
+    <div class="panel panel-danger">
+        @*action trỏ tới controller/hàm còn tham số thì vào hàm thêm đúng như name = keywords *@
+        <form action="/Admin/ProductsA/FindByKeywords" class="panel-body">
+            <input id="keywords" name="keywords" placeholder="Từ khóa?" class="form-control" />
+        </form>
+    </div>
+
+    <!--Quản lí theo loại hàng cho dễ -->
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Loại hàng</h3>
+        </div>
+        <div class="list-group">
+            @foreach (var item in cate)
+            {
+                <a href="/Admin/ProductsA/FindByCategory/@item.Id" class="list-group-item">
+                    @item.NameVN
+
+                </a>
+            }
+
+
+        </div>
+    </div>
+
+    <!--Specials-->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Mặt hàng đặc biệt</h3>
+        </div>
+        <div class="list-group">
+            <a href="/Admin/ProductsA/FindBySpecials/0" class="list-group-item">
+                Sản phẩm đặc biệt
+            </a>
+            <a href="/Admin/ProductsA/FindBySpecials/1" class="list-group-item">
+                Sản Phẩm Xem Nhiều
+            </a>
+            <a href="/Admin/ProductsA/FindBySpecials/2" class="list-group-item">
+                Sản Phẩm Giảm Giá
+            </a>
+            <a href="/Admin/ProductsA/FindBySpecials/3" class="list-group-item">
+                Sản Phẩm Mới Nhất
+            </a>
+            <a href="/Admin/ProductsA/FindBySpecials/4" class="list-group-item">
+                Sản Phẩm Bán Chạy
+            </a>
+        </div>
+    </div>
+
+</div>

@@ -17,8 +17,13 @@ namespace Web.Controllers
     {
         private DataContext db = new DataContext();
         ProductDAO pdao = new ProductDAO();
+        // tạo cái list để bỏ cookie
+        public List<int> yourlist = new List<int>();
+
+
+
         // GET: Products
-        public ActionResult Index(int ? page)
+        public ActionResult Index(int? page)
         {
             // 1. Tham số int? dùng để thể hiện null và kiểu int
             // page có thể có giá trị là null và kiểu int.
@@ -42,21 +47,61 @@ namespace Web.Controllers
             // 5. Trả về các Link được phân trang theo kích thước và số trang.
 
             return View(pro_page.ToPagedList(pageNumber, pageSize));
-            
+
         }
 
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
+           
+           
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            ViewBag.chat = db.Chats.Where(x => x.GroupName == id.ToString()).ToList();
+
             Product product = db.Products.Find(id);
+
+            /*// Thêm id vào list product
+       
+            yourlist.Add(product.Id);
+
+            //
+            var yourlist_String = String.Join(",", yourlist);
+
+            // tạo cookie  
+            // 
+            HttpCookie yourlist_cookie = new HttpCookie("YourList", yourlist_String);
+
+
+            //  tạo thời hạn tồn tại của cookie
+            yourlist_cookie.Expires = DateTime.Now.AddMinutes(10);// hạn 10p
+
+            // đẩy cookie tới View Details  của controller;
+            Response.Cookies.Add(yourlist_cookie);
+            // Đẩy cookie tới trang khác
+            Response.Redirect("Index.cshtml");*/
+
+
+
             if (product == null)
             {
                 return HttpNotFound();
             }
+
+            
+
+
+
+
+            // mỗi lần click vào detail sẽ tăng lượt xem lên
+            product.ClickCount += 1;
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+           
             return View(product);
         }
 
@@ -82,20 +127,25 @@ namespace Web.Controllers
             {
                 case 0:
                     list_special = pdao.FindBySpecials();
+                
 
                     break;
 
                 case 1:
                     list_special = pdao.FindByMostView();
+                    
                     break;
                 case 2:
                     list_special = pdao.FindBySaleOff();
+                   
                     break;
                 case 3:
                     list_special = pdao.FindByLatest();
+                  
                     break;
                 case 4:
                     list_special = pdao.FindByBestSeller();
+                  
                     break;
                 default:
                     list_special = pdao.FindAll();
@@ -138,5 +188,39 @@ namespace Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult postcookie()
+        {
+          /*  // tạo 1 list đã 
+
+            yourlist.Add(1);
+            yourlist.Add(2);
+            yourlist.Add(3);
+            yourlist.Add(4);
+            //yourlist.Add(5);
+            
+
+            //
+            var yourlist_String = String.Join(",", yourlist);
+
+            // tạo cookie  
+            // 
+            HttpCookie yourlist_cookie = new HttpCookie("YourList", yourlist_String);
+
+
+            //  tạo thời hạn tồn tại của cookie
+            yourlist_cookie.Expires = DateTime.Now.AddMinutes(10);// hạn 10p
+
+            // đẩy cookie tới View của controller;
+            Response.Cookies.Add(yourlist_cookie);*/
+
+            return View();
+
+
+        }
+
+
+
+        
     }
 }

@@ -14,8 +14,37 @@ namespace Web.Controllers
     {
         DataContext db = new DataContext();
 
+        [HttpGet]
+        public ActionResult InfoCart()
+        {
+            double amount = 0;
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            int count = 0;
+            if (cart != null)
+            {
+                foreach (var ca in cart)
+                {
+                    count += ca.quantity;
+                    amount += (ca.product.UnitPrice * ca.quantity * (1 - ca.product.Discount));
+                }
+            }
+
+            return Json(new
+            {
+                count = count,
+                amount = amount
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
         public ActionResult ShowCart()
         {
+            HttpCookie http = new HttpCookie("link");
+            string url = Request.Url.LocalPath;
+            http.Value = url;
+            http.Expires = DateTime.Today.AddDays(1);
+            Response.Cookies.Add(http);
+
             var cart = Session["cart"];
             var list = new List<CartItem>();
             if (cart != null)
@@ -70,12 +99,11 @@ namespace Web.Controllers
             return RedirectToAction("ShowCart", "ShoppingCart");
         }
 
-        [Route("RemoveCart")]
         [HttpPost]
-        public JsonResult RemoveCart(int id)
+        public ActionResult RemoveItem(int id)
         {
             var list = (List<CartItem>)Session["cart"];
-            var cart = list.Find(x => x.product.Id == id);
+            var cart = list.FirstOrDefault(x => x.product.Id == id);
             if (cart != null)
             {
                 list.Remove(cart);
@@ -89,7 +117,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateCart(int id, int quantity)
+        public ActionResult UpdateCart(int id, int quantity)
         {
             var sessionCart = (List<CartItem>)Session["cart"];
 
@@ -109,9 +137,8 @@ namespace Web.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        [Route("ClearCart")]
-        [HttpGet]
-        public JsonResult ClearCart()
+
+        public ActionResult ClearCart()
         {
             Session["cart"] = null;
             return Json(new

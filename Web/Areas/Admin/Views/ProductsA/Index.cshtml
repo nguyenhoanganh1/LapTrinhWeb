@@ -8,11 +8,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<h2> @Html.ActionLink("Thêm mới", "Create")</h2>    
+
 @foreach (var item in Model)
 {
     <div class="col-sm-4">
@@ -22,20 +21,20 @@
             </div>
             <div class="panel-body text-center">
 
-                <a href="/Products_A/Details/@item.Id">
+                <a href="/Admin/ProductsA/Details/@item.Id">
                     <img src="~/Content/images/items/@item.Image">
                 </a>
             </div>
             <div class="panel-footer">
                 <div class="row">
-                    <div class="col-xs-4 text-left text-primary">$@item.UnitPrice</div>
+                    <div class="col-xs-4 text-left text-primary">@item.UnitPrice VNĐ</div>
                     <div class="col-xs-8 text-right">
                         <div class="btn-group btn-group-sm">
-                            <a href="@Url.Action("Edit","Products", new {id = item.Id}) " class="btn btn-success">
+                            <a href="@Url.Action("Edit","ProductsA", new {id = item.Id}) " class="btn btn-success">
                                 <i class="glyphicon glyphicon-saved"></i>Edit
                             </a>
 
-                            <a href="@Url.Action("Delete","Products", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
+                            <a href="@Url.Action("Delete","ProductsA", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
                                 <i class="glyphicon glyphicon-trash"></i>Delete
                             </a>
 

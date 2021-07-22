@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EL;
+using Model.Dao;
 using PagedList; // chỉ sài PagedList  not PagedList.Mvc;
 using System.IO;
 
@@ -15,7 +16,7 @@ namespace Web.Areas.Admin.Controllers
     public class ProductsAController : Controller
     {
         private DataContext db = new DataContext();
-
+        private ProductDAO pdao = new ProductDAO();
         // GET: Admin/ProductsA
         public ActionResult Index( int ?page)
         {
@@ -50,17 +51,20 @@ namespace Web.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
+
             if (product == null)
             {
                 return HttpNotFound();
             }
+            
+
             return View(product);
         }
 
         // GET: Admin/ProductsA/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN");
             return View();
         }
 
@@ -69,16 +73,33 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase  file)
         {
-            if (ModelState.IsValid)
+            try
             {
+                if (file.ContentLength > 0)
+                {
+                    string _FileName = Path.GetFileName(file.FileName);
+                    string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
+
+
+                    product.Image = _FileName;
+                    file.SaveAs(_path);
+
+                }
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View();
+            }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
             return View(product);
         }
 
@@ -94,7 +115,7 @@ namespace Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
             return View(product);
         }
 
@@ -103,15 +124,24 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Name,Image,UnitPrice,Discount,Quantity,ProductDate,Special,Latest,ClickCount,CategoryId,Description")] Product product, HttpPostedFileBase file )
         {
-            if (ModelState.IsValid)
+            if (file != null)
             {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string _Filename = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _Filename);
+                product.Image = _Filename;
+                file.SaveAs(_path); // lưu file
+
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
+            db.Entry(product).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+
+
+
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
             return View(product);
         }
 
@@ -148,6 +178,60 @@ namespace Web.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult FindByCategory(int id)
+        {
+            var list = pdao.FindByCategory(id);
+            return View(list);
+
+        }
+        public ActionResult FindBySpecials(int id)
+        {
+            List<Product> list_special;
+            switch (id)
+            {
+                case 0:
+                    list_special = pdao.FindBySpecials();
+
+
+                    break;
+
+                case 1:
+                    list_special = pdao.FindByMostView();
+
+                    break;
+                case 2:
+                    list_special = pdao.FindBySaleOff();
+
+                    break;
+                case 3:
+                    list_special = pdao.FindByLatest();
+
+                    break;
+                case 4:
+                    list_special = pdao.FindByBestSeller();
+
+                    break;
+                default:
+                    list_special = pdao.FindAll();
+                    break;
+
+
+            }
+            return View(list_special);
+
+
+        }
+
+
+
+        public ActionResult FindByKeywords(String keywords)
+        {
+           
+            List<Product> list = pdao.FindByKeywords(keywords);
+
+            return View(list);
+            
         }
     }
 }

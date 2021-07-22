@@ -1,0 +1,121 @@
+﻿<script src="~/Scripts/chart.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+@{
+    ViewBag.Title = "TK_Tonkho2";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+
+
+@using Model.EL;
+
+<h2>Doanh thu theo loại</h2>
+
+    @{
+
+        DataContext db = new DataContext();
+        var loai = db.OrderDetails.GroupBy(o => o.Product.Category)
+                    .Select(o => new
+                    {
+                        group = o.Key.NameVN,
+                        sum = o.Sum(c => c.UnitPrice * c.Quantity),
+                        count = o.Sum(c => c.Quantity),
+                        min = o.Min(c => c.UnitPrice),
+                        max = o.Max(c => c.UnitPrice),
+                        avg = o.Average(c => c.UnitPrice)
+                    });
+        <table class="table">
+            <tr>
+                <th>
+                    Loại hàng
+                </th>
+                <th>
+                    Tổng giá trị mua hàng
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Giá trị mặt hàng nhỏ nhất
+                </th>
+                <th>
+                    Giá trị mặt hàng lớn nhất
+                </th>
+                <th>
+                    Giá trị trung bình mặt hàng
+                </th>
+            </tr>
+            @foreach (var item in loai)
+            {
+                <tr>
+                    <td>
+                        @item.group
+                    </td>
+                    <td>
+                        @item.sum
+                    </td>
+                    <td>
+                        @item.count
+                    </td>
+                    <td>
+                        @item.min
+                    </td>
+                    <td>
+                        @item.max
+                    </td>
+                    <td>
+                        @item.avg
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+    @*biểu đồ đặt dưới đây*@
+
+<div class="col-sm-4">
+    <div class="chart-wrapper">
+        <div class="chart" id="revenue-by-category"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <style>
+        .chart-wrapper {
+            position: relative;
+            padding-bottom: 100%;
+            /* 16:9 */
+            height: 0;
+            margin-bottom: 20px;
+            box-shadow: 0 0 2px gray;
+        }
+
+            .chart-wrapper:hover {
+                box-shadow: 0 0 5px red;
+            }
+
+            .chart-wrapper .chart {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+        .order-1, .order0, .order1, .order2, .order3, .order4 {
+            color: red;
+            font-size: 20pt;
+            font-family: impact;
+        }
+
+        .col-lg-2 .panel-heading {
+            font-weight: bold;
+            font-variant: small-caps;
+        }
+    </style>

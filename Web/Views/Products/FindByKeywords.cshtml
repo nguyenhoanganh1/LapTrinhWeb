@@ -22,25 +22,44 @@
             </div>
             <div class="panel-footer">
                 <div class="row">
-                    <div class="col-xs-4 text-left text-primary">$100</div>
+                    <div class="col-xs-4 text-left text-primary">@item.UnitPrice VNĐ</div>
                     <div class="col-xs-8 text-right">
                         <div class="btn-group btn-group-sm">
                             @*<a href="@Url.Action("Edit","Product2", new {id = item.Id}) " class="btn btn-success">
-                                    <i class="glyphicon glyphicon-saved"></i>Edit
-                                </a>*@
+            <i class="glyphicon glyphicon-saved"></i>Edit
+        </a>*@
                             @*<a href="@Url.Action("Details","Product2", new {id = item.Id}) " class="btn btn-info">
-                                    <i class="glyphicon glyphicon-retweet"></i>Details
-                                </a>*@
+            <i class="glyphicon glyphicon-retweet"></i>Details
+        </a>*@
                             @*<a href="@Url.Action("Delete","Product2", new {id = item.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
-                                    <i class="glyphicon glyphicon-trash"></i>Delete
-                                </a>*@
+            <i class="glyphicon glyphicon-trash"></i>Delete
+        </a>*@
                             <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
-                            <button class="btn btn-danger glyphicon glyphicon glyphicon-heart"></button>
-                            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
+                            <button class="btn btn-success glyphicon glyphicon-envelope" data-toggle="modal" data-target="#myModal"></button>
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Modal Header</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Some text in the modal.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
 }

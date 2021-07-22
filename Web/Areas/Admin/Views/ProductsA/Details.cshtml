@@ -1,107 +1,112 @@
 ﻿@model Model.EL.Product
-
+@using Model.EL;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết sản phẩm</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
+<div class="panel panel-default nn-prod-detail">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <img src="~/Content/images/items/@Model.Image">
+            </div>
+            <div class="col-sm-6">
+                <ul>
+                    <li><b>Id</b>: <i>@Model.Id</i></li>
+                    <li><b>Tên</b>: <i>@Model.Name</i></li>
+                    <li><b>Giá</b>: <i>@Model.UnitPrice</i></li>
+                    <li><b>Giảm giá</b>: <i>@Model.Discount</i></li>
+                    <li><b>Số lượng</b>: <i>@Model.Quantity</i></li>
+                    <li><b>Ngày nhập</b>: <i>@Model.ProductDate</i></li>
+                    <li><b>Loại hàng</b>: <i>@Model.Category.NameVN</i></li>
+                    <li><b>Đặc biệt</b>: <i>@Model.Special</i></li>
+                    <li><b>Mới</b>: <i>@Model.Latest</i></li>
+                    <li><b>Lượt xem</b>: <i>@Model.ClickCount</i></li>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body text-justified">
+        @Model.Description
+    </div>
+    <div class="panel-footer text-right">
+        <div class="btn-group btn-group-sm">
+            <a href="@Url.Action("Edit","ProductsA", new {id = @Model.Id}) " class="btn btn-success">
+                <i class="glyphicon glyphicon-saved"></i>Edit
+            </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Discount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Discount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Special)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Special)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latest)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latest)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ClickCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClickCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+            <a href="@Url.Action("Delete","ProductsA", new {id = @Model.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
+                <i class="glyphicon glyphicon-trash"></i>Delete
+            </a>
+        </div>
+    </div>
 </div>
+<div class="nn-prod-detail">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#tab1">
+                <i class="glyphicon glyphicon-th-list"></i> Sản phẩm cùng loại
+            </a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#tab2">
+                <i class="glyphicon glyphicon-edit"></i> Sản phẩm vừa xem
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-pane fade in active">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @{
+                        DataContext db = new DataContext();
+                        var same = db.Products.ToList();
+                        foreach (var item in same)
+                        {
+                            if (item.CategoryId == Model.CategoryId)
+                            {
+                                <div class="col-sm-6">
+                                    <a href="/Admin/ProductsA/Details/@item.Id">
+                                        <img src="~/Content/images/items/@item.Image">
+                                        @item.Name
+                                    </a>
+                                </div>
+
+                            }
+
+                        }
+                    }
+                    
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="tab-pane fade">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-sm-6">
+                        <a href="#">
+                            <img src="~/image/1003.jpg">
+                            Sản phẩm 1
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#">
+                            <img src="~/image/1004.jpg">
+                            Sản phẩm 2
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+   
+    @*@Html.ActionLink("Back to List", "Index")*@
 </p>

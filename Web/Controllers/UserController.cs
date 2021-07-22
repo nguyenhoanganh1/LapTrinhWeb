@@ -21,7 +21,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Dangky(CustomerModel model, HttpPostedFile file)
+        public ActionResult Dangky(CustomerModel model)
         {
             var dao = new CustomerDAO();
 
@@ -36,7 +36,7 @@ namespace Web.Controllers
             }
             else
             {
-                
+
                 var user = new Customer();
                 user.Id = model.Id;
                 user.Password = model.Password;
@@ -49,16 +49,20 @@ namespace Web.Controllers
                 dao.Save();
                 return RedirectToAction("Index", "Home");
             }
-        
+
 
             return View();
         }
 
-    
+
 
 
         public ActionResult Logout()
         {
+            if (Request.Cookies["link"] != null)
+            {
+                Response.Cookies["link"].Expires = DateTime.Now.AddDays(-1);
+            }
             Session.Remove("User");
             return RedirectToAction("Index", "Home");
         }
@@ -116,12 +120,12 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult FogotPassWord(String Email)
+        public ActionResult FogotPassWord(String Email, string username)
         {
             string message = "";
             bool status = false;
 
-            var account = db.Customers.Where(a => a.Email == Email).FirstOrDefault();
+            var account = db.Customers.Where(a => a.Email == Email && a.Id == username).FirstOrDefault();
             if (account != null)
             {
                 string ressetcode = Guid.NewGuid().ToString();
@@ -133,7 +137,7 @@ namespace Web.Controllers
             }
             else
             {
-                message = "Account not found";
+                message = "Không tìm thấy tài khoản";
                 ViewBag.Message = message;
             }
             return View();
@@ -154,8 +158,8 @@ namespace Web.Controllers
         }
         public ActionResult Login()
         {
-            return View();
 
+            return View();
         }
 
         [HttpPost]
@@ -164,6 +168,8 @@ namespace Web.Controllers
             string Email = userlog["Email"].ToString();
             string password = userlog["Password"].ToString();
             var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
+
+
 
             if (islogin != null)
             {
@@ -174,8 +180,18 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    Session["User"] = islogin;
-                    return RedirectToAction("Index", "Home");
+                    string link = Request.Cookies["link"].Value;
+                    if (link != null)
+                    {
+                        Session["User"] = islogin;
+                        return Redirect(link);
+                    }
+                    else
+                    {
+                        Session["User"] = islogin;
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
             }
             else
