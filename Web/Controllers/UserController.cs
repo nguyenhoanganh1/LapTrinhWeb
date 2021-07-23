@@ -171,8 +171,6 @@ namespace Web.Controllers
             string password = userlog["Password"].ToString();
             var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
 
-
-
             if (islogin != null)
             {
                 if (Email == "Admin@gmail.com")
@@ -182,7 +180,8 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    string link = Request.Cookies["link"].Value;
+                    string link = WebUtility.HtmlDecode(Request.Cookies["link"].Value);
+
                     if (link != null)
                     {
                         Session["User"] = islogin;

@@ -6,13 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using Web.Utils;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
         DataContext db = new DataContext();
-
 
         public ActionResult Index(int? page)
         {

@@ -284,12 +284,15 @@
     <Compile Include="Models\ChatGroupModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginCus.cs" />
+    <Compile Include="Models\MailerModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ResetPasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportServices\Cookie.cs" />
     <Compile Include="ReportServices\Report.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\CookieSecurityProvider.cs" />
+    <Compile Include="Utils\MailUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
