@@ -227,7 +227,8 @@ namespace Web.Controllers
         public ActionResult SendMail(MailerModel model)
         {
             string link = Request.Url.AbsoluteUri.ToString().Replace("SendMail", "Details");
-            model.Content = "<hr/> Mời bạn vào click vào " + link + " để xem chi tiết sản phẩm";
+            model.Subject = "Bạn của bạn gửi cho bạn một sản phẩm";
+            model.Content += "<hr/> Mời bạn vào click vào " + link + " để xem chi tiết sản phẩm";
             mailUtils.SendMail(model);
             return Json(new
             {
