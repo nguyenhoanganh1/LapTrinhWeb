@@ -15,7 +15,7 @@
             <div class="col-sm-6 text-center">
                 <img src="~/Content/images/items/@Model.Image">
             </div>
-            <div class="col-sm-6" >
+            <div class="col-sm-6">
                 <ul>
                     @*<li><b>Id</b>: <i>@Model.Id</i></li>*@
                     <li><b>Tên</b>: <i>@Model.Name</i></li>
@@ -27,7 +27,7 @@
                     <li><b>Hàng đặc biệt:</b>: <i>@Model.Special</i></li>
                     <li><b>Hàng mới</b>: <i>@Model.Latest</i></li>
 
-                   
+
                     <li><b>Lượt xem</b>: <i>@Model.ClickCount</i></li>
 
 
@@ -159,7 +159,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 
-                    
+
 
                 </div>
             </div>
@@ -168,8 +168,8 @@
 </div>
 
 @*<p>
-    @Html.ActionLink("Back to List", "Index", "Products_A")
-</p>*@
+        @Html.ActionLink("Back to List", "Index", "Products_A")
+    </p>*@
 
 <input hidden id="username" value="" />
 <input hidden id="mess" value="" />
@@ -197,9 +197,9 @@
                         },
                         error: function () {
                             alert("error");
+
                         }
                     });
-
 
                     chat.server.joinGroup({ UserName: username, Message: message, GroupName: r.toString() });
                     $('#message').val('').focus();
