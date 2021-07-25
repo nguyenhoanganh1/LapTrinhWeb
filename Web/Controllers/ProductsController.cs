@@ -71,9 +71,12 @@ namespace Web.Controllers
 
             Product product = db.Products.Find(id);
 
-            /*// Thêm id vào list product
-       
-            yourlist.Add(product.Id);
+            // Thêm id vào list product
+
+            yourlist.Add(1);
+            yourlist.Add(2);
+            yourlist.Add(3);
+            yourlist.Add(4);
 
             //
             var yourlist_String = String.Join(",", yourlist);
@@ -89,7 +92,7 @@ namespace Web.Controllers
             // đẩy cookie tới View Details  của controller;
             Response.Cookies.Add(yourlist_cookie);
             // Đẩy cookie tới trang khác
-            Response.Redirect("Index.cshtml");*/
+           // Response.Redirect("Index.cshtml");
 
 
             if (product == null)
