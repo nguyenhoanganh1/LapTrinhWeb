@@ -419,8 +419,12 @@
     <Content Include="Content\images\items\gokublack.jpg" />
     <Content Include="Content\images\items\gokugod.jpg" />
     <Content Include="Content\images\items\gokuultra.jpg" />
+    <Content Include="Content\images\items\ipad1.jpg" />
+    <Content Include="Content\images\items\ipadpro.jpg" />
     <Content Include="Content\images\items\monkey.jpg" />
     <Content Include="Content\images\items\product.png" />
+    <Content Include="Content\images\items\tabs6.jpg" />
+    <Content Include="Content\images\items\tabs7.jpg" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\new_icon.gif" />
     <Content Include="Content\images\promo_icon.gif" />

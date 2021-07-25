@@ -23,7 +23,7 @@ var charts = {
             this["inventory-by-category"] = resp;
     		var info = {
     	            title: "TỒN KHO THEO LOẠI",
-    	            data: [['Category', 'Inventory']],
+    	            data: [['Category', 'Doanh thu']],
     	            type: "pie"
             }
             info.data.push(...resp.data.map(g => [g.group, g.sum]));
@@ -35,7 +35,7 @@ var charts = {
     		this["revenue-by-category"] = resp;
     		var info = {
     	            title: "DOANH THU THEO LOẠI",
-    	            data: [['Category', 'Revenue']],
+    	            data: [['Category', 'Doanh thu']],
     	            type: "pie"
             }
             info.data.push(...resp.data.map(g => [g.group, g.sum]));
@@ -47,7 +47,7 @@ var charts = {
     		this["revenue-by-customer"] = resp;
     		var info = {
     	            title: "TOP 10 KHÁCH HÀNG VIP",
-    	            data: [['Customer', 'Revenue']],
+    	            data: [['Customer', 'Doanh thu']],
     	            type: "line"
             }
             info.data.push(...resp.data.map(g => [g.group, g.sum]));
@@ -59,7 +59,7 @@ var charts = {
     		this["revenue-by-year"] = resp;
     		var info = {
     	            title: "DOANH THU THEO NĂM",
-    	            data: [['Year', 'Revenue']],
+    	            data: [['Year', 'Doanh thu']],
     	            type: "column"
             }
             info.data.push(...resp.data.map(g => ["" + g.group, g.sum]));
@@ -83,7 +83,7 @@ var charts = {
     		this["revenue-by-month"] = resp;
     		var info = {
     	            title: "DOANH THU THEO THÁNG",
-    	            data: [['Month', 'Revenue']],
+    	            data: [['Month', 'Doanh thu']],
     	            type: "line"
             }
             info.data.push(...resp.data.map(g => ["Month " + g.group, g.sum]));
