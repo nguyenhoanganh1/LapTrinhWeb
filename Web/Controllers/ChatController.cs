@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
@@ -15,19 +16,27 @@ namespace Web.Controllers
         [HttpPost]
         public ActionResult SendMessage(ChatGroupModel model)
         {
-
             Customer cus = (Customer)Session["user"];
             Chat chat = new Chat();
-            chat.CustomerId = cus.Id;
-            chat.Message = model.Message;
-            chat.GroupName = model.GroupName;
-            chat.DateTime = model.Time;
-            db.Chats.Add(chat);
-            db.SaveChanges();
-            return Json(new
+            if (cus == null)
             {
-                data = chat
-            }, JsonRequestBehavior.AllowGet);
+                
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                chat.CustomerId = cus.Id;
+                chat.Message = model.Message;
+                chat.GroupName = model.GroupName;
+                chat.DateTime = Convert.ToDateTime(model.Time);
+                db.Chats.Add(chat);
+                db.SaveChanges();
+                return Json(new
+                {
+                    data = chat
+                }, JsonRequestBehavior.AllowGet);
+            }
+
         }
     }
 }

@@ -15,41 +15,55 @@
                 @item.Name
             </div>
             <div class="panel-body text-center">
-                
-                    <a href="/Products/Details/@item.Id">
-                        <img src="~/Content/images/items/@item.Image">
-                    </a>
+
+                <a href="/Products/Details/@item.Id">
+                    <img src="~/Content/images/items/@item.Image">
+                </a>
             </div>
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 text-left text-primary">@item.UnitPrice VNĐ</div>
                     <div class="col-xs-8 text-right">
                         <div class="btn-group btn-group-sm">
-
                             <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
                             <button class="btn btn-success glyphicon glyphicon-envelope" data-toggle="modal" data-target="#myModal"></button>
                             <div id="myModal" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
-
                                     <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Modal Header</h4>
+                                            <h4 class="modal-title pull-left">CHIA SẼ CHO NGƯỜI THÂN, BẠN BÈ</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Some text in the modal.</p>
+                                            <div class="form-group col-sm-6">
+                                                <label class="top-right">Người gửi </label>
+                                                <input id="sender" placeholder="Sender email?" class="form-control">
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label>Người nhận</label>
+                                                <input id="receiver" placeholder="Receiver email?" class="form-control">
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label>Tiêu đề</label>
+                                                <input id="subject" placeholder="Subject?" class="form-control">
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label>Nội dung</label>
+                                                <textarea id="content" placeholder="Content?" class="form-control"></textarea>
+                                            </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-success share">Gửi</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

@@ -2,6 +2,22 @@
 $(function () {
     InfoCart();
 
+    $('.share').click(function () {
+        var id = $(this).parents("[data-item]").attr("data-item");
+        var send = { From: $('#sender').val(), To: $('#receiver').val(), Subject: $('#subject').val(), Content: $('#content').val() };
+        console.log(send);
+        console.log(id);
+        $.ajax({
+            url: `/Products/SendMail/${id}`,
+            method: 'POST',
+            data: send,
+            success: function (resp) {
+                console.log(resp.data);
+                alert("Chia sẽ thành công");
+                $('#myModal').modal('hide');
+            },
+        })
+    })
     function InfoCart() {
         $.ajax({
             url: `/shoppingcart/InfoCart`,

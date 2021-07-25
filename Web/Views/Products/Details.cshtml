@@ -7,6 +7,8 @@
     ViewBag.Title = "Details";
 }
 
+
+<h3>@Request.Cookies["YourList"]</h3>
 <input type="text" hidden value="@Model.Id" id="ProductId" />
 <h2>Chi tiết sản phẩm</h2>
 <div class="panel panel-default nn-prod-detail" data-item="@Model.Id">
@@ -15,7 +17,7 @@
             <div class="col-sm-6 text-center">
                 <img src="~/Content/images/items/@Model.Image">
             </div>
-            <div class="col-sm-6" >
+            <div class="col-sm-6">
                 <ul>
                     @*<li><b>Id</b>: <i>@Model.Id</i></li>*@
                     <li><b>Tên</b>: <i>@Model.Name</i></li>
@@ -27,7 +29,7 @@
                     <li><b>Hàng đặc biệt:</b>: <i>@Model.Special</i></li>
                     <li><b>Hàng mới</b>: <i>@Model.Latest</i></li>
 
-                   
+
                     <li><b>Lượt xem</b>: <i>@Model.ClickCount</i></li>
 
 
@@ -41,7 +43,40 @@
     <div class="panel-footer text-right">
         <div class="btn-group btn-group-sm">
             <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
-            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
+            <button class="btn btn-success glyphicon glyphicon-envelope" data-toggle="modal" data-target="#myModal"></button>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title pull-left">CHIA SẼ CHO NGƯỜI THÂN, BẠN BÈ</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group col-sm-6">
+                                <label class="top-right">Người gửi </label>
+                                <input id="sender" placeholder="Sender email?" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Người nhận</label>
+                                <input id="receiver" placeholder="Receiver email?" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Tiêu đề</label>
+                                <input id="subject" placeholder="Subject?" class="form-control">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Nội dung</label>
+                                <textarea id="content" placeholder="Content?" class="form-control"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success share">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -126,7 +161,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
 
-                    
+
 
                 </div>
             </div>
@@ -135,8 +170,8 @@
 </div>
 
 @*<p>
-    @Html.ActionLink("Back to List", "Index", "Products_A")
-</p>*@
+        @Html.ActionLink("Back to List", "Index", "Products_A")
+    </p>*@
 
 <input hidden id="username" value="" />
 <input hidden id="mess" value="" />
@@ -164,9 +199,9 @@
                         },
                         error: function () {
                             alert("error");
+
                         }
                     });
-
 
                     chat.server.joinGroup({ UserName: username, Message: message, GroupName: r.toString() });
                     $('#message').val('').focus();
