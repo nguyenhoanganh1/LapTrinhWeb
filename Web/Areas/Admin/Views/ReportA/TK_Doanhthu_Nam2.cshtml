@@ -9,7 +9,7 @@
 
 @using Model.EL;
 
-<h2>Doanh thu theo năm</h2>
+@*<h2>Doanh thu theo năm</h2>*@
 @{
 
     DataContext db = new DataContext();
@@ -22,70 +22,66 @@
                     min = o.Min(c => c.UnitPrice),
                     max = o.Max(c => c.UnitPrice),
                     avg = o.Average(c => c.UnitPrice)
-                })).OrderBy(o=>o.group);
-    <table class="table">
-        <tr>
-            <th>
-                Năm
-            </th>
-            <th>
-                Tổng giá trị mua hàng
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Giá trị mặt hàng nhỏ nhất
-            </th>
-            <th>
-                Giá trị mặt hàng lớn nhất
-            </th>
-            <th>
-                Giá trị trung bình mặt hàng
-            </th>
-        </tr>
-        @foreach (var item in year)
-        {
-            <tr>
-                <td>
-                    @item.group
-                </td>
-                <td>
-                    @item.sum
-                </td>
-                <td>
-                    @item.count
-                </td>
-                <td>
-                    @item.min
-                </td>
-                <td>
-                    @item.max
-                </td>
-                <td>
-                    @item.avg
-                </td>
-            </tr>
-        }
-    </table>
+                })).OrderBy(o => o.group);
+    
 }
 
 
-@*biểu đồ đặt dưới đây*@
 
-<div class="col-sm-4">
-    <div class="chart-wrapper">
-        <div class="chart" id="revenue-by-year"></div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <strong class="panel-title">DOANH THU NĂM</strong>
     </div>
+    <table class="table table-hover table-condensed">
+        <thead class="bg-danger">
+            <tr>
+                <th> Năm</th>
+                <th>Tổng giá trị mua hàng</th>
+                <th>Số lượng</th>
+                <th>Giá trị mặt hàng nhỏ nhất</th>
+                <th>Giá trị mặt hàng lớn nhất</th>
+                <th>  Giá trị trung bình mặt hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in year)
+            {
+                <tr>
+                    <td>@item.group</td>
+                    <td>@item.sum</td>
+                    <td>@item.count</td>
+                    <td>@item.min</td>
+                    <td>@item.max</td>
+                    <td>@item.avg</td>
+
+
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
 </div>
 
 
 
 
 
+@*biểu đồ đặt dưới đây*@
+<div class="chart" id="revenue-by-year" style="width: 900px; height: 500px;"></div>
 
 
-<style>
+
+
+
+
+
+
+
+
+@*<style>
     .chart-wrapper {
         position: relative;
         padding-bottom: 100%;
@@ -117,4 +113,4 @@
         font-weight: bold;
         font-variant: small-caps;
     }
-</style>
+</style>*@
