@@ -57,9 +57,11 @@ namespace Web.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
-
-
-
+            HttpCookie http = new HttpCookie("link"); // Tên Cookie Là link, để sử dụng cookie thì gọi tên là ( link )
+            string url = Request.Url.LocalPath; //Lấy Địa chỉ uri trang hiện tại là: /ShoppingCart/ShowCart
+            http.Value = WebUtility.HtmlEncode(url);
+            http.Expires = DateTime.Today.AddDays(1); // Thời gian Cookie: 1 ngày
+            Response.Cookies.Add(http); // thêm vào cookie
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,15 +92,10 @@ namespace Web.Controllers
             Response.Redirect("Index.cshtml");*/
 
 
-
             if (product == null)
             {
                 return HttpNotFound();
             }
-
-
-
-
 
 
             // mỗi lần click vào detail sẽ tăng lượt xem lên
