@@ -386,3 +386,5 @@ Web/Controllers/UserController.cs
 Web/Web.csproj
 Web/Web.config
 
+Web/Web.config
+Model/App.config

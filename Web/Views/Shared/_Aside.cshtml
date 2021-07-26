@@ -36,26 +36,6 @@
                 <li id="tongtien"></li>
 
 
-                @*<li><a href="/shoppingcart/showcart">Xem giỏ hàng</a></li>
-
-        if (list == null)
-        {
-            <li>0</li>
-            <li>0 VNĐ</li>
-        }
-        else
-        {
-            foreach (var it in list)
-            {
-                quanity += it.quantity;
-                total += it.quantity * it.product.UnitPrice * (1 - it.product.Discount);
-            }
-        <li>@quanity</li>
-        <li>
-            @total VNĐ
-        </li>
-        }*@
-
 
                 <li><a href="/shoppingcart/showcart">Giỏ hàng</a></li>
 
