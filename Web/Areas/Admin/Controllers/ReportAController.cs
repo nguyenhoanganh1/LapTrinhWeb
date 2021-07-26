@@ -331,21 +331,13 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult TK_Tonkho()
         {
-
             Report rdao = new Report();
-
             var tonkho = rdao.Tonkho();
-
             return Json(new
             {
                 data = tonkho
             }, JsonRequestBehavior.AllowGet);
-
-
         }
-
-
-
 
         public ActionResult TK_Doanhthu_KH()
         {
@@ -358,10 +350,7 @@ namespace Web.Areas.Admin.Controllers
                 data = kh
             }, JsonRequestBehavior.AllowGet);
 
-
-
         }
-
 
         public ActionResult TK_Doanhthu_Nam()
         {
@@ -374,10 +363,17 @@ namespace Web.Areas.Admin.Controllers
                 data = year
             }, JsonRequestBehavior.AllowGet);
 
+        }
+        public ActionResult TK_Doanhthu_Quy()
+        {
+            Report rdao = new Report();
 
+            var quarter = rdao.TK_Doanhthu_Quy();
 
-
-
+            return Json(new
+            {
+                data = quarter
+            }, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -460,5 +456,5 @@ namespace Web.Areas.Admin.Controllers
 
     }
 
-    
+
 }

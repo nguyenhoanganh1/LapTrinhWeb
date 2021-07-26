@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Web.Areas.Admin.Controllers
 {
-    public class OrderAdminController : Controller
+    public class OrderAController : Controller
     {
         private OrderDAO odao = new OrderDAO();
 
@@ -47,5 +47,56 @@ namespace Web.Areas.Admin.Controllers
         {
             return View(odao.GetOrderById(id));
         }
+
+        public ActionResult GetStatusTru1()
+        {
+
+            return Json(new
+            {
+                data = odao.GetListStatusTru1().Count()
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetStatus0()
+        {
+
+            return Json(new
+            {
+                data = odao.GetListStatus0().Count()
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetStatus1()
+        {
+
+            return Json(new
+            {
+                data = odao.GetListStatus1().Count
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetStatus2()
+        {
+
+            return Json(new
+            {
+                data = odao.GetListStatus2().Count()
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetStatus3()
+        {
+
+            return Json(new
+            {
+                data = odao.GetListStatus3().Count()
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetStatus4()
+        {
+
+            return Json(new
+            {
+                data = odao.GetListStatus4().Count()
+            }, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
