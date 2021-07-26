@@ -156,16 +156,15 @@ namespace Web.Controllers
         {
             string Email = userlog["Email"].ToString();
             string password = userlog["Password"].ToString();
+            
             var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
-
-
 
             if (islogin != null)
             {
-                if (Email == "Admin@gmail.com")
+                if (Email == "nghiemn@fpt.edu.vn" || (islogin.Admin== true ))
                 {
                     Session["User"] = islogin;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin/HomeA");
                 }
                 else
                 {
