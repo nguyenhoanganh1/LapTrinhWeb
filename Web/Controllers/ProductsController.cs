@@ -244,19 +244,7 @@ namespace Web.Controllers
 
         }
 
-        [HttpPost]
-
-        public ActionResult like(int id)
-        {
-            // Thêm id vào list  yêu thích
-
-            //kiểm tra id có bị trùng hay không nếu trùng thì k thêm vào
-            if (!likelist.Contains(id))
-            {
-                likelist.Add(id);
-            }
-
-
+       
         public ActionResult SendMail(MailerModel model)
         {
             string link = Request.Url.AbsoluteUri.ToString().Replace("SendMail", "Details");
@@ -270,30 +258,6 @@ namespace Web.Controllers
         }
 
 
-            // tạo 1 list ngăn cách nhau bởi dấu phẩy
-            var likelist_String = String.Join(",", likelist);
-
-            // tạo cookie  
-            // 
-            HttpCookie likelist2 = new HttpCookie("Like");
-
-            likelist2.Value = likelist_String;
-
-            //  tạo thời hạn tồn tại của cookie
-            likelist2.Expires = DateTime.Now.AddDays(10);// hạn 10p
-
-
-            // đẩy cookie tới View Details  của controller;
-            Response.Cookies.Add(likelist2);
-            // Đẩy cookie tới trang khác
-            // Response.Redirect("Details.cshtml");
-            return Json(new
-            {
-                data = likelist2
-            }, JsonRequestBehavior.AllowGet);
-
-
-        }
         [Route("GetAllLike")]
         [HttpGet]
         public ActionResult GetAllLike()
