@@ -30,7 +30,7 @@ namespace Model.EL
         [StringLength(50)]
         public string Email { get; set; }
 
-        [Required]
+
         [StringLength(50)]
         public string Photo { get; set; }
 

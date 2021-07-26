@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Web.ReportServices
 {
-    public class Report 
+    public class Report
     {
         DataContext db = new DataContext();
         public object Tonkho()
@@ -15,9 +15,8 @@ namespace Web.ReportServices
             var tonkho = db.Products.GroupBy(p => p.Category).OrderByDescending(p => p.Sum(c => c.UnitPrice * c.Quantity))
                        .Select(p => new
                        {
-                           group = p.Key.NameVN.ToString(),
-                           sum = p.Sum(c => c.UnitPrice * c.Quantity),
-
+                           group = p.Key.NameVN,
+                           sum = p.Sum(c => c.UnitPrice * c.Quantity * (1 - c.Discount)),
                            count = p.Sum(c => c.Quantity),
                            min = p.Min(c => c.UnitPrice),
                            max = p.Max(c => c.UnitPrice),
@@ -34,7 +33,7 @@ namespace Web.ReportServices
             var kh = db.OrderDetails.GroupBy(o => o.Order.Customer).Select(o => new
             {
                 group = o.Key.Fullname,
-                sum = o.Sum(p => p.UnitPrice * p.Quantity),
+                sum = o.Sum(c => c.UnitPrice * c.Quantity * (1 - c.Discount)),
                 count = o.Sum(p => p.Quantity),
                 min = o.Min(p => p.UnitPrice),
                 max = o.Max(p => p.UnitPrice),
@@ -52,7 +51,7 @@ namespace Web.ReportServices
                         .Select(o => new
                         {
                             group = o.Key.NameVN,
-                            sum = o.Sum(c => c.UnitPrice * c.Quantity),
+                            sum = o.Sum(c => c.UnitPrice * c.Quantity * (1 - c.Discount)),
                             count = o.Sum(c => c.Quantity),
                             min = o.Min(c => c.UnitPrice),
                             max = o.Max(c => c.UnitPrice),
@@ -70,7 +69,7 @@ namespace Web.ReportServices
                         .Select(o => new
                         {
                             group = o.Key,
-                            sum = o.Sum(c => c.UnitPrice * c.Quantity),
+                            sum = o.Sum(c => c.UnitPrice * c.Quantity * (1 - c.Discount)),
                             count = o.Sum(c => c.Quantity),
                             min = o.Min(c => c.UnitPrice),
                             max = o.Max(c => c.UnitPrice),
@@ -79,7 +78,23 @@ namespace Web.ReportServices
             return year;
         }
 
-
+        public object TK_Doanhthu_Quy()
+        {
+            DataContext db = new DataContext();
+            var Quarter = db.OrderDetails
+                        .Where(x => x.Order.Status == 3)
+                        .GroupBy(o => o.Order.OrderDate.Month / 3.0)
+                        .Select(o => new
+                        {
+                            group = o.Key,
+                            sum = o.Sum(c => c.UnitPrice * c.Quantity * (1 - c.Discount)),
+                            count = o.Sum(c => c.Quantity),
+                            min = o.Min(c => c.UnitPrice),
+                            max = o.Max(c => c.UnitPrice),
+                            avg = o.Average(c => c.UnitPrice)
+                        });
+            return Quarter;
+        }
 
         public object TK_Doanhthu_Thang()
         {
@@ -88,7 +103,7 @@ namespace Web.ReportServices
                         .Select(o => new
                         {
                             group = o.Key,
-                            sum = o.Sum(c => c.UnitPrice * c.Quantity),
+                            sum = o.Sum(c => c.UnitPrice * c.Quantity * (1 - c.Discount)),
                             count = o.Sum(c => c.Quantity),
                             min = o.Min(c => c.UnitPrice),
                             max = o.Max(c => c.UnitPrice),
@@ -99,6 +114,6 @@ namespace Web.ReportServices
 
 
 
-       
+
     }
 }

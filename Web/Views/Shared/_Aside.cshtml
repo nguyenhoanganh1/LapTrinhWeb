@@ -6,7 +6,19 @@
     List<Web.Models.CartItem> list = (List<Web.Models.CartItem>)cart;
     double total = 0;
     int quanity = 0;
+    var list2 = db.Products.ToList();
+
+   @* var your_list = Request.Cookies["Like"].Value;
+    if (your_list != null)
+    {
+        foreach (var item in your_list.Split(',').Select(x => Convert.ToInt32(x)).ToList())
+        {
+            <li>@item</li>
+        }
+    }*@
+
 }
+
 
 
 
@@ -22,25 +34,8 @@
 
                 <li id="soluong"></li>
                 <li id="tongtien"></li>
-                @*<li><a href="/shoppingcart/showcart">Xem giỏ hàng</a></li>
 
-        if (list == null)
-        {
-            <li>0</li>
-            <li>0 VNĐ</li>
-        }
-        else
-        {
-            foreach (var it in list)
-            {
-                quanity += it.quantity;
-                total += it.quantity * it.product.UnitPrice * (1 - it.product.Discount);
-            }
-        <li>@quanity</li>
-        <li>
-            @total VNĐ
-        </li>
-        }*@
+
 
                 <li><a href="/shoppingcart/showcart">Giỏ hàng</a></li>
 
@@ -55,6 +50,40 @@
             <input id="keywords" name="keywords" placeholder="Từ khóa?" class="form-control" />
         </form>
     </div>
+    @*Mặt hàng yêu thích*@
+
+    <div class="panel panel-danger nn-favo">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <i class="glyphicon glyphicon-heart"></i>
+                Yêu thích
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div id="favos"></div>
+            @*@foreach (var i in like)
+                {
+                    foreach (var p in list2)
+                    {
+                        if (p.Id == i)
+                        {
+                            <div class="col-xs-4 text-center">
+                                <a href="/Products/Details/@p.Id">
+                                    <img src="~/Content/images/items/@p.Image">
+                                </a>
+                            </div>
+                        }
+
+                    }
+
+
+
+                }*@
+
+        </div>
+    </div>
+
+
 
     <!--Categories-->
     <div class="panel panel-success">
@@ -66,11 +95,11 @@
             {
                 <a href="/Products/FindByCategory/@item.Id" class="list-group-item">
                     @item.NameVN
-                    
+
                 </a>
             }
 
-           
+
         </div>
     </div>
 
@@ -81,10 +110,10 @@
         </div>
         <div class="list-group">
             <a href="/Products/FindBySpecials/0" class="list-group-item">
-               Sản phẩm đặc biệt
+                Sản phẩm đặc biệt
             </a>
             <a href="/Products/FindBySpecials/1" class="list-group-item">
-               Sản Phẩm Xem Nhiều
+                Sản Phẩm Xem Nhiều
             </a>
             <a href="/Products/FindBySpecials/2" class="list-group-item">
                 Sản Phẩm Giảm Giá
@@ -99,3 +128,26 @@
     </div>
 
 </div>
+
+<style>
+    .nn-favo .col-xs-4 {
+        padding: 0px;
+    }
+
+    .nn-favo a {
+        display: block;
+        margin: 5px;
+        padding: 5px;
+        box-shadow: 0 0 3px gray;
+        border-radius: 5px;
+    }
+
+        .nn-favo a:hover {
+            box-shadow: 0 0 5px red;
+        }
+
+    .nn-favo img {
+        height: 50px;
+        max-width: 100%;
+    }
+</style>
