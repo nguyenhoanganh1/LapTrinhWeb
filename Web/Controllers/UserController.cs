@@ -80,7 +80,7 @@ namespace Web.Controllers
             var verifyUrl = "/User/" + emailfor + "/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
-            var fromEmail = new MailAddress("drangon165@gmail.com", "Dotnet Awesome");// Thay doi tai khoan giu
+            var fromEmail = new MailAddress("drangon165@gmail.com", "Shop Bán Giầy");// Thay doi tai khoan giu
             var toEmail = new MailAddress(emailID);
             var fromEmailPassword = "Thanh0123"; // Mat Khau cua tai khoan gmail
             string body = "";
@@ -88,17 +88,17 @@ namespace Web.Controllers
             if (emailfor == "VerifyAccount")
             {
                 subject = "Your account is successfully created!";
-                body = "<br/><br/>We are excited to tell you that your Dotnet Awesome account is" +
-               " successfully created. Please click on the below link to verify your account" +
-               " <br/><br/><a href='" + link + "'>" + link + "</a> ";
+                body = "<br/>Chúng tôi vui mừng thông báo với bạn rằng tài khoản của bạn là" +
+               "đăng nhập thành công. Vui lòng nhấp vào liên kết dưới đây để xác minh tài khoản của bạn" +
+               " <br/><a href='" + link + "'>" + link + "</a> ";
             }
             else
             {
                 if (emailfor == "ResetPassword")
                 {
                     subject = " Reset Password";
-                    body = "Hi,<br/>br/>We got requet for reset your account password. please click on the below  link to reset your password" +
-                        "<br/>br/><a href=" + link + ">Reset Password link</a>";
+                    body = "Xin Chào,<br/>Chúng tôi đã được yêu cầu để đặt lại mật khẩu tài khoản của bạn. vui lòng nhấp vào liên kết dưới đây để đặt lại mật khẩu của bạn" +
+                        "<br/><a href=" + link + ">Reset Password link</a>";
                 }
             }
             var smtp = new SmtpClient
@@ -143,20 +143,8 @@ namespace Web.Controllers
             }
             return View();
         }
-        public ActionResult ResetPassword(String Id)
-        {
-            var user = db.Customers.Where(a => a.ResetPasswordCode == Id).FirstOrDefault();
-            if (user != null)
-            {
-                ResetPasswordModel model = new ResetPasswordModel();
-                model.ResetCode = Id;
-                return View(model);
-            }
-            else
-            {
-                return HttpNotFound();
-            }
-        }
+   
+
         public ActionResult Login()
         {
 
@@ -170,6 +158,8 @@ namespace Web.Controllers
             string password = userlog["Password"].ToString();
             var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
 
+
+
             if (islogin != null)
             {
                 if (Email == "Admin@gmail.com")
@@ -179,8 +169,7 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    string link = WebUtility.HtmlDecode(Request.Cookies["link"].Value);
-
+                    string link = Request.Cookies["link"].Value;
                     if (link != null)
                     {
                         Session["User"] = islogin;
@@ -201,7 +190,47 @@ namespace Web.Controllers
             }
 
         }
+        public ActionResult ResetPassword(string id)
+        {
+            var user = db.Customers.Where(a => a.ResetPasswordCode == id).FirstOrDefault();
+            if (user != null)
+            {
+                ResetPasswordModel model = new ResetPasswordModel();
+                model.ResetCode = id;
+                return View(model);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(ResetPasswordModel model)
+        {
+            var message = "";
+            if (ModelState.IsValid)
+            {
+
+                var user = db.Customers.Where(a => a.ResetPasswordCode == model.ResetCode).FirstOrDefault();
+                if (user != null)
+                {
+                    user.Password = model.NewPassWord;
+                    user.ResetPasswordCode = "";
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.SaveChanges();
+                    message = "New password updated successfully";
+                }
+            }
+            else
+            {
+                message = "Something invalid";
+            }
+            ViewBag.Message = message;
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
+
 
 
