@@ -20,9 +20,9 @@ namespace Web.Controllers
 
         public ActionResult checkout()
         {
+
             return RedirectToAction("login", "user");
         }
-
 
         [HttpPost]
         public ActionResult Checkout(OrderModel model)
@@ -51,10 +51,12 @@ namespace Web.Controllers
 
             db.OrderDetails.Add(orderDetail);
             order.Amount = amount;
-            order.OrderDate = new DateTime();
+            order.OrderDate = DateTime.Now;
             db.Orders.Add(order);
-
             db.SaveChanges();
+
+            Session.Remove("Cart");
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -106,7 +108,7 @@ namespace Web.Controllers
         public ActionResult Delete(long id)
         {
             var order = db.Orders.FirstOrDefault(x => x.Id == id);
-            db.Orders.Remove(order);
+            order.Status = -1;
             db.SaveChanges();
             return RedirectToAction("productbought", "order");
         }

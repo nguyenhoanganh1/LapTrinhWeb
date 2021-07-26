@@ -1,0 +1,12 @@
+﻿@{  // đọc list cookie trong này
+    List<int> your_list = Request.Cookies["YourList"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+
+
+}
+<h1>
+    list cookie là : @foreach(var item in your_list)
+            {
+                <h3>@item.ToString()</h3>
+            }
+
+</h1>

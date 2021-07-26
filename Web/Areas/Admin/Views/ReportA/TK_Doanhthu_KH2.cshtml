@@ -7,7 +7,7 @@
     ViewBag.Title = "TK_Tonkho";
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
-<h2>Thống kê Doanh thu theo khách hàng</h2>
+@*<h2>Doanh thu theo khách hàng</h2>*@
 @{
     DataContext db = new DataContext();
     var dt = db.OrderDetails.GroupBy(o => o.Order.Customer).Select(o => new
@@ -20,62 +20,79 @@
         avg = o.Average(p => p.UnitPrice)
     });
 
-    <table class="table">
-        <tr>
-            <th>
-                Tên khách hàng
-            </th>
-            <th>
-                Tổng giá trị mua hàng
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Giá trị mặt hàng nhỏ nhất
-            </th>
-            <th>
-                Giá trị mặt hàng lớn nhất
-            </th>
-            <th>
-                Giá trị trung bình mặt hàng
-            </th>
-        </tr>
-        @foreach (var item in dt)
-        {
+    @*<table class="table">
             <tr>
-                <td>
-                    @item.group
-                </td>
-                <td>
-                    @item.sum
-                </td>
-                <td>
-                    @item.count
-                </td>
-                <td>
-                    @item.min
-                </td>
-                <td>
-                    @item.max
-                </td>
-                <td>
-                    @item.avg
-                </td>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>
+                    Tổng giá trị mua hàng
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Giá trị mặt hàng nhỏ nhất
+                </th>
+                <th>
+                    Giá trị mặt hàng lớn nhất
+                </th>
+                <th>
+                    Giá trị trung bình mặt hàng
+                </th>
             </tr>
-        }
-    </table>
+
+        </table>*@
 }
+
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <strong class="panel-title">DOANH THU THEO KHÁCH HÀNG</strong>
+    </div>
+    <table class="table table-hover table-condensed">
+        <thead class="bg-danger">
+            <tr>
+                <th> Tên khách hàng</th>
+                <th>Tổng giá trị mua hàng</th>
+                <th>Số lượng</th>
+                <th>Giá trị mặt hàng nhỏ nhất</th>
+                <th>Giá trị mặt hàng lớn nhất</th>
+                <th> Giá trị trung bình mặt hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in dt)
+            {
+                <tr>
+                    <td>@item.group</td>
+                    <td>@item.sum</td>
+                    <td>@item.count</td>
+                    <td>@item.min</td>
+                    <td>@item.max</td>
+                    <td>@item.avg</td>
+
+
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
 
 
 
 @*biểu đồ đặt dưới đây*@
+<div class="chart" id="revenue-by-customer" style="width: 900px; height: 500px;"></div>
 
-<div class="col-sm-4">
-    <div class="chart-wrapper">
-        <div class="chart" id="revenue-by-customer"></div>
-    </div>
-</div>
+
+
+
 
 
 
