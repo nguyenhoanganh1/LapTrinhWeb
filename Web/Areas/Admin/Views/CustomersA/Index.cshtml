@@ -5,11 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 @*<table class="table">
         <tr>
             <th>
@@ -65,12 +60,12 @@
     </table>*@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title"><b>CUSTOMER LIST</b></h3>
+        <h3 class="panel-title"><b>Danh sách khách hàng</b></h3>
     </div>
     <table class="table table-hover">
         <thead class="bg-success">
             <tr>
-                <th>Username</th>
+                
                 <th>Password</th>
                 <th>Full Name</th>
                 <th>Email Address</th>
@@ -104,14 +99,12 @@
                     </td>
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Sửa thông tin", "Edit", new { id = item.Id }) |
+                       @* @Html.ActionLink("Xóa tài khoản", "Delete", new { id = item.Id })*@
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-    <div class="panel-footer">
-        <jsp:include page="../shared/_pager-buttons.jsp" />
-    </div>
+   
 </div>

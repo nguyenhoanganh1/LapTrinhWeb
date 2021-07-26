@@ -31,7 +31,7 @@ namespace Model.EL
         public string Email { get; set; }
 
 
-        [StringLength(50)]
+        [StringLength(255)]
         public string Photo { get; set; }
 
         public bool Activated { get; set; }
