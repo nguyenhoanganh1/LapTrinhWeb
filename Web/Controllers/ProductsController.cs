@@ -18,7 +18,11 @@ namespace Web.Controllers
         private DataContext db = new DataContext();
         ProductDAO pdao = new ProductDAO();
         // tạo cái list để bỏ cookie
-        public List<int> yourlist = new List<int>();
+        public static List<int> yourlist = new List<int>();
+        // PHẢI CÓ STATIC // nếu không list sẽ không được lưu lại, 
+
+        // tạo list sp yêu thích
+        public static List<int> likelist = new List<int>();
 
 
 
@@ -53,9 +57,10 @@ namespace Web.Controllers
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
-           
-           
-           
+
+
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -67,12 +72,16 @@ namespace Web.Controllers
 
             // Thêm id vào list product
 
-            yourlist.Add(1);
-            yourlist.Add(2);
-            yourlist.Add(3);
-            yourlist.Add(4);
+            //kiểm tra id có bị trùng hay không nếu trùng thì k thêm vào
+            if (!yourlist.Contains(product.Id))
+            {
+                yourlist.Add(product.Id);
 
-            //
+            }
+
+
+
+            // tạo 1 list ngăn cách nhau bởi dấu phẩy
             var yourlist_String = String.Join(",", yourlist);
 
             // tạo cookie  
@@ -85,8 +94,8 @@ namespace Web.Controllers
 
             // đẩy cookie tới View Details  của controller;
             Response.Cookies.Add(yourlist_cookie);
-            // Đẩy cookie tới trang khác
-           // Response.Redirect("Index.cshtml");
+            //Đẩy cookie tới trang khác
+            //Response.Redirect("_Aside.cshtml");
 
 
 
@@ -95,7 +104,7 @@ namespace Web.Controllers
                 return HttpNotFound();
             }
 
-            
+
 
 
 
@@ -104,7 +113,8 @@ namespace Web.Controllers
             product.ClickCount += 1;
             db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
-           
+            Console.WriteLine(yourlist_cookie);
+
             return View(product);
         }
 
@@ -130,25 +140,25 @@ namespace Web.Controllers
             {
                 case 0:
                     list_special = pdao.FindBySpecials();
-                
+
 
                     break;
 
                 case 1:
                     list_special = pdao.FindByMostView();
-                    
+
                     break;
                 case 2:
                     list_special = pdao.FindBySaleOff();
-                   
+
                     break;
                 case 3:
                     list_special = pdao.FindByLatest();
-                  
+
                     break;
                 case 4:
                     list_special = pdao.FindByBestSeller();
-                  
+
                     break;
                 default:
                     list_special = pdao.FindAll();
@@ -194,36 +204,84 @@ namespace Web.Controllers
 
         public ActionResult postcookie()
         {
-          /*  // tạo 1 list đã 
+            /*  // tạo 1 list đã 
 
-            yourlist.Add(1);
-            yourlist.Add(2);
-            yourlist.Add(3);
-            yourlist.Add(4);
-            //yourlist.Add(5);
-            
-
-            //
-            var yourlist_String = String.Join(",", yourlist);
-
-            // tạo cookie  
-            // 
-            HttpCookie yourlist_cookie = new HttpCookie("YourList", yourlist_String);
+              yourlist.Add(1);
+              yourlist.Add(2);
+              yourlist.Add(3);
+              yourlist.Add(4);
+              //yourlist.Add(5);
 
 
-            //  tạo thời hạn tồn tại của cookie
-            yourlist_cookie.Expires = DateTime.Now.AddMinutes(10);// hạn 10p
+              //
+              var yourlist_String = String.Join(",", yourlist);
 
-            // đẩy cookie tới View của controller;
-            Response.Cookies.Add(yourlist_cookie);*/
+              // tạo cookie  
+              // 
+              HttpCookie yourlist_cookie = new HttpCookie("YourList", yourlist_String);
+
+
+              //  tạo thời hạn tồn tại của cookie
+              yourlist_cookie.Expires = DateTime.Now.AddMinutes(10);// hạn 10p
+
+              // đẩy cookie tới View của controller;
+              Response.Cookies.Add(yourlist_cookie);*/
 
             return View();
 
 
         }
 
+        [HttpPost]
+        public ActionResult like(int id)
+        {
+            // Thêm id vào list  yêu thích
+
+            //kiểm tra id có bị trùng hay không nếu trùng thì k thêm vào
+            if (!likelist.Contains(id))
+            {
+                likelist.Add(id);
+            }
 
 
-        
+            // tạo 1 list ngăn cách nhau bởi dấu phẩy
+            var likelist_String = String.Join(",", likelist);
+
+            // tạo cookie  
+            // 
+            HttpCookie likelist2 = new HttpCookie("Like");
+
+            likelist2.Value = likelist_String;
+
+            //  tạo thời hạn tồn tại của cookie
+            likelist2.Expires = DateTime.Now.AddDays(10);// hạn 10p
+
+            // đẩy cookie tới View Details  của controller;
+            Response.Cookies.Add(likelist2);
+            // Đẩy cookie tới trang khác
+            // Response.Redirect("Details.cshtml");
+            return Json(new
+            {
+                data = likelist2
+            }, JsonRequestBehavior.AllowGet);
+
+
+        }
+        [Route("GetAllLike")]
+        [HttpGet]
+        public ActionResult GetAllLike()
+        {
+            var danhsach = Request.Cookies["Like"].Value.Split(',').Select(x => x).ToList();
+            /*var list = new List<Product>();
+            danhsach.ForEach(x => {
+                list.Add(db.Products.Where(a => a.Id.ToString() == x).FirstOrDefault());
+            });*/
+
+            return Json(new
+            {
+                data = danhsach
+
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

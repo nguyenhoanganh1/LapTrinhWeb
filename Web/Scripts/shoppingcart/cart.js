@@ -3,11 +3,13 @@ $(function () {
     InfoCart();
 
     function InfoCart() {
+        var count = 0;
         $.ajax({
             url: `/shoppingcart/InfoCart`,
             success: function (resp) {
+                count = resp.count;
                 console.log(resp);
-                document.getElementById("soluong").innerHTML = resp.count;
+                document.getElementById("soluong").innerHTML = count;
                 document.getElementById("tongtien").innerHTML = resp.amount + " VNĐ";
             }
 
