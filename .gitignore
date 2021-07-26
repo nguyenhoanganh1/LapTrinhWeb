@@ -370,6 +370,10 @@ Web/Web.config
 Model/packages.config
 Model/App.config
 
+Web/Controllers/UserController.cs
+Web/Views/User/Dangky.cshtml
+
+
 Web/Web.config
 Model/App.config
 Web/Web.config
@@ -381,3 +385,4 @@ Web/Controllers/UserController.cs
 Web/Controllers/UserController.cs
 Web/Web.csproj
 Web/Web.config
+

@@ -9,7 +9,7 @@
 
 @using Model.EL;
 
-<h2>Thống kê hàng tồn kho</h2>
+@*<h2>Thống kê hàng tồn kho</h2>*@
 @{
     //List<Report> r = new List<Report>();
     DataContext db = new DataContext();
@@ -17,67 +17,64 @@
                 .Select(p => new
                 {
                     group = p.Key.NameVN.ToString(),
-                    Sum = p.Sum(c => c.UnitPrice * c.Quantity),
+                    sum = p.Sum(c => c.UnitPrice * c.Quantity),
 
-                    Count = p.Sum(c => c.Quantity),
-                    Min = p.Min(c => c.UnitPrice),
-                    Max = p.Max(c => c.UnitPrice),
-                    Avg = p.Average(c => c.UnitPrice)
+                    count = p.Sum(c => c.Quantity),
+                    min = p.Min(c => c.UnitPrice),
+                    max = p.Max(c => c.UnitPrice),
+                    avg = p.Average(c => c.UnitPrice)
                 });
-    <table class="table">
-        <tr>
-            <th>
-                Tên loại hàng
-            </th>
-            <th>
-                Tổng giá trị
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Giá trị mặt hàng nhỏ nhất
-            </th>
-            <th>
-                Giá trị mặt hàng lớn nhất
-            </th>
-            <th>
-                Giá trị trung bình mặt hàng
-            </th>
-        </tr>
-        @foreach (var item in tonkho)
-        {
-            <tr>
-                <td>
-                    @item.group
-                </td>
-                <td>
-                    @item.Sum
-                </td>
-                <td>
-                    @item.Count
-                </td>
-                <td>
-                    @item.Min
-                </td>
-                <td>
-                    @item.Max
-                </td>
-                <td>
-                    @item.Avg
-                </td>
-            </tr>
-        }
-    </table>
+   
 }
 
- @*biểu đồ đặt dưới đây*@
-
-    <div class="col-sm-4">
-        <div class="chart-wrapper">
-            <div class="chart" id="inventory-by-category"></div>
-        </div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <strong class="panel-title">THỐNG KÊ HÀNG TỒN KHO</strong>
     </div>
+    <table class="table table-hover table-condensed">
+        <thead class="bg-danger">
+            <tr>
+                <th>Tên loại hàng</th>
+                <th>Tổng giá trị </th>
+                <th>Số lượng</th>
+                <th>Giá trị mặt hàng nhỏ nhất</th>
+                <th>Giá trị mặt hàng lớn nhất</th>
+                <th>Giá trị trung bình mặt hàng</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in tonkho)
+            {
+                <tr>
+                    <td>@item.group</td>
+                    <td>@item.sum</td>
+                    <td>@item.count</td>
+                    <td>@item.min</td>
+                    <td>@item.max</td>
+                    <td>@item.avg</td>
+
+
+                </tr>
+
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+@*biểu đồ đặt dưới đây*@
+<div class="chart" id="inventory-by-category" style="width: 900px; height: 500px;"></div>
+
+
+
+
+
 
 
 
