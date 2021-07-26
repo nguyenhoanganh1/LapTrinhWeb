@@ -276,5 +276,10 @@ namespace Web.Controllers
         }*/
 
 
+
+        public ActionResult Cong(int a, int b)
+        {
+            return Content((a + b).ToString()); 
+        }
     }
 }
