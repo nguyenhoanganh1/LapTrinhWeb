@@ -1,4 +1,4 @@
-﻿<script src="~/Scripts/chart.js"></script>
+﻿<script src="~/Scripts/googleChart.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
 
@@ -83,17 +83,17 @@
 </div>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title"><b>REPORT DETAIL</b></h3>
+        <h3 class="panel-title"><b>CHI TIẾT ĐƠN BÁO CÁO</b></h3>
     </div>
     <table class="table table-hover">
         <thead class="bg-info">
             <tr>
                 <th>Nhóm</th>
-                <th>Giá Trị</th>
+                <th>Giá Trị (VNĐ)</th>
                 <th>Số Lượng</th>
-                <th>Giá Thấp Nhất</th>
-                <th>Giá Cao Nhất</th>
-                <th>Giá Trung Bình</th>
+                <th>Giá Thấp Nhất (VNĐ)</th>
+                <th>Giá Cao Nhất (VNĐ)</th>
+                <th>Giá Trung Bình (VNĐ)</th>
             </tr>
         </thead>
         <tbody class="result"></tbody>
@@ -135,3 +135,47 @@
         font-variant: small-caps;
     }
 </style>
+
+@section scripts {
+    <script>
+        $(function () {
+
+            $.ajax({
+                url: '/OrderA/GetStatus0',
+                success: function (resp) {
+                    $('.order0').html(resp.data);
+                }
+            })
+            $.ajax({
+                url: '/OrderA/GetStatus1',
+                success: function (resp) {
+                    $('.order1').html(resp.data);
+                }
+            })
+            $.ajax({
+                url: '/OrderA/GetStatus2',
+                success: function (resp) {
+                    $('.order2').html(resp.data);
+                }
+            })
+            $.ajax({
+                url: '/OrderA/GetStatus3',
+                success: function (resp) {
+                    $('.order3').html(resp.data);
+                }
+            })
+            $.ajax({
+                url: '/OrderA/GetStatus4',
+                success: function (resp) {
+                    $('.order4').html(resp.data);
+                }
+            })
+            $.ajax({
+                url: '/OrderA/GetStatusTru1',
+                success: function (resp) {
+                    $('.order-1').html(resp.data);
+                }
+            })
+        })
+    </script>
+}

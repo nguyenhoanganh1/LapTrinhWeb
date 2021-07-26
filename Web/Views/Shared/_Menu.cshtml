@@ -1,7 +1,7 @@
 ﻿@{ 
     Model.EL.Customer cus=( Model.EL.Customer) Session["User"];
 }
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button class="navbar-toggle" data-toggle="collapse" data-target="#hmenu">
@@ -15,8 +15,8 @@
         <div class="collapse navbar-collapse" id="hmenu">
             <ul class="nav navbar-nav">
                 <li><a href="/home/index"><i class="glyphicon glyphicon-home"></i> Trang chủ</a></li>
-                <li><a href="/home/about"><i class="glyphicon glyphicon-info-sign"></i> Giới thiệu</a></li>
-                <li><a href="/home/contact"><i class="glyphicon glyphicon-envelope"></i> Liên hệ</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-info-sign"></i> Giới thiệu</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Liên hệ</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-send"></i> Góp ý</a></li>
                 <li><a href="#"><i class="glyphicon glyphicon-question-sign"></i> Hỏi đáp</a></li>
                 <li class="dropdown ">
@@ -36,30 +36,41 @@
                     <ul class="dropdown-menu">
                         @if (Session["User"] == null)
                         {
-                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
                             <li><a href="/user/login">Đăng nhập</a></li>
                             <li><a href="/user/FogotPassWord">Quên mật khẩu</a></li>
                             <li><a href="/user/dangky">Đăng ký</a></li>
-                            <li><a href="/Admin/Home/Index">Trang quản trị</a></li>
-
                         }
                         else
                         {
+                            if (cus.Admin == true)
+                            {
+                                <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
+                                <li><a href="/user/Logout">Đăng xuất</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/order/productbought">Đơn đặt hàng</a></li>
+                                <li><a href="/order/Detail">Hàng đã mua</a></li>
 
-                            <li><a href="/Admin/HomeA/Index">Trang quản trị</a></li>
-                            <li><a href="/user/Logout">Đăng xuất</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/order/productbought">Đơn đặt hàng</a></li>
-                            <li><a href="/order/Detail">Hàng đã mua</a></li>
+                            }
+
+                            else
+                            {
+                                
+                                <li><a href="/user/Logout">Đăng xuất</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/order/productbought">Đơn đặt hàng</a></li>
+                                <li><a href="/order/Detail">Hàng đã mua</a></li>
+
+                            }
+
+
+
+
                         }
 
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><i class="glyphicon glyphicon-user"></i> English</a></li>
-                <li><a href="#"><i class="glyphicon glyphicon-log-in"></i> Tiếng Việt</a></li>
-            </ul>
+           
         </div>
     </div>
 </nav>

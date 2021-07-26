@@ -32,6 +32,31 @@ namespace Model.Dao
             db.SaveChanges();
         }
 
+        public List<Order> GetListStatusTru1()
+        {
+            return db.Orders.Where(x => x.Status == -1).ToList();
+        }
+        public List<Order> GetListStatus0()
+        {
+            return db.Orders.Where(x => x.Status == 0).ToList();
+        }
+        public List<Order> GetListStatus1()
+        {
+            return db.Orders.Where(x => x.Status == 1).ToList();
+        }
+        public List<Order> GetListStatus2()
+        {
+            return db.Orders.Where(x => x.Status == 2).ToList();
+        }
+        public List<Order> GetListStatus3()
+        {
+            return db.Orders.Where(x => x.Status == 3).ToList();
+        }
+        public List<Order> GetListStatus4()
+        {
+            return db.Orders.Where(x => x.Status == 4).ToList();
+        }
+
         public void UpdateStatus(Order o)
         {
             var oder = db.Orders.FirstOrDefault(x => x.Id == o.Id);

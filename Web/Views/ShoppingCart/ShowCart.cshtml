@@ -7,19 +7,19 @@
 {
     double total = 0;
     int stt = 1;
-    <div class="panel panel-warning">
+    <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title"><b>YOUR SHOPPING CART</b></h3>
+            <h3 class="panel-title"><b>GIỎ HÀNG CỦA BẠN</b></h3>
         </div>
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th>Unit Price</th>
-                    <th>Discount</th>
-                    <th>Quantity</th>
-                    <th>Amount</th>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Giảm giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,9 +28,9 @@
                 {
                     double thanhtien = item.product.UnitPrice * item.quantity * (1 - item.product.Discount);
                     total += thanhtien;
-                    <tr data-item='{"id":"@item.product.Id","price":@item.product.UnitPrice,"disc":@item.product.Discount}'>
+                    <tr data-item='{"id": @item.product.Id, "price": @item.product.UnitPrice, "disc": @item.product.Discount}'>
                         <td>@(stt++)</td>
-                        <td><a href="/product/detail/@item.product.Id">@item.product.Name</a></td>
+                        <td><a href="/products/details/@item.product.Id">@item.product.Name</a></td>
                         <td>$ @item.product.UnitPrice.ToString("n0")</td>
                         <td>@(item.product.Discount * 100)%</td>
                         <td>
@@ -47,25 +47,25 @@
             </tbody>
         </table>
         <div class="panel-footer text-right">
-            <a href="/product/x" class="btn btn-sm btn-info">
-                <i class="glyphicon glyphicon-hand-left"></i> Add More
+            <a href="/" class="btn btn-sm btn-info">
+                <i class="glyphicon glyphicon-hand-left"></i> Mua thêm
             </a>
             <button class="btn btn-sm btn-warning clearAll">
-                <i class="glyphicon glyphicon-trash"></i> Clear All
+                <i class="glyphicon glyphicon-trash"></i> Xóa hết
             </button>
 
             @if (Session["User"] != null)
             {
-                
+
             }
             else
             {
                 <a href="/order/checkout" class="btn btn-sm btn-success checkOut">
-                    <i class="glyphicon glyphicon-ok"></i> Checkout
+                    <i class="glyphicon glyphicon-ok"></i> Kiểm tra
                 </a>
             }
 
-            <b class="pull-left">Total Amount: <i class="cart_amt">@total.ToString("n0")</i></b>
+            <b class="pull-left">Tổng tiền: <i class="cart_amt">@total.ToString("n0") đ</i></b>
         </div>
     </div>
 
@@ -73,22 +73,22 @@
     {
         <div class="panel panel-danger">
             <div class="panel-heading">
-                <h3 class="panel-title"><b>ORDER INFORMATION</b></h3>
+                <h3 class="panel-title"><b>Thông tin đơn hàng</b></h3>
             </div>
 
             <form action="/order/checkout" method="post" class="panel-body">
                 <div class="form-group">
-                    <label>Shipping Address:</label>
-                    <input name="Address" placeholder="Shipping Address?" class="form-control">
+                    <label>Địa chỉ giao hàng:</label>
+                    <input name="Address" placeholder="Địa chỉ giao hàng?" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Notes:</label>
-                    <textarea name="Notes" placeholder="Write something here?" rows="3" class="form-control"></textarea>
+                    <label>Ghi chú:</label>
+                    <textarea name="Notes" placeholder="Ghi chú?" rows="3" class="form-control"></textarea>
                 </div>
                 <div class="panel-footer text-right">
                     <button class="btn btn-danger purchase">
                         <i class="glyphicon glyphicon-gbp"></i>
-                        Purchase
+                        Thanh Toán
                     </button>
                 </div>
             </form>
@@ -115,7 +115,7 @@
 
                 $(".clearAll").on("click", function (event) {
                     $.ajax({
-                        url: `ClearCart`,
+                        url: `/ShoppingCart/ClearCart`,
                         success: function (resp) {
                             window.location.href = 'ShowCart';
                         }
@@ -124,8 +124,9 @@
 
                 $(".delete_item").on("click", function (event) {
                     var item = JSON.parse($(this).parents("[data-item]").attr("data-item"));
+                    console.log(item);
                     $.ajax({
-                        url: `RemoveCart?id=${item.id}`,
+                        url: `/ShoppingCart/RemoveItem?id=${item.id}`,
                         method: 'POST',
                         success: function (resp) {
                             window.location.href = 'ShowCart';

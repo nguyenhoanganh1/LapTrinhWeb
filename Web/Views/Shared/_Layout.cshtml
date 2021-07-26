@@ -12,16 +12,16 @@
     @RenderSection("scripts", required: false)
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="~/Scripts/shoppingcart/cart.js"></script>
-
-    @*cấu hình css cho giao diện đẹp hơn*@
-    @RenderSection("CartInfo", false)
-
+    <script src="~/Scripts/shoppingcart/like.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     @RenderSection("Cart", false)
     <style>
 
         /* Chat*/
         .form_message {
             border: 1px solid black;
+            border-radius: 10px;
             height: 300px;
             overflow: auto;
             margin-bottom: 10px;
@@ -415,26 +415,5 @@
         </div>
     </footer>
 </body>
-@*<body>
-        <div class="container">
-            <header class="row">
-                <h1 class="alert alert-success">
-                    <b class="glyphicon glyphicon-shopping-cart"></b>
-                    <span>Online Shopping Cart</span>
-                </h1>
-            </header>
-            <nav class="row">
-                @RenderPage("_Menu.cshtml")
-            </nav>
-        </div>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
 
-
-    </body>*@
 </html>
