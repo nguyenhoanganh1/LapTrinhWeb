@@ -11,6 +11,9 @@ namespace Web.Models
         public string GroupName { get; set; }
         public string Message { get; set; }
 
-        public DateTime Time { get { return DateTime.Now; } }
+        public string Time
+        {
+            get { return DateTime.Now.ToString("dd/MM/yyyy HH:mm"); }
+        }
     }
 }

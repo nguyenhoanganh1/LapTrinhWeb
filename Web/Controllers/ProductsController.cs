@@ -9,12 +9,16 @@ using System.Web.Mvc;
 using Model.EL;
 using PagedList;
 using Model.Dao;
+using Web.Models;
+using Web.Utils;
 
 namespace Web.Controllers
 
 {
     public class ProductsController : Controller
     {
+        MailUtils mailUtils = new MailUtils();
+
         private DataContext db = new DataContext();
         ProductDAO pdao = new ProductDAO();
         // tạo cái list để bỏ cookie
@@ -58,8 +62,11 @@ namespace Web.Controllers
         public ActionResult Details(int? id)
         {
 
-
-
+            HttpCookie http = new HttpCookie("link"); // Tên Cookie Là link, để sử dụng cookie thì gọi tên là ( link )
+            string url = Request.Url.LocalPath; //Lấy Địa chỉ uri trang hiện tại là: /ShoppingCart/ShowCart
+            http.Value = WebUtility.HtmlEncode(url);
+            http.Expires = DateTime.Today.AddDays(1); // Thời gian Cookie: 1 ngày
+            Response.Cookies.Add(http); // thêm vào cookie
 
             if (id == null)
             {
@@ -98,7 +105,6 @@ namespace Web.Controllers
             //Response.Redirect("_Aside.cshtml");
 
 
-
             if (product == null)
             {
                 return HttpNotFound();
@@ -109,11 +115,17 @@ namespace Web.Controllers
 
 
 
+
+
+
             // mỗi lần click vào detail sẽ tăng lượt xem lên
             product.ClickCount += 1;
             db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
+
             Console.WriteLine(yourlist_cookie);
+
+
 
             return View(product);
         }
@@ -233,6 +245,7 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+
         public ActionResult like(int id)
         {
             // Thêm id vào list  yêu thích
@@ -242,6 +255,19 @@ namespace Web.Controllers
             {
                 likelist.Add(id);
             }
+
+
+        public ActionResult SendMail(MailerModel model)
+        {
+            string link = Request.Url.AbsoluteUri.ToString().Replace("SendMail", "Details");
+            model.Subject = "Bạn của bạn gửi cho bạn một sản phẩm";
+            model.Content += "<hr/> Mời bạn vào click vào " + link + " để xem chi tiết sản phẩm";
+            mailUtils.SendMail(model);
+            return Json(new
+            {
+                data = model
+            }, JsonRequestBehavior.AllowGet);
+        }
 
 
             // tạo 1 list ngăn cách nhau bởi dấu phẩy
@@ -255,6 +281,7 @@ namespace Web.Controllers
 
             //  tạo thời hạn tồn tại của cookie
             likelist2.Expires = DateTime.Now.AddDays(10);// hạn 10p
+
 
             // đẩy cookie tới View Details  của controller;
             Response.Cookies.Add(likelist2);
@@ -283,5 +310,7 @@ namespace Web.Controllers
 
             }, JsonRequestBehavior.AllowGet);
         }
+
+
     }
 }
