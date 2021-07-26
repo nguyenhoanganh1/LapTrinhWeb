@@ -258,22 +258,22 @@ namespace Web.Controllers
         }
 
 
-        [Route("GetAllLike")]
+        /*[Route("GetAllLike")]
         [HttpGet]
         public ActionResult GetAllLike()
         {
             var danhsach = Request.Cookies["Like"].Value.Split(',').Select(x => x).ToList();
-            /*var list = new List<Product>();
+            *//*var list = new List<Product>();
             danhsach.ForEach(x => {
                 list.Add(db.Products.Where(a => a.Id.ToString() == x).FirstOrDefault());
-            });*/
+            });*//*
 
             return Json(new
             {
                 data = danhsach
 
             }, JsonRequestBehavior.AllowGet);
-        }
+        }*/
 
 
     }

@@ -5,10 +5,7 @@
 @{ // đọc list cookie trong này
     List<int> your_list = Request.Cookies["YourList"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
 
-    foreach(var item in your_list)
-            {
-                <li>@item</li>
-            }
+  
 }
 
 @model Model.EL.Product
@@ -54,7 +51,6 @@
         <div class="btn-group btn-group-sm">
             <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
 
-            <button class="btn btn-success glyphicon glyphicon-envelope"></button>
             <button type="button" class="btn btn-danger glyphicon glyphicon glyphicon-heart nn-favo-add"></button>
 
             <button class="btn btn-success glyphicon glyphicon-envelope" data-toggle="modal" data-target="#myModal"></button>
