@@ -1,21 +1,26 @@
-﻿@model PagedList.IPagedList<Model.EL.Order>
-@using PagedList.Mvc;
+﻿@using PagedList.Mvc;
+@model  PagedList.IPagedList<Model.EL.Order>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
+
+
 @if (Model != null)
 {
     int stt = 1;
-    <div class="panel panel-primary">
+
+    <div class="panel panel-warning">
         <div class="panel-heading">
-            <h3 class="panel-title"><b>ORDER LIST</b></h3>
+            <h3 class="panel-title">
+                <b>DANH SÁCH ĐƠN HÀNG</b>
+            </h3>
         </div>
         <table class="table table-hover">
-            <thead class="bg-success">
+            <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Id</th>
-                    <th>Customer</th>
                     <th>Order Date</th>
                     <th>Amount</th>
                     <th>Shipping Address</th>
@@ -44,37 +49,34 @@
                             }
                             else if (item.Status == 1)
                             {
-                                <p>Đang xác nhận</p>
+                                <p>Đang liên lạc</p>
                             }
                             else if (item.Status == 2)
                             {
-                                <p>Đang gửi hàng</p>
+                                <p>Đã xác nhận</p>
                             }
                             else if (item.Status == 3)
                             {
-                                <p>Đã thanh toán</p>
+                                <p>Đang gửi</p>
                             }
                             else if (item.Status == 4)
                             {
-                                <p>Hoàn Thành</p>
+                                <p>Hoàn thành</p>
                             }
                         </td>
                         <td class="text-center">
-
-                            <a href="/order/detail" class="btn btn-xs btn-warning glyphicon glyphicon-search"></a>
-                            @if (item.Status == 0)
-                            {
-                                <a href="/order/delete/@item.Id" class="btn btn-xs btn-danger glyphicon glyphicon-trash"></a>
-                            }
-
+                            <a href="/Admin/OrderA/Edit/@item.Id" class="btn btn-xs btn-warning glyphicon glyphicon-search"></a>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+
         <div>
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page }))
         </div>
+
     </div>
 
 }
