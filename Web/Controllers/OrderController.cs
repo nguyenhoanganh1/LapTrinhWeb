@@ -20,6 +20,7 @@ namespace Web.Controllers
 
         public ActionResult checkout()
         {
+
             return RedirectToAction("login", "user");
         }
 

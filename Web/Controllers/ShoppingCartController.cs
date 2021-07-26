@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using System.Web.Script.Serialization;
+using Web.Utils;
+using System.Net;
 
 namespace Web.Controllers
 {
@@ -39,6 +41,12 @@ namespace Web.Controllers
 
         public ActionResult ShowCart()
         {
+            HttpCookie http = new HttpCookie("link"); // Tên Cookie Là link, để sử dụng cookie thì gọi tên là ( link )
+            string url = Request.Url.LocalPath; //Lấy Địa chỉ uri trang hiện tại là: /ShoppingCart/ShowCart
+            http.Value = WebUtility.HtmlEncode(url);
+            http.Expires = DateTime.Today.AddDays(1); // Thời gian Cookie: 1 ngày
+            Response.Cookies.Add(http); // thêm vào cookie
+
             var cart = Session["cart"];
             var list = new List<CartItem>();
             if (cart != null)
