@@ -42,6 +42,7 @@ namespace Web.Controllers
                 user.Password = model.Password;
                 user.Fullname = model.Fullname;
                 user.Photo = "user.png";
+
                 user.Email = model.Email;
                 user.Activated = true;
                 user.Admin = false;
