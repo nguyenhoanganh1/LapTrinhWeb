@@ -143,7 +143,7 @@ namespace Web.Controllers
             }
             return View();
         }
-   
+
 
         public ActionResult Login()
         {
@@ -157,12 +157,12 @@ namespace Web.Controllers
         {
             string Email = userlog["Email"].ToString();
             string password = userlog["Password"].ToString();
-            
+
             var islogin = db.Customers.SingleOrDefault(x => x.Email.Equals(Email) && x.Password.Equals(password));
 
             if (islogin != null)
             {
-                if (Email == "nghiemn@fpt.edu.vn" || (islogin.Admin== true ))
+                if (Email == "nghiemn@fpt.edu.vn" || (islogin.Admin == true))
                 {
                     Session["User"] = islogin;
                     return RedirectToAction("Index", "Admin/HomeA");
@@ -189,7 +189,7 @@ namespace Web.Controllers
                 return View("Login");
             }
 
-        }*/
+        }
         public ActionResult ResetPassword(string id)
         {
             var user = db.Customers.Where(a => a.ResetPasswordCode == id).FirstOrDefault();

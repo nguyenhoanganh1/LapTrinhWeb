@@ -110,7 +110,7 @@ namespace Web.Areas.Admin.Controllers
 
 
 
-        
+
 
         public ActionResult Edit([Bind(Include = "Id,Password,Fullname,Email,Photo,Activated,Admin")] Customer customer, HttpPostedFileBase file)
         {
@@ -121,7 +121,6 @@ namespace Web.Areas.Admin.Controllers
 
                 var location = Server.MapPath(Url.Content("~/Content/images/users"));
 
-                var location = Server.MapPath(Url.Content("~/Content/images/users")); 
 
 
                 if (!string.IsNullOrEmpty(custo.Photo))
@@ -149,7 +148,7 @@ namespace Web.Areas.Admin.Controllers
             db.SaveChanges();
 
 
-            return RedirectToAction("Index","CustomersA"); 
+            return RedirectToAction("Index", "CustomersA");
 
         }
 
