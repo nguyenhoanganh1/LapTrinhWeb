@@ -396,3 +396,5 @@ Model/App.config
 Model/App.config
 Web/Web.config
 Web/Areas/Admin/Views/Shared/_Admin_Layout.cshtml
+Web/Web.config
+Web/Web.config

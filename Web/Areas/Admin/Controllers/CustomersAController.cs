@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Model.Dao;
 using Model.EL;
+
 
 namespace Web.Areas.Admin.Controllers
 {
+    public class DirectoryNotFoundException : System.IO.IOException { };
     public class CustomersAController : Controller
     {
         private DataContext db = new DataContext();
@@ -46,16 +50,41 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Password,Fullname,Email,Photo,Activated,Admin,ResetPasswordCode")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,Password,Fullname,Email,Photo,Activated,Admin,ResetPasswordCode")] Customer customer, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    Customer b = new Customer();
+                    b.Fullname = customer.Fullname;
+                    b.Email = customer.Email;
+                    b.Id = customer.Id;
+                    if (file.ContentLength > 0)
+                    {
+                        DateTime today = DateTime.Now;
+                        string time = today.Millisecond.ToString();
 
-            return View(customer);
+                        string _FileName = Path.GetFileName(file.FileName);
+                        string _path = Path.Combine(Server.MapPath("~/Images"), time + "_" + _FileName);
+
+                        b.Photo = time + "_" + _FileName;
+                        file.SaveAs(_path);
+                    }
+                    b.Activated = customer.Activated;
+                    customer.Admin = false;
+                    db.Customers.Add(b);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(customer);
+            }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View();
+            }
         }
 
         // GET: Admin/Customers/Edit/5
@@ -78,15 +107,39 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Password,Fullname,Email,Photo,Activated,Admin,ResetPasswordCode")] Customer customer)
+
+        public ActionResult Edit([Bind(Include = "Id,Password,Fullname,Email,Photo,Activated,Admin")] Customer customer, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            /*var custo = new CustomerDAO().GetCustomerById(customer.Id);*/
+            var custo = db.Customers.FirstOrDefault(p => p.Id == customer.Id);
+            if (file != null)
             {
-                db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var location = Server.MapPath(Url.Content("~/Content/images/users"));
+
+                if (!string.IsNullOrEmpty(custo.Photo))
+                {
+                    var existingFile = Path.Combine(location, custo.Photo);
+                    if (System.IO.File.Exists(existingFile))
+                    {
+                        System.IO.File.Delete(existingFile);
+                    }
+                }
+                DateTime today = DateTime.Now;
+                string time = today.Millisecond.ToString();
+                string _FileName = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(location, time + "_" + _FileName);
+                custo.Photo = time + "_" + _FileName;
+                file.SaveAs(filename: _path);
             }
-            return View(customer);
+
+            custo.Fullname = customer.Fullname;
+            custo.Email = customer.Email;
+            custo.Password = customer.Password;
+            custo.Admin = customer.Admin;
+            custo.Activated = customer.Activated;
+            custo.ResetPasswordCode = "";
+            db.SaveChanges();
+            return RedirectToAction("Index", "CustomersA");
         }
 
         // GET: Admin/Customers/Delete/5
