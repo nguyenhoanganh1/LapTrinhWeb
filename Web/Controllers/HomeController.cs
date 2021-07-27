@@ -7,7 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Web.Utils;
-
+using System.Web.Script.Serialization;
+using Web.Utils;
+using System.Net;
 namespace Web.Controllers
 {
     public class HomeController : Controller
@@ -16,6 +18,14 @@ namespace Web.Controllers
 
         public ActionResult Index(int? page)
         {
+
+
+            HttpCookie http = new HttpCookie("link"); // Tên Cookie Là link, để sử dụng cookie thì gọi tên là ( link )
+            string url = Request.Url.LocalPath; //Lấy Địa chỉ uri trang hiện tại là: /ShoppingCart/ShowCart
+            http.Value = WebUtility.HtmlEncode(url);
+            http.Expires = DateTime.Today.AddDays(1); // Thời gian Cookie: 1 ngày
+            Response.Cookies.Add(http); // thêm vào cookie
+
             // 1. Tham số int? dùng để thể hiện null và kiểu int
             // page có thể có giá trị là null và kiểu int.
 

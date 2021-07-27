@@ -5,7 +5,7 @@
 @{ // đọc list cookie trong này
     List<int> your_list = Request.Cookies["YourList"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
 
-  
+
 }
 
 @model Model.EL.Product
@@ -29,15 +29,44 @@
                     @*<li><b>Id</b>: <i>@Model.Id</i></li>*@
                     <li><b>Tên</b>: <i>@Model.Name</i></li>
                     <li><b>Giá</b>: <i>@Model.UnitPrice VNĐ</i></li>
-                    <li><b>Giảm giá</b>: <i>@Model.Discount %</i></li>
+                    <li><b>Giảm giá</b>: <i>@(Model.Discount * 100) %</i></li>
                     <li><b>Có sẵn:</b>: <i>@Model.Quantity</i></li>
-                    @* <li><b>Product Date</b>: <i>@Model.ProductDate</i></li>*@
+
                     <li><b>Loại hàng</b>: <i>@Model.Category.NameVN</i></li>
-                    <li><b>Hàng đặc biệt:</b>: <i>@Model.Special</i></li>
-                    <li><b>Hàng mới</b>: <i>@Model.Latest</i></li>
+
+                    @{ if (Model.Special == true)
+                        {
+                            <li><b>Hàng đặc biệt:</b>: <i>Đúng</i></li>
+
+                        }
+                        else
+                        {
+                            <li><b>Hàng đặc biệt:</b>: <i>Sai </i></li>
+                        }
+
+                    }
 
 
-                    <li><b>Lượt xem</b>: <i>@Model.ClickCount</i></li>
+                    @{ if (Model.Latest == true)
+                        {
+                            <li><b>Hàng Mới:</b>: <i>Đúng</i></li>
+
+                        }
+                        else
+                        {
+                             <li><b>Hàng Mới:</b>: <i>Sai </i></li>
+                        }
+
+                    }
+
+                    @{ if (Model.Latest == true)
+                        {
+
+
+                        }
+                        
+                    }
+                   
 
 
                 </ul>
@@ -51,7 +80,7 @@
         <div class="btn-group btn-group-sm">
             <button class="btn btn-primary glyphicon glyphicon-shopping-cart add-to-cart"></button>
 
-            <button type="button" class="btn btn-danger glyphicon glyphicon glyphicon-heart nn-favo-add"></button>
+            <button class="btn btn-danger glyphicon glyphicon glyphicon-heart add-to-favo"></button>
 
             <button class="btn btn-success glyphicon glyphicon-envelope" data-toggle="modal" data-target="#myModal"></button>
             <div id="myModal" class="modal fade" role="dialog">

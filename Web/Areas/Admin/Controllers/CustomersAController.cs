@@ -107,14 +107,22 @@ namespace Web.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+
+
         
+
         public ActionResult Edit([Bind(Include = "Id,Password,Fullname,Email,Photo,Activated,Admin")] Customer customer, HttpPostedFileBase file)
         {
             /*var custo = new CustomerDAO().GetCustomerById(customer.Id);*/
             var custo = db.Customers.FirstOrDefault(p => p.Id == customer.Id);
             if (file != null)
             {
+
+                var location = Server.MapPath(Url.Content("~/Content/images/users"));
+
                 var location = Server.MapPath(Url.Content("~/Content/images/users")); 
+
 
                 if (!string.IsNullOrEmpty(custo.Photo))
                 {
@@ -139,7 +147,10 @@ namespace Web.Areas.Admin.Controllers
             custo.Activated = customer.Activated;
             custo.ResetPasswordCode = "";
             db.SaveChanges();
+
+
             return RedirectToAction("Index","CustomersA"); 
+
         }
 
         // GET: Admin/Customers/Delete/5

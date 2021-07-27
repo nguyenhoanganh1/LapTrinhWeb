@@ -284,6 +284,7 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChatGroupModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\LoginCus.cs" />
     <Compile Include="Models\MailerModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
@@ -597,26 +598,17 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai2.cshtml" />
-
-
-
     <Content Include="Areas\Admin\Views\CustomersA\Create.cshtml" />
 
     <Content Include="Areas\Admin\Views\CustomersA\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\CustomersA\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CustomersA\Index.cshtml" />
-
-    <Content Include="Areas\Admin\Views\CustomersA\Create.cshtml" />
-
-
     <Content Include="Areas\Admin\Views\ProductsA\FindByCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Admin_Aside.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\FindByKeywords.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\FindBySpecials.cshtml" />
     <Content Include="Areas\Admin\Views\OrderA\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OrderA\Edit.cshtml" />
-
-
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\googleChart.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -634,7 +626,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\shoppingcart\cart.js" />
-    <Content Include="Scripts\shoppingcart\like.js" />
+    <Content Include="Scripts\like.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

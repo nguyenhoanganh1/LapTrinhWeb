@@ -151,6 +151,7 @@ namespace Web.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Login(FormCollection userlog)
         {
@@ -188,7 +189,7 @@ namespace Web.Controllers
                 return View("Login");
             }
 
-        }
+        }*/
         public ActionResult ResetPassword(string id)
         {
             var user = db.Customers.Where(a => a.ResetPasswordCode == id).FirstOrDefault();
