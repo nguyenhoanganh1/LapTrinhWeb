@@ -1,0 +1,141 @@
+﻿@model Model.EL.Customer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn có muốn xóa tài khoản</h3>
+@*<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fullname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResetPasswordCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResetPasswordCode)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+*@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><b>Danh sách khách hàng</b></h3>
+    </div>
+    <table class="table table-hover">
+        <thead class="bg-success">
+            <tr>
+
+                <th>Password</th>
+                <th>Full Name</th>
+                <th>Email Address</th>
+                <th>Photo</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => model.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model =>model.Photo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Activated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Admin)
+                    </td>
+
+                    <td>
+
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-default" /> |
+                                @Html.ActionLink("Trở về ", "Index")
+                            </div>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

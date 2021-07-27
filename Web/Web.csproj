@@ -265,6 +265,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesAController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomersAController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderAController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsAController.cs" />
@@ -283,6 +284,7 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\ChatGroupModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\LikeModel.cs" />
     <Compile Include="Models\LoginCus.cs" />
     <Compile Include="Models\MailerModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
@@ -560,6 +562,7 @@
     <Content Include="Content\images\users\1887726614.jpg" />
     <Content Include="Content\images\users\191259947.jpg" />
     <Content Include="Content\images\users\198827254.jpg" />
+    <Content Include="Content\images\users\2281f8009255670b3e44.jpg" />
     <Content Include="Content\images\users\463468205.jpg" />
     <Content Include="Content\images\users\757526090.jpg" />
     <Content Include="Content\images\users\816678158.jpg" />
@@ -595,6 +598,11 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Nam2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai2.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomersA\Create.cshtml" />
+
+    <Content Include="Areas\Admin\Views\CustomersA\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomersA\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CustomersA\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\FindByCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Admin_Aside.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\FindByKeywords.cshtml" />
@@ -610,13 +618,15 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.signalR-2.4.2.js" />
     <Content Include="Scripts\jquery.signalR-2.4.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\shoppingcart\cart.js" />
-    <Content Include="Scripts\shoppingcart\like.js" />
+    <Content Include="Scripts\like.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

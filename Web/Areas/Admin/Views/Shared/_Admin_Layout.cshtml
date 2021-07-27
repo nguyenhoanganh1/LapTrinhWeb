@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,17 +12,21 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
     @RenderSection("scripts", false);
+
 
 
     <link rel="stylesheet" href="~/Content/nhatnghe.css" />
 </head>
 <body class="container">
 
+    <h1 class="text success">Trang quản lý</h1>
+    
+    @Scripts.Render("~/bundles/jquery")
+   
 
-    @* @RenderPage("_Menu.cshtml")*@
-    @* @RenderBody()
-    *@
+   
     <body class="container">
         <!-- MENU -->
 
@@ -147,5 +152,6 @@
             </div>
         </footer>
     </body>
+
 </body>
 </html>

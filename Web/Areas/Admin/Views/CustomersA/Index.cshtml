@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Model.EL.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><b>Danh sách khách hàng</b></h3>
+    </div>
+    <table class="table table-hover">
+        <thead class="bg-success">
+            <tr>
+                <th>Password</th>
+                <th>Full Name</th>
+                <th>Email Address</th>
+                <th>Photo</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Photo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Sửa thông tin", "Edit", new { id = item.Id }) |
+                        @* @Html.ActionLink("Xóa tài khoản", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

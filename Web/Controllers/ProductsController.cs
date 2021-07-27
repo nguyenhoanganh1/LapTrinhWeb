@@ -26,7 +26,7 @@ namespace Web.Controllers
         // PHẢI CÓ STATIC // nếu không list sẽ không được lưu lại, 
 
         // tạo list sp yêu thích
-        public static List<int> likelist = new List<int>();
+        public static List<string> likelist = new List<string>();
 
 
 
@@ -244,19 +244,7 @@ namespace Web.Controllers
 
         }
 
-        [HttpPost]
-
-        public ActionResult like(int id)
-        {
-            // Thêm id vào list  yêu thích
-
-            //kiểm tra id có bị trùng hay không nếu trùng thì k thêm vào
-            if (!likelist.Contains(id))
-            {
-                likelist.Add(id);
-            }
-
-
+       
         public ActionResult SendMail(MailerModel model)
         {
             string link = Request.Url.AbsoluteUri.ToString().Replace("SendMail", "Details");
@@ -270,6 +258,40 @@ namespace Web.Controllers
         }
 
 
+        /*[Route("GetAllLike")]
+        [HttpGet]
+        public ActionResult GetAllLike()
+        {
+            var danhsach = Request.Cookies["Like"].Value.Split(',').Select(x => x).ToList();
+            *//*var list = new List<Product>();
+            danhsach.ForEach(x => {
+                list.Add(db.Products.Where(a => a.Id.ToString() == x).FirstOrDefault());
+            });*//*
+
+            return Json(new
+            {
+                data = danhsach
+
+            }, JsonRequestBehavior.AllowGet);
+        }*/
+
+
+
+       /* public ActionResult Cong(int a, int b)
+        {
+            return Content((a + b).ToString()); 
+        }*/
+        [HttpPost]
+        public ActionResult LikeProduct(string id)
+        {
+            // Thêm id vào list  yêu thích
+            //kiểm tra id có bị trùng hay không nếu trùng thì k thêm vào
+            if (!likelist.Contains(id))
+            {
+                likelist.Add(id);
+            }
+
+
             // tạo 1 list ngăn cách nhau bởi dấu phẩy
             var likelist_String = String.Join(",", likelist);
 
@@ -280,7 +302,7 @@ namespace Web.Controllers
             likelist2.Value = likelist_String;
 
             //  tạo thời hạn tồn tại của cookie
-            likelist2.Expires = DateTime.Now.AddDays(10);// hạn 10p
+            likelist2.Expires = DateTime.Now.AddDays(10);// hạn 10 ngay
 
 
             // đẩy cookie tới View Details  của controller;
@@ -299,18 +321,28 @@ namespace Web.Controllers
         public ActionResult GetAllLike()
         {
             var danhsach = Request.Cookies["Like"].Value.Split(',').Select(x => x).ToList();
-            /*var list = new List<Product>();
-            danhsach.ForEach(x => {
+            var list = new List<Product>();
+            danhsach.ForEach(x =>
+            {
                 list.Add(db.Products.Where(a => a.Id.ToString() == x).FirstOrDefault());
-            });*/
+            });
+
+            List<LikeModel> like = new List<LikeModel>();
+            for (int i = 0; i < list.Count(); i++)
+            {
+                like.Add(new LikeModel()
+                {
+                    id = list[i].Id.ToString(),
+                    image = list[i].Image
+                });
+            }
+
 
             return Json(new
             {
-                data = danhsach
+                data = like
 
             }, JsonRequestBehavior.AllowGet);
         }
-
-
     }
 }

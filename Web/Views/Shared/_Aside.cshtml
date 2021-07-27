@@ -18,6 +18,7 @@
     }*@
 
 }
+<script src="~/Scripts/like.js"></script>
 
 
 
@@ -35,26 +36,6 @@
                 <li id="soluong"></li>
                 <li id="tongtien"></li>
 
-
-                @*<li><a href="/shoppingcart/showcart">Xem giỏ hàng</a></li>
-
-        if (list == null)
-        {
-            <li>0</li>
-            <li>0 VNĐ</li>
-        }
-        else
-        {
-            foreach (var it in list)
-            {
-                quanity += it.quantity;
-                total += it.quantity * it.product.UnitPrice * (1 - it.product.Discount);
-            }
-        <li>@quanity</li>
-        <li>
-            @total VNĐ
-        </li>
-        }*@
 
 
                 <li><a href="/shoppingcart/showcart">Giỏ hàng</a></li>
@@ -81,24 +62,7 @@
         </div>
         <div class="panel-body">
             <div id="favos"></div>
-            @*@foreach (var i in like)
-                {
-                    foreach (var p in list2)
-                    {
-                        if (p.Id == i)
-                        {
-                            <div class="col-xs-4 text-center">
-                                <a href="/Products/Details/@p.Id">
-                                    <img src="~/Content/images/items/@p.Image">
-                                </a>
-                            </div>
-                        }
-
-                    }
-
-
-
-                }*@
+           
 
         </div>
     </div>

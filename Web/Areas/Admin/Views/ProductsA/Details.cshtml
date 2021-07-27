@@ -5,6 +5,15 @@
     Layout = "~/Areas/Admin/Views/Shared/_Admin_Layout.cshtml";
 }
 
+
+@{ // đọc list cookie trong này -- list sản phẩm đã xem
+    List<int> your_list = Request.Cookies["YourList"].Value.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+
+
+}
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 <h2>Chi tiết sản phẩm</h2>
 
 <div class="panel panel-default nn-prod-detail">
@@ -42,6 +51,7 @@
             <a href="@Url.Action("Delete","ProductsA", new {id = @Model.Id}) " class="btn btn-danger" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này')">
                 <i class="glyphicon glyphicon-trash"></i>Delete
             </a>
+
         </div>
     </div>
 </div>
@@ -81,25 +91,36 @@
 
                         }
                     }
-                    
+
                 </div>
             </div>
         </div>
         <div id="tab2" class="tab-pane fade">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="col-sm-6">
-                        <a href="#">
-                            <img src="~/image/1003.jpg">
-                            Sản phẩm 1
-                        </a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="#">
-                            <img src="~/image/1004.jpg">
-                            Sản phẩm 2
-                        </a>
-                    </div>
+                    @{
+
+                        var visit = db.Products.ToList();
+                        foreach (var item in visit)
+                        {
+                            foreach (var v in your_list)
+                            {
+                                if (v == item.Id)
+                                {
+                                    <div class="col-sm-6">
+                                        <a href="/Products/Details/@item.Id">
+                                            <img src="~/Content/images/items/@item.Image">
+                                            @item.Name
+                                        </a>
+                                    </div>
+
+                                }
+
+                            }
+
+
+                        }
+                    }
                 </div>
             </div>
         </div>
@@ -107,6 +128,9 @@
 </div>
 
 <p>
-   
+
     @*@Html.ActionLink("Back to List", "Index")*@
 </p>
+
+
+
