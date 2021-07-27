@@ -562,6 +562,7 @@
     <Content Include="Content\images\users\1887726614.jpg" />
     <Content Include="Content\images\users\191259947.jpg" />
     <Content Include="Content\images\users\198827254.jpg" />
+    <Content Include="Content\images\users\2281f8009255670b3e44.jpg" />
     <Content Include="Content\images\users\463468205.jpg" />
     <Content Include="Content\images\users\757526090.jpg" />
     <Content Include="Content\images\users\816678158.jpg" />
@@ -598,8 +599,8 @@
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Thang2.cshtml" />
     <Content Include="Areas\Admin\Views\ReportA\TK_Doanhthu_Loai2.cshtml" />
     <Content Include="Areas\Admin\Views\CustomersA\Create.cshtml" />
+
     <Content Include="Areas\Admin\Views\CustomersA\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\CustomersA\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CustomersA\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CustomersA\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsA\FindByCategory.cshtml" />
