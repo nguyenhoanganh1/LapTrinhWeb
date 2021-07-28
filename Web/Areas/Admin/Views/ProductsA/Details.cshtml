@@ -26,8 +26,8 @@
                 <ul>
                     <li><b>Id</b>: <i>@Model.Id</i></li>
                     <li><b>Tên</b>: <i>@Model.Name</i></li>
-                    <li><b>Giá</b>: <i>@Model.UnitPrice</i></li>
-                    <li><b>Giảm giá</b>: <i>@Model.Discount</i></li>
+                    <li><b>Giá</b>: <i>@Model.UnitPrice.ToString("n0")</i></li>
+                    <li><b>Giảm giá</b>: <i>@(Model.Discount * 100) %</i></li>
                     <li><b>Số lượng</b>: <i>@Model.Quantity</i></li>
                     <li><b>Ngày nhập</b>: <i>@Model.ProductDate</i></li>
                     <li><b>Loại hàng</b>: <i>@Model.Category.NameVN</i></li>

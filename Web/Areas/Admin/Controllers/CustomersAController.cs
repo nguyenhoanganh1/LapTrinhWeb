@@ -121,7 +121,7 @@ namespace Web.Areas.Admin.Controllers
 
                 var location = Server.MapPath(Url.Content("~/Content/images/users"));
 
-                var location = Server.MapPath(Url.Content("~/Content/images/users")); 
+                
 
 
                 if (!string.IsNullOrEmpty(custo.Photo))
