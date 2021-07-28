@@ -28,7 +28,7 @@
                 <ul>
                     @*<li><b>Id</b>: <i>@Model.Id</i></li>*@
                     <li><b>Tên</b>: <i>@Model.Name</i></li>
-                    <li><b>Giá</b>: <i>@Model.UnitPrice VNĐ</i></li>
+                    <li><b>Giá</b>: <i>@Model.UnitPrice.ToString("n0") VNĐ</i></li>
                     <li><b>Giảm giá</b>: <i>@(Model.Discount * 100) %</i></li>
                     <li><b>Có sẵn:</b>: <i>@Model.Quantity</i></li>
 
@@ -59,13 +59,7 @@
 
                     }
 
-                    @{ if (Model.Latest == true)
-                        {
-
-
-                        }
-                        
-                    }
+                  
                    
 
 
@@ -267,14 +261,14 @@
 
                         }
                     });
-
+                    
                     chat.server.joinGroup({ UserName: username, Message: message, GroupName: r.toString() });
                     $('#message').val('').focus();
 
 
                 });
             });
-
+            chat.server.messageGroup = function (username, message, time) { }
             chat.client.messageGroup = function (username, message, time) {
                 $('#discussion').append('<li>' +
                     '<div class="row">' +

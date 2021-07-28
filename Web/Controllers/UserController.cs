@@ -80,9 +80,9 @@ namespace Web.Controllers
             var verifyUrl = "/User/" + emailfor + "/" + activationCode;
             var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
 
-            var fromEmail = new MailAddress("drangon165@gmail.com", "Shop Bán Giầy");// Thay doi tai khoan giu
+            var fromEmail = new MailAddress("lehongcongit1908@gmail.com", "Web bán hàng");// Thay doi tai khoan giu
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "Thanh0123"; // Mat Khau cua tai khoan gmail
+            var fromEmailPassword = "Konghentaixyz@123"; // Mat Khau cua tai khoan gmail
             string body = "";
             string subject = "";
             if (emailfor == "VerifyAccount")
@@ -162,7 +162,7 @@ namespace Web.Controllers
 
             if (islogin != null)
             {
-                if (Email == "nghiemn@fpt.edu.vn" || (islogin.Admin== true ))
+                if ( (islogin.Admin== true ))
                 {
                     Session["User"] = islogin;
                     return RedirectToAction("Index", "Admin/HomeA");
@@ -189,7 +189,7 @@ namespace Web.Controllers
                 return View("Login");
             }
 
-        }*/
+        }
         public ActionResult ResetPassword(string id)
         {
             var user = db.Customers.Where(a => a.ResetPasswordCode == id).FirstOrDefault();

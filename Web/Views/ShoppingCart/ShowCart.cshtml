@@ -31,7 +31,7 @@
                     <tr data-item='{"id": @item.product.Id, "price": @item.product.UnitPrice, "disc": @item.product.Discount}'>
                         <td>@(stt++)</td>
                         <td><a href="/products/details/@item.product.Id">@item.product.Name</a></td>
-                        <td>$ @item.product.UnitPrice.ToString("n0")</td>
+                        <td>@item.product.UnitPrice.ToString("n0")</td>
                         <td>@(item.product.Discount * 100)%</td>
                         <td>
                             <input class="quantity_item" type="number" min="1" style="width:50px" value="@item.quantity"

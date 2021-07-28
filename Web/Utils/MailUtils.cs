@@ -19,7 +19,7 @@ namespace Web.Utils
             message.IsBodyHtml = true;
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
             System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("hoanganh25022@gmail.com", "0362006314");
+            System.Net.NetworkCredential("lehongcongit1908@gmail.com", "Konghentaixyz@123");
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
             client.Credentials = basicCredential1;

@@ -34,7 +34,7 @@ namespace Web.Controllers
             return Json(new
             {
                 count = count,
-                amount = amount
+                amount = String.Format("{0:n0}", amount)
             }, JsonRequestBehavior.AllowGet);
         }
 
