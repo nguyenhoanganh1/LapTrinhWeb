@@ -338,7 +338,7 @@ namespace Web.Controllers
 
 
         }
-        [Route("GetAllLike")]
+      /*  [Route("GetAllLike")]
         [HttpGet]
         public ActionResult GetAllLike()
         {
@@ -371,6 +371,6 @@ namespace Web.Controllers
                 return RedirectToAction("Index","Home");
             }
 
-        }
+        }*/
     }
 }

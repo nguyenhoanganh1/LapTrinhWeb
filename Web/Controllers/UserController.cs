@@ -27,12 +27,16 @@ namespace Web.Controllers
 
             if (dao.CheckUserName(model.Id))
             {
-                ModelState.AddModelError("Id", "Tên Đăng Nhập đã Tồn Tại");
 
+                string message = "";
+                message = "Tai Khoan da ton tai";
+                ViewBag.Message = message;
             }
             else if (dao.Checkemail(model.Email))
             {
-                ModelState.AddModelError("Email", "Email đã Tồn Tại");
+                string message = "";
+                message = "Email đã Tồn Tại";
+                ViewBag.Message=message;
             }
             else
             {
